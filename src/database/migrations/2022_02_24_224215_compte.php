@@ -60,7 +60,7 @@ return new class extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('CompteActif');
-		Schema::dropIfExists('CompteArchive');
+		Schema::dropIfExists('ComptesActifs');
+		Schema::dropIfExists('ComptesArchives');
 	}
 };
