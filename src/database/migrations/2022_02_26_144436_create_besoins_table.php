@@ -22,7 +22,6 @@ return new class extends Migration
             $table->integer('besoin_id')->primary();
             $table->string('titreB');
             $table->string('descriptionB');
-            
         });
 
         Schema::create('besoinEnAttente', function (Blueprint $table) {
