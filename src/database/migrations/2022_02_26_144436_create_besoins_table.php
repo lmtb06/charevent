@@ -19,7 +19,7 @@ return new class extends Migration
 
 
         Schema::create('besoinActif', function (Blueprint $table) {
-            $table->integer('besoin_id')->primary()->unique();
+            $table->integer('besoin_id')->primary();
             $table->string('titreB');
             $table->string('descriptionB');
             
