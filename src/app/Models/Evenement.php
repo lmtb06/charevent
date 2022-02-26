@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BesoinActif;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 
 class Evenement extends Model
 {
@@ -27,5 +29,23 @@ class Evenement extends Model
         'expiration',
     ];
 
+    public function comptes()
+    {
+        return $this->belongsToMany(User::class, 'participants');
+    }
 
+    public function createur()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function localisation()
+    {
+        return $this->belongsTo(Localisation::class);
+    }
+
+    public function besoins()
+    {
+        return $this->hasMany(BesoinActif::class);
+    }
 }
