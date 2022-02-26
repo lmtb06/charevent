@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('notification_choix', function (Blueprint $table) {
+        Schema::create('notification_modification_besoin', function (Blueprint $table) {
             $table->integer('notification_id')->primary();
 			$table->integer('destinataire_id');
 			$table->integer('envoyeur_id');
+            $table->integer('evenement_id');
+            $table->integer('besoin_modifie_id');
             $table->date('dateReception');
             $table->date('dateLecture')->nullable();
             $table->string('message', 1000);
@@ -34,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notification_choix');
+        Schema::dropIfExists('notification_modification_besoin');
     }
 };
