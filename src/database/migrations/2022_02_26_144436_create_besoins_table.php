@@ -14,35 +14,31 @@ return new class extends Migration
     public function up()
     {
         //besoinsActif (id_besoin, id_evenement, id_responsable, titre_B)
-        //BesoinEnAttente (id_besoin, id_evenemenent, id_modificateur, titre_B)
-        //BesoinArchivé (id_besoin, id_evenement, id_responsable, titre_B)
+        //besoinEnAttente (id_besoin, id_evenemenent, titre_B, typeModif)
+        //besoinArchivé (id_besoin, id_evenement, id_responsable, titre_B)
 
 
-        Schema::create('besoinsActif', function (Blueprint $table) {
-            $table->integer('besoin_id')->primary();
+        Schema::create('besoinActif', function (Blueprint $table) {
+            $table->integer('besoin_id')->primary()->unique();
             $table->string('titreB');
-            $table->index('id_evenement');
-            $table->foreign('id_evenement')->references(evenement_id)->on('evenements')->onDelete('cascade');
-            $table->index('id_responsable');
-            $table->integer('id_responsable')->references(id_compte)->on('ComptesActifs')->onDelete('cascade');
+            $table->string('descriptionB');
+            
         });
 
-        Schema::create('besoinsEnAttente', function (Blueprint $table) {
+        Schema::create('besoinEnAttente', function (Blueprint $table) {
             $table->integer('besoin_id')->primary();
             $table->string('titreB');
-            $table->index('id_evenement');
-            $table->foreign('id_evenement')->references(evenement_id)->on('evenements')->onDelete('cascade');
-            $table->index('id_notification');
-            $table->integer('id_notification')->references(notification_id)->on('notification_simple')->onDelete('cascade');
+            $table->string('typeModif');
+            $table->string('descriptionB');
+            //$table->foreign('id_notificationModifBesoin')->references('id_notification')
+            
         });  
         
-        Schema::create('besoinsArchive', function (Blueprint $table) {
+        Schema::create('besoinArchive', function (Blueprint $table) {
             $table->integer('besoin_id')->primary();
             $table->string('titreB');
-            $table->index('id_evenement');
-            $table->foreign('id_evenement')->references(evenement_id)->on('evenements')->onDelete('cascade');
-            $table->index('id_responsable');
-            $table->integer('id_responsable')->references(id_compte)->on('ComptesActifs')->onDelete('cascade');
+            $table->string('descriptionB');
+    
         });
     }
 
@@ -59,8 +55,8 @@ return new class extends Migration
         //$table->dropColumn('id_evenement');
         //$table->dropForeign('create_evenement_archives_table')
         //$table->dropColumn('id_evenement');
-        Schema::dropIfExists('besoinsActif');
-        Schema::dropIfExists('besoinsEnAttente');
-        Schema::dropIfExists('besoinsArchive');
+        Schema::dropIfExists('besoinActif');
+        Schema::dropIfExists('besoinEnAttente');
+        Schema::dropIfExists('besoinArchive');
     }
 };
