@@ -20,25 +20,27 @@ return new class extends Migration
 
         Schema::create('besoinActif', function (Blueprint $table) {
             $table->integer('besoin_id')->primary();
-            $table->string('titreB');
-            $table->string('descriptionB');
-            
+            $table->integer('id_responsable');
+            $table->integer('id_evenement');
+            $table->string('titre_B');
+
         });
 
         Schema::create('besoinEnAttente', function (Blueprint $table) {
             $table->integer('besoin_id')->primary();
-            $table->string('titreB');
+            $table->integer('id_responsable');
+            $table->integer('id_evenement');
+            $table->string('titre_B');
             $table->string('typeModif');
-            $table->string('descriptionB');
             //$table->foreign('id_notificationModifBesoin')->references('id_notification')
-            
-        });  
-        
+
+        });
+
         Schema::create('besoinArchive', function (Blueprint $table) {
             $table->integer('besoin_id')->primary();
-            $table->string('titreB');
-            $table->string('descriptionB');
-    
+            $table->integer('id_responsable')->nullable();
+            $table->integer('id_evenement')->nullable();
+            $table->string('titre_B');
         });
     }
 
