@@ -17,21 +17,21 @@ return new class extends Migration
             $table->integer('evenement_id');
 
             $table->foreign('evenement_id')->references('evenement_id')->on('evenements');
-            $table->foreign('id_responsable')->references('id_compte')->on('compte');
+            $table->foreign('id_responsable')->references('id_compte')->on('ComptesActifs');
         });
 
         Schema::table('besoinEnAttente', function (Blueprint $table) {
             $table->integer('evenement_id');
 
             $table->foreign('evenement_id')->references('evenement_id')->on('evenements');
-            $table->foreign('id_responsable')->references('id_compte')->on('compte');
+            $table->foreign('id_responsable')->references('id_compte')->on('ComptesActifs');
         });
 
         Schema::table('besoinArchive', function (Blueprint $table) {
             $table->integer('evenement_id');
 
             $table->foreign('evenement_id')->references('evenement_id')->on('evenements');
-            $table->foreign('id_responsable')->references('id_compte')->on('compte');
+            $table->foreign('id_responsable')->references('id_compte')->on('ComptesActifs');
         });
 	}
 
