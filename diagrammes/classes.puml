@@ -1,21 +1,21 @@
 @startuml
 
 class AccueilController {
-	create()
+	show()
 }
 
 class InscriptionController {
-	create()
+	show()
 	store(Request r)
 }
 
 class ProfilController {
-	create()
+	show()
 	update(Request r)
 }
 
 class ConnexionController {
-	create()
+	show()
 	authenticate(Request $request)
 }
 
