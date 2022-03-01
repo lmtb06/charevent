@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Participant extends Model
 {
     use HasFactory;
+
+    protected $table = 'participants';
+    protected $timestamps = false;
+
+
+
+
 }

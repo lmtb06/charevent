@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EvenementArchive extends Model
+class NotificationSimple extends Model
 {
     use HasFactory;
-
+    protected $table = 'notification_simple';
+    protected $primaryKey = 'notification_id';
     protected $timestamps = false;
-    protected $primaryKey = 'evenement_archive_id';
 
     /**
      * The attributes that are mass assignable.
@@ -18,12 +18,12 @@ class EvenementArchive extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'localisation_id',
-        'createur_id',
-        'titreE',
+        'destinataire_id',
+        'evenement_id',
+        'dateReception',
+        'dateLecture',
+        'message',
         'description',
-        'dateDebut',
-        'dateFin',
-        'expiration',
+        'typeMessage'
     ];
 }
