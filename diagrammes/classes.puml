@@ -1,0 +1,26 @@
+@startuml
+
+class AccueilController {
+	show()
+}
+
+class InscriptionController {
+	show()
+	store(Request r)
+}
+
+class ProfilController {
+	show()
+	update(Request r)
+}
+
+class ConnexionController {
+	show()
+	authenticate(Request $request)
+}
+
+class DeconnexionController {
+	__invoke()
+}
+
+@enduml

@@ -6,12 +6,18 @@ use Illuminate\Http\Request;
 
 class ConnexionController extends Controller
 {
-    public function authenticate (Request $request){
+	public function authenticate(Request $request)
+	{
+		// Valider le formulaire
 
-    }
+		// Connecter
 
-    public function create (){
+		// Redirection
+	}
 
-
-    }
+	public function show()
+	{
+		// Afficher la page de connexion
+		return view('index');
+	}
 }
