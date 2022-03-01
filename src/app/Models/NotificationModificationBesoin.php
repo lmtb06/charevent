@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class NotificationModificationBesoin extends Model
 {
     use HasFactory;
-    protected $table = 'notification_modification_besoin';
-    protected $primaryKey = 'notification_id';
+    protected $table = 'notifications_modification_besoin';
+    protected $primaryKey = 'id_notification';
     protected $timestamps = false;
 
     /**
@@ -18,13 +18,14 @@ class NotificationModificationBesoin extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'destinataire_id',
-        'evenement_id',
+        'id_destinataire',
+        'id_envoyeur',
+        'id_evenement',
+        'id_besoin_en_attente',
         'dateReception',
         'dateLecture',
         'message',
-        'description',
-        'typeMessage',
+        'supprime',
         'accepte',
         'dateChoix'
     ];

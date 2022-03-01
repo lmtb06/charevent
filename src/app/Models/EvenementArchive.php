@@ -9,8 +9,9 @@ class EvenementArchive extends Model
 {
     use HasFactory;
 
+    protected $table = 'evenements_archives';
     protected $timestamps = false;
-    protected $primaryKey = 'evenement_archive_id';
+    protected $primaryKey = 'id_evenement';
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +19,9 @@ class EvenementArchive extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'localisation_id',
-        'createur_id',
-        'titreE',
+        'id_localisation',
+        'id_createur',
+        'titre',
         'description',
         'dateDebut',
         'dateFin',

@@ -9,8 +9,8 @@ class Localisation extends Model
 {
     use HasFactory;
 
-    protected $table = 'localisation';
-    protected $primaryKey = 'evenement_id';
+    protected $table = 'localisations';
+    protected $primaryKey = 'id_localisation';
     protected $timestamps = false;
 
 /**

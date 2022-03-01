@@ -9,8 +9,8 @@ class BesoinArchive extends Model
 {
     use HasFactory;
 
-    protected $table = 'besoinArchive';
-    protected $primaryKey = 'besoin_id';
+    protected $table = 'besoins_archives';
+    protected $primaryKey = 'id_besoin';
     protected $timestamps = false;
 
 
@@ -22,6 +22,6 @@ class BesoinArchive extends Model
     protected $fillable = [
         'id_responsable',
         'id_evenement',
-        'titre_B',
+        'titre',
     ];
 }

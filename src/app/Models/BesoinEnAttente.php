@@ -9,8 +9,8 @@ class BesoinEnAttente extends Model
 {
     use HasFactory;
 
-    protected $table = 'besoinEnAttente';
-    protected $primaryKey = 'besoin_id';
+    protected $table = 'besoins_en_attente';
+    protected $primaryKey = 'id_besoin';
     protected $timestamps = false;
 
 
@@ -22,7 +22,6 @@ class BesoinEnAttente extends Model
     protected $fillable = [
         'id_responsable',
         'id_evenement',
-        'titre_B',
-        'typeModif'
+        'titre',
     ];
 }
