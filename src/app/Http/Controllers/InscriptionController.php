@@ -10,7 +10,7 @@ class InscriptionController extends Controller
 	public function show()
 	{
 		// Afficher la page d'inscription
-		return view('index');
+		return view('inscription');
 	}
 	public function store(Request $request)
 	{
