@@ -8,6 +8,7 @@ class AccueilController extends Controller
 {
 	public function show()
 	{
+		// USHHHHHH
 		// Afficher la page d'accueil
 		return view('index');
 	}
