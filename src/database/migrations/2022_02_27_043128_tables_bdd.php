@@ -31,6 +31,7 @@ return new class extends Migration
 			$table->boolean('notificationMail');
 			$table->string('role');
 		});
+
 		Schema::create('comptes_archives', function (Blueprint $table) {
 			$table->integer('id_compte');
 			$table->integer('id_residence');
@@ -46,10 +47,9 @@ return new class extends Migration
 			$table->boolean('notificationMail');
 			$table->string('role');
 		});
+
 		// Evenements
-		Schema::create(
-			'evenements_actifs',
-			function (Blueprint $table) {
+		Schema::create('evenements_actifs', function (Blueprint $table) {
 				$table->integer('id_evenement');
 				$table->integer('id_createur');
 				$table->integer('id_localisation');
@@ -60,9 +60,8 @@ return new class extends Migration
 				$table->date('expiration');
 			}
 		);
-		Schema::create(
-			'evenements_archives',
-			function (Blueprint $table) {
+
+		Schema::create('evenements_archives', function (Blueprint $table) {
 				$table->integer('id_evenement');
 				$table->integer('id_createur');
 				$table->integer('id_localisation');
@@ -73,55 +72,50 @@ return new class extends Migration
 				$table->date('expiration');
 			}
 		);
-		Schema::create(
-			'participants',
-			function (Blueprint $table) {
+
+		// Participants
+		Schema::create('participants', function (Blueprint $table) {
 				$table->integer('id_evenement');
 				$table->integer('id_compte');
 			}
 		);
+
 		// Besoins
-		Schema::create(
-			'besoins_actifs',
-			function (Blueprint $table) {
+		Schema::create('besoins_actifs', function (Blueprint $table) {
 				$table->integer('id_besoin');
 				$table->integer('id_evenement');
 				$table->integer('id_responsable');
 				$table->string('titre', 50);
 			}
 		);
-		Schema::create(
-			'besoins_archives',
-			function (Blueprint $table) {
+
+		Schema::create('besoins_archives', function (Blueprint $table) {
 				$table->integer('id_besoin');
 				$table->integer('id_evenement');
 				$table->integer('id_responsable');
 				$table->string('titre', 50);
 			}
 		);
-		Schema::create(
-			'besoins_en_attente',
-			function (Blueprint $table) {
+
+		Schema::create('besoins_en_attente', function (Blueprint $table) {
 				$table->integer('id_besoin');
 				$table->integer('id_evenement');
 				$table->integer('id_responsable');
 				$table->string('titre', 50);
 			}
 		);
+
 		// Localisations
-		Schema::create(
-			'localisations',
-			function (Blueprint $table) {
+		Schema::create('localisations', function (Blueprint $table) {
 				$table->integer('id_localisation');
 				$table->string('ville', 50);
 				$table->string('departement', 3);
 				$table->string('codePostal', 5);
 			}
 		);
+
 		// Notifications
-		Schema::create(
-			'notifications_simple',
-			function (Blueprint $table) {
+		Schema::create('notifications_simple', function (Blueprint $table) {
 				$table->integer('id_notification');
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
@@ -131,25 +125,8 @@ return new class extends Migration
 				$table->boolean('supprime');
 			}
 		);
-		Schema::create(
-			'notifications_modification_besoin',
-			function (Blueprint $table) {
-				$table->integer('id_notification');
-				$table->integer('id_destinataire');
-				$table->integer('id_evenement');
-				$table->integer('id_envoyeur');
-				$table->integer('id_besoin_en_attente');
-				$table->date('dateReception');
-				$table->date('dateLecture');
-				$table->string('message', 50);
-				$table->boolean('supprime');
-				$table->boolean('accepte');
-				$table->date('dateChoix');
-			}
-		);
-		Schema::create(
-			'notifications_suppression_besoin',
-			function (Blueprint $table) {
+
+		Schema::create('notifications_modification_besoin', function (Blueprint $table) {
 				$table->integer('id_notification');
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
@@ -163,9 +140,8 @@ return new class extends Migration
 				$table->date('dateChoix');
 			}
 		);
-		Schema::create(
-			'notifications_proposition_besoin',
-			function (Blueprint $table) {
+
+		Schema::create('notifications_suppression_besoin', function (Blueprint $table) {
 				$table->integer('id_notification');
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
@@ -179,9 +155,8 @@ return new class extends Migration
 				$table->date('dateChoix');
 			}
 		);
-		Schema::create(
-			'notifications_volontariat_besoin',
-			function (Blueprint $table) {
+
+		Schema::create('notifications_proposition_besoin', function (Blueprint $table) {
 				$table->integer('id_notification');
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
@@ -195,9 +170,23 @@ return new class extends Migration
 				$table->date('dateChoix');
 			}
 		);
-		Schema::create(
-			'notifications_demande_participation',
-			function (Blueprint $table) {
+
+		Schema::create('notifications_volontariat_besoin', function (Blueprint $table) {
+				$table->integer('id_notification');
+				$table->integer('id_destinataire');
+				$table->integer('id_evenement');
+				$table->integer('id_envoyeur');
+				$table->integer('id_besoin_en_attente');
+				$table->date('dateReception');
+				$table->date('dateLecture');
+				$table->string('message', 50);
+				$table->boolean('supprime');
+				$table->boolean('accepte');
+				$table->date('dateChoix');
+			}
+		);
+
+		Schema::create('notifications_demande_participation', function (Blueprint $table) {
 				$table->integer('id_notification');
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
@@ -210,9 +199,8 @@ return new class extends Migration
 				$table->date('dateChoix');
 			}
 		);
-		Schema::create(
-			'notifications_invitation_participation',
-			function (Blueprint $table) {
+
+		Schema::create('notifications_invitation_participation', function (Blueprint $table) {
 				$table->integer('id_notification');
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
@@ -242,6 +230,7 @@ return new class extends Migration
 		// Evenements
 		Schema::dropIfExists('evenements_actifs');
 		Schema::dropIfExists('evenements_archives');
+		// Participants
 		Schema::dropIfExists('participants');
 		// Besoins
 		Schema::dropIfExists('besoins_actifs');
