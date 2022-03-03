@@ -2,15 +2,22 @@
 
 namespace App\Models;
 
+use App\Models\Evenement;
+use App\Models\BesoinActif;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected $table = 'comptes_actifs';
+    protected $primaryKey = 'id_compte';
+    const CREATED_AT = 'dateCreationCompte';
+    const UPDATED_AT = 'dateModifCompte';
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +25,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nom',
+        'prenom',
+        'photo',
+        'mail',
+        'hashMDP',
+        'dateNaissance',
+        'numeroTelephone',
+        'notificationMail',
+        'role',
+        'id_residence'
     ];
 
     /**
@@ -29,16 +43,24 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'hashMDP',
     ];
 
+    public function evenements()
+    {
+        return $this->belongsToMany(Evenement::class, 'participants');
+    }
+
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
+     * Get the needs for the account.
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function besoins()
+    {
+        return $this->hasMany(BesoinActif::class);
+    }
+
+    public function localisation()
+    {
+        return $this->belongsTo(Localisation::class);
+    }
 }
