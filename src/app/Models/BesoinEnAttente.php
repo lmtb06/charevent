@@ -11,7 +11,7 @@ class BesoinEnAttente extends Model
 
     protected $table = 'besoins_en_attente';
     protected $primaryKey = 'id_besoin';
-    protected $timestamps = false;
+    public $timestamps =false;
 
 
     /**

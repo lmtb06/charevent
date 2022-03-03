@@ -10,7 +10,7 @@ class NotificationModificationBesoin extends Model
     use HasFactory;
     protected $table = 'notifications_modification_besoin';
     protected $primaryKey = 'id_notification';
-    protected $timestamps = false;
+    public $timestamps =false;
 
     /**
      * The attributes that are mass assignable.

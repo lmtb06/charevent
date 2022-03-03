@@ -18,6 +18,6 @@ class ConnexionController extends Controller
 	public function show()
 	{
 		// Afficher la page de connexion
-		return view('index');
+		return view('layout.connection');
 	}
 }

@@ -11,7 +11,7 @@ class BesoinArchive extends Model
 
     protected $table = 'besoins_archives';
     protected $primaryKey = 'id_besoin';
-    protected $timestamps = false;
+    public $timestamps =false;
 
 
     /**
