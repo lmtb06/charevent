@@ -1,0 +1,26 @@
+@startuml diagrammeControllers
+
+class AccueilController{
+    public create()
+}
+
+class ConnexionController{
+    public create()
+    public authenticate (Request request)
+}
+
+class InscriptionController{
+    public create()
+    public store (Request request)
+}
+
+class ModifierCompteController{
+    public create()
+    public update (Request request)
+}
+
+class DeconnexionController{
+    public __invoke()
+}
+
+@enduml
