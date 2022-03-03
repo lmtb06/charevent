@@ -1,12 +1,16 @@
-@extends('base.base')
+@extends('inscrire')
 
 @section('content')
 
 
     <fieldset>
-    <form method='POST' action= {{route('inscrireUser')}}>
+    <form method='POST' >
         @csrf
-        <legend>Inscription</legend>
+        <img src="{{asset('/images/logo.png')}}" alt="charEvent" height="120px">
+        
+        <br/>
+        <h2>Inscription</h2>
+        <br/>
         
         <label for="nom">Nom *</label>
         <input type="text" name="nom" id="nom" placeholder="Nom" required="required">
@@ -48,9 +52,15 @@
         <input type="text" name="telephone" id="telephone" placeholder="Téléphone" >
         <br/>
         
-        <label for="photo">Photo *</label>
-        <input type="text" name="photo" id="photo" placeholder="PHOTO">
+        <label for="photo">Photo </label>
+        <input name="photo" type="file" accept="image/png, image/jpeg">
         <br/>
+
+        <br/>
+        <input type="checkbox" id="notifMail" name="notifMail" value="notifMail">
+        <label for="notifMail"> Recevoir les notifications par mail</label><br>
+        <br/>
+
 
         <input type="submit" id="submit" value="S'inscrire">
 
