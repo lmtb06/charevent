@@ -14,7 +14,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'ComptesActifs';
+    protected $table = 'comptes_actifs';
     protected $primaryKey = 'id_compte';
     const CREATED_AT = 'dateCreationCompte';
     const UPDATED_AT = 'dateModifCompte';
@@ -34,7 +34,7 @@ class User extends Authenticatable
         'numeroTelephone',
         'notificationMail',
         'role',
-        'localisation_id'
+        'id_residence'
     ];
 
     /**

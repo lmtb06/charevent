@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NotificationParticipation extends Model
+class NotificationInvitationParticipation extends Model
 {
     use HasFactory;
-    protected $table = 'notification_participation';
-    protected $primaryKey = 'notification_id';
+    protected $table = 'notifications_invitation_participation';
+    protected $primaryKey = 'id_notification';
     protected $timestamps = false;
 
     /**
@@ -18,15 +18,14 @@ class NotificationParticipation extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'destinataire_id',
-        'evenement_id',
+        'id_destinataire',
+        'id_envoyeur',
+        'id_evenement',
         'dateReception',
         'dateLecture',
         'message',
-        'description',
-        'typeMessage',
+        'supprime',
         'accepte',
         'dateChoix'
     ];
-
 }

@@ -11,8 +11,8 @@ class BesoinActif extends Model
 {
     use HasFactory;
 
-    protected $table = 'besoinActif';
-    protected $primaryKey = 'besoin_id';
+    protected $table = 'besoins_actifs';
+    protected $primaryKey = 'id_besoin';
     protected $timestamps = false;
 
 
@@ -24,7 +24,7 @@ class BesoinActif extends Model
     protected $fillable = [
         'id_responsable',
         'id_evenement',
-        'titre_B',
+        'titre',
     ];
 
     /**
