@@ -11,7 +11,7 @@ class Evenement extends Model
 {
     use HasFactory;
 
-    protected $timestamps = false;
+    public $timestamps =false;
     protected $primaryKey = 'id_evenement';
 
     /**

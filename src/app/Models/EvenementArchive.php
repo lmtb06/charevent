@@ -10,7 +10,7 @@ class EvenementArchive extends Model
     use HasFactory;
 
     protected $table = 'evenements_archives';
-    protected $timestamps = false;
+    public $timestamps =false;
     protected $primaryKey = 'id_evenement';
 
     /**

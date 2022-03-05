@@ -10,7 +10,7 @@ class Participant extends Model
     use HasFactory;
 
     protected $table = 'participants';
-    protected $timestamps = false;
+    public $timestamps =false;
 
 
 

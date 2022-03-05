@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', [AccueilController::class, 'show'])->name('pageAccueil');
 
 /**
@@ -33,3 +32,4 @@ Route::get('/deconnexion', DeconnexionController::class)->name('deconnexion');
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');
 Route::post('/connexion', [ConnexionController::class, 'authenticate'])->name('connecterCompte');
 Route::get('/compte/update', [ModifierCompteController::class, 'update'])->name('modifierCompte');
+

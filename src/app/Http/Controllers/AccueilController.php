@@ -22,5 +22,6 @@ class AccueilController extends Controller
 		// 	'id_localisation' => $loc->id_localisation
 		// ]);
 		return view('index');
+		return view('layout.welcome');
 	}
 }

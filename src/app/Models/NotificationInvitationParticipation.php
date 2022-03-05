@@ -10,7 +10,7 @@ class NotificationInvitationParticipation extends Model
     use HasFactory;
     protected $table = 'notifications_invitation_participation';
     protected $primaryKey = 'id_notification';
-    protected $timestamps = false;
+    public $timestamps =false;
 
     /**
      * The attributes that are mass assignable.
