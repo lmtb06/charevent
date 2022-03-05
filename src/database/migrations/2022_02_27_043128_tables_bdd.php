@@ -17,7 +17,7 @@ return new class extends Migration
 
 		// Comptes
 		Schema::create('comptes_actifs', function (Blueprint $table) {
-			$table->integer('id_compte');
+			$table->integer('id_compte', true);
 			$table->integer('id_residence');
 			$table->string('nom', 50);
 			$table->string('prenom', 50);
@@ -33,7 +33,7 @@ return new class extends Migration
 		});
 
 		Schema::create('comptes_archives', function (Blueprint $table) {
-			$table->integer('id_compte');
+			$table->integer('id_compte', true);
 			$table->integer('id_residence');
 			$table->string('nom', 50);
 			$table->string('prenom', 50);
@@ -50,7 +50,7 @@ return new class extends Migration
 
 		// Evenements
 		Schema::create('evenements_actifs', function (Blueprint $table) {
-				$table->integer('id_evenement');
+				$table->integer('id_evenement', true);
 				$table->integer('id_createur');
 				$table->integer('id_localisation');
 				$table->string('titre', 50);
@@ -62,7 +62,7 @@ return new class extends Migration
 		);
 
 		Schema::create('evenements_archives', function (Blueprint $table) {
-				$table->integer('id_evenement');
+				$table->integer('id_evenement',true);
 				$table->integer('id_createur');
 				$table->integer('id_localisation');
 				$table->string('titre', 50);
@@ -82,7 +82,7 @@ return new class extends Migration
 
 		// Besoins
 		Schema::create('besoins_actifs', function (Blueprint $table) {
-				$table->integer('id_besoin');
+				$table->integer('id_besoin',true);
 				$table->integer('id_evenement');
 				$table->integer('id_responsable');
 				$table->string('titre', 50);
@@ -90,7 +90,7 @@ return new class extends Migration
 		);
 
 		Schema::create('besoins_archives', function (Blueprint $table) {
-				$table->integer('id_besoin');
+				$table->integer('id_besoin', true);
 				$table->integer('id_evenement');
 				$table->integer('id_responsable');
 				$table->string('titre', 50);
@@ -98,7 +98,7 @@ return new class extends Migration
 		);
 
 		Schema::create('besoins_en_attente', function (Blueprint $table) {
-				$table->integer('id_besoin');
+				$table->integer('id_besoin', true);
 				$table->integer('id_evenement');
 				$table->integer('id_responsable');
 				$table->string('titre', 50);
@@ -107,7 +107,7 @@ return new class extends Migration
 
 		// Localisations
 		Schema::create('localisations', function (Blueprint $table) {
-				$table->integer('id_localisation');
+				$table->integer('id_localisation',true);
 				$table->string('ville', 50);
 				$table->string('departement', 3);
 				$table->string('codePostal', 5);
@@ -116,7 +116,7 @@ return new class extends Migration
 
 		// Notifications
 		Schema::create('notifications_simple', function (Blueprint $table) {
-				$table->integer('id_notification');
+				$table->integer('id_notification',true);
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->date('dateReception');
@@ -127,7 +127,7 @@ return new class extends Migration
 		);
 
 		Schema::create('notifications_modification_besoin', function (Blueprint $table) {
-				$table->integer('id_notification');
+				$table->integer('id_notification',true);
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
@@ -142,7 +142,7 @@ return new class extends Migration
 		);
 
 		Schema::create('notifications_suppression_besoin', function (Blueprint $table) {
-				$table->integer('id_notification');
+				$table->integer('id_notification', true);
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
@@ -157,7 +157,7 @@ return new class extends Migration
 		);
 
 		Schema::create('notifications_proposition_besoin', function (Blueprint $table) {
-				$table->integer('id_notification');
+				$table->integer('id_notification', true);
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
@@ -172,7 +172,7 @@ return new class extends Migration
 		);
 
 		Schema::create('notifications_volontariat_besoin', function (Blueprint $table) {
-				$table->integer('id_notification');
+				$table->integer('id_notification', true);
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
@@ -187,7 +187,7 @@ return new class extends Migration
 		);
 
 		Schema::create('notifications_demande_participation', function (Blueprint $table) {
-				$table->integer('id_notification');
+				$table->integer('id_notification', true);
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
@@ -201,7 +201,7 @@ return new class extends Migration
 		);
 
 		Schema::create('notifications_invitation_participation', function (Blueprint $table) {
-				$table->integer('id_notification');
+				$table->integer('id_notification', true);
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
