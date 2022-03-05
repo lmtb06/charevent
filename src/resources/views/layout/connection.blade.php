@@ -13,10 +13,9 @@
     <!-- ici c'est la boite avec l'image -->
     <div class="bg-white dark:bg-gray">
         <div class="flex justify-center h-screen">
-            <div class="hidden bg-cover lg:block lg:w-2/3">
-                <div class="flex items-center h-full bg-gray-900 bg-opacity-40">
+            <div class="hidden bg-cover bg-hand-grass lg:block lg:w-2/3 ">
+                <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
                     <div>
-                        <img src= {{ asset('images/solid1.jpg')}}  alt="description img" >
                         <h2 class="text-4xl font-bold text-white">CharEvent</h2>
                         
                         <p class="max-w-xl mt-3 text-gray-300"> Le premier reseau social francais de solidarité</p>

@@ -11,7 +11,13 @@ module.exports = {
 		'./resources/**/*.js',
 		'./resources/**/*.vue',],
 	theme: {
-		extend: {},
+		extend: {
+			backgroundImage: theme => ({
+				'logo':"url('/img/main2.png')",
+				'hand-grass': "url('/img/solid1.jpg')",
+				'hand-plain': "url('/img/solid2.lpg')"
+			   })
+		},
 	},
 	plugins: [],
 }
