@@ -21,7 +21,6 @@ class AccueilController extends Controller
 		// 	'prenom' => 'Moussa',
 		// 	'id_localisation' => $loc->id_localisation
 		// ]);
-		return view('index');
 		return view('layout.welcome');
 	}
 }
