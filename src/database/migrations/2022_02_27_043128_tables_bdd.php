@@ -28,8 +28,8 @@ return new class extends Migration
 			$table->string('numeroTelephone', 12)->nullable();
 			$table->date('dateCreationCompte');
 			$table->date('dateModifCompte');
-			$table->boolean('notificationMail');
-			$table->string('role');
+			$table->boolean('notificationMail')->default(0);
+			$table->string('role')->default('user');
 		});
 
 		Schema::create('comptes_archives', function (Blueprint $table) {

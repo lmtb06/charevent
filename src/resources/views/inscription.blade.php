@@ -4,7 +4,7 @@
 
 
     <fieldset>
-    <form method='POST' >
+    <form method='POST' action={{ route("inscrireCompte") }} >
         @csrf
         <img src="{{asset('/images/logo.png')}}" alt="charEvent" height="120px">
         
@@ -25,7 +25,7 @@
         <br/>
         
         <label for="departement">Département *</label>
-        <input type="text" name="departement" id="departement" placeholder="Département" required="required">
+        <input type="text" name="departement" id="departement" placeholder="N° Département" required="required">
         <br/>
 
         <label for="ville">Ville *</label>
@@ -44,7 +44,7 @@
         <input type="password" name="password" id="password" required="required">
         <br/>
 
-        <label for="password_confirmed">Confirmation *</label>
+        <label for="password_confirmation">Confirmation *</label>
         <input type="password" name="password_confirmation" id="password_confirmation" required="required">
         <br/>
 
