@@ -12,10 +12,14 @@ module.exports = {
 		'./resources/**/*.vue',],
 	theme: {
 		extend: {
+			colors: {
+				'logo-yellow' : '#f6e851',
+				'logo-red' : '#e33b35',
+			},
 			backgroundImage: theme => ({
 				'logo':"url('/img/main2.png')",
 				'hand-grass': "url('/img/solid1.jpg')",
-				'hand-plain': "url('/img/solid2.lpg')"
+				'hand-plain': "url('/img/solid2.lpg')",
 			   })
 		},
 	},
