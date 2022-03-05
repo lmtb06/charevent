@@ -21,11 +21,11 @@ return new class extends Migration
 			$table->integer('id_residence');
 			$table->string('nom', 50);
 			$table->string('prenom', 50);
-			$table->string('photo', 50);
+			$table->string('photo', 50)->nullable();
 			$table->string('mail', 320);
 			$table->string('hashMDP', 256);
 			$table->date('dateNaissance');
-			$table->string('numeroTelephone', 12);
+			$table->string('numeroTelephone', 12)->nullable();
 			$table->date('dateCreationCompte');
 			$table->date('dateModifCompte');
 			$table->boolean('notificationMail');
@@ -37,11 +37,11 @@ return new class extends Migration
 			$table->integer('id_residence');
 			$table->string('nom', 50);
 			$table->string('prenom', 50);
-			$table->string('photo', 50);
+			$table->string('photo', 50)->nullable();
 			$table->string('mail', 320);
 			$table->string('hashMDP', 256);
 			$table->date('dateNaissance');
-			$table->string('numeroTelephone', 12);
+			$table->string('numeroTelephone', 12)->nullable();
 			$table->date('dateCreationCompte');
 			$table->date('dateModifCompte');
 			$table->boolean('notificationMail');
@@ -52,24 +52,24 @@ return new class extends Migration
 		Schema::create('evenements_actifs', function (Blueprint $table) {
 				$table->integer('id_evenement', true);
 				$table->integer('id_createur');
-				$table->integer('id_localisation');
+				$table->integer('id_localisation')->nullable();
 				$table->string('titre', 50);
 				$table->string('description', 500);
 				$table->date('dateDebut');
-				$table->date('dateFin');
-				$table->date('expiration');
+				$table->date('dateFin')->nullable();
+				$table->date('expiration')->nullable();
 			}
 		);
 
 		Schema::create('evenements_archives', function (Blueprint $table) {
 				$table->integer('id_evenement',true);
 				$table->integer('id_createur');
-				$table->integer('id_localisation');
+				$table->integer('id_localisation')->nullable();
 				$table->string('titre', 50);
 				$table->string('description', 500);
 				$table->date('dateDebut');
-				$table->date('dateFin');
-				$table->date('expiration');
+				$table->date('dateFin')->nullable();
+				$table->date('expiration')->nullable();
 			}
 		);
 
