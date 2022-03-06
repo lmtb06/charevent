@@ -13,7 +13,7 @@ class BesoinActif extends Model
 
     protected $table = 'besoins_actifs';
     protected $primaryKey = 'id_besoin';
-    protected $timestamps = false;
+    public $timestamps =false;
 
 
     /**

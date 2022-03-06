@@ -10,7 +10,7 @@ class NotificationSimple extends Model
     use HasFactory;
     protected $table = 'notifications_simple';
     protected $primaryKey = 'id_notification';
-    protected $timestamps = false;
+    public $timestamps =false;
 
     /**
      * The attributes that are mass assignable.

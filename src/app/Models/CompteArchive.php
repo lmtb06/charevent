@@ -11,7 +11,7 @@ class CompteArchive extends Model
 
     protected $table = 'comptes_archives';
     protected $primaryKey = 'id_compte';
-    protected $timestamps = false;
+    public $timestamps =false;
 
     /**
      * The attributes that are mass assignable.

@@ -63,4 +63,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Localisation::class);
     }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    public function getAuthIdentifier()
+    {
+        return $this->mail;
+    }
 }

@@ -11,7 +11,7 @@ class Localisation extends Model
 
     protected $table = 'localisations';
     protected $primaryKey = 'id_localisation';
-    protected $timestamps = false;
+    public $timestamps = false;
 
 /**
      * The attributes that are mass assignable.

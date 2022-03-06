@@ -33,10 +33,11 @@
                     </div>
     
                     <div class="mt-8">
-                        <form>
+                        <form method='POST' action={{ route('connecterCompte')}}>
+                            @csrf
                             <div>
-                                <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-200"> addresse email</label>
-                                <input type="email" name="email" id="email" placeholder="exemple@exemple.com" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                                <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-200"> Addresse email</label>
+                                <input type="email" name="mail" id="email" placeholder="exemple@exemple.com" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
                             </div>
     
                             <div class="mt-6">
@@ -57,7 +58,7 @@
     
                         </form>
     
-                        <p class="mt-6 text-sm text-center text-gray-400">Vous n'avez pas de compte ? <a href="#" class="text-blue-500 focus:outline-none focus:underline hover:underline">Inscrivez-vous</a>.</p>
+                        <p class="mt-6 text-sm text-center text-gray-400">Vous n'avez pas de compte ? <a href="{{ route('pageInscription')}}" class="text-blue-500 focus:outline-none focus:underline hover:underline">Inscrivez-vous</a>.</p>
                     </div>
                 </div>
             </div>
