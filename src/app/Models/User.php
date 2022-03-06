@@ -61,16 +61,11 @@ class User extends Authenticatable
 
     public function localisation()
     {
-        return $this->belongsTo(Localisation::class);
+        return $this->belongsTo(Localisation::class, 'id_compte');
     }
 
     public function getAuthPassword()
     {
-        return $this->password;
-    }
-
-    public function getAuthIdentifier()
-    {
-        return $this->mail;
+        return $this->hashMDP;
     }
 }

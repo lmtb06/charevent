@@ -52,6 +52,7 @@ class InscriptionController extends Controller
 			'dateNaissance' => $request->birth,
 			'telephone' => $request->telephone,
 			'photo' => $request->photo,
+			'notificationMail' => $request->notifMail,
 			'id_residence' => $local->id_localisation,
 		]);
 

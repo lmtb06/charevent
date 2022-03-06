@@ -1,9 +1,11 @@
 <?php
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\ConnexionController;
+use App\Http\Controllers\CreerEvenementController;
 use App\Http\Controllers\DeconnexionController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ModifierCompteController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,12 +26,20 @@ Route::get('/', [AccueilController::class, 'show'])->name('pageAccueil');
  */
 Route::get('/inscription', [InscriptionController::class, 'show'])->name('pageInscription');
 Route::get('/connexion', [ConnexionController::class, 'show'])->name('pageConnexion');
-Route::get('/compte/modifier', [ModifierCompteController::class, 'show'])->name('pageModificationCompte');
+Route::get('/compte/edit/{id}', [ModifierCompteController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
+Route::get('/compte/show/{id}', [ModifierCompteController::class, 'show'])->whereNumber('id')->name('pageProfil');
 
 Route::get('/deconnexion', DeconnexionController::class)->name('deconnexion');
+
+Route::get('/evenement/create', [CreerEvenementController::class, 'show'])->name('pageCreationEvenement');
+
+
 
 // Routes POST (traitement de données provenant des pages webs)
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');
 Route::post('/connexion', [ConnexionController::class, 'authenticate'])->name('connecterCompte');
-Route::get('/compte/update', [ModifierCompteController::class, 'update'])->name('modifierCompte');
+Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
+Route::post('/delete/{id}', [SupprimerCompteController::class])->name('effacerCompte')->whereNumber('id');
+
+Route::post('/evenement/store', [CreerEvenementController::class, 'store'])->name('creerEvenement');
 
