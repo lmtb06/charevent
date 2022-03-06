@@ -10,11 +10,11 @@ class ConnexionController extends Controller
 {
 	public function authenticate(Request $request)
 	{
-	// Valider le formulaire
-	$creds = $request->validate([
-		'email' => 'required|email',
-		'password' => 'required',
-		]);
+		// Valider le formulaire
+		$creds = $request->validate([
+			'mail' => 'required|email',
+			'hashMDP' => 'required',
+			]);
 
 		// Connecter
 		if(Auth::attempt($creds)){
@@ -22,16 +22,19 @@ class ConnexionController extends Controller
 			return redirect()->intended("pageAccueil");
 		}
 
-		// Redirection vers la page d'accueil
 		return back()->withErrors([
-			'email' => $request->mail,
-			'password' => $request->password,
-		]);
+            'mail' => "L'adresse e-mail n'est pas reconnue par nos services, ou est invalide.",
+			'hashMDP' => "Le mot de passe est erroné."
+        ]);
 	}
 
 	public function show()
 	{
 		// Afficher la page de connexion
 		return view('layout.connection');
+	}
+
+	public function username(){
+		return 'mail';
 	}
 }

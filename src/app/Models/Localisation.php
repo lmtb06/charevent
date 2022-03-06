@@ -31,7 +31,7 @@ class Localisation extends Model
 
     public function comptes()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'id_residence');
     }
 
 }
