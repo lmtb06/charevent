@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    @yield('header')
+    <!--Fichier du bandeau commun en haut-->
+    @include('layout.barreMenu1', ['user' => $user ?? ''])
     <!-- ici c'est la boite avec l'image -->
     <div class="bg-white dark:bg-gray">
         <div class="flex justify-center h-screen">

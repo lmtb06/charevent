@@ -1,13 +1,9 @@
 @extends('inscrire')
 
 @section('content')
-
-
     <fieldset>
     <form method='POST' action={{ route("inscrireCompte") }} >
-        @csrf
-        <img src="{{asset('/images/logo.png')}}" alt="charEvent" height="120px">
-        
+        @csrf        
         <br/>
         <h2>Inscription</h2>
         <br/>
@@ -63,7 +59,7 @@
 
 
         <input type="submit" id="submit" value="S'inscrire">
-
+        <a href="{{ route('pageConnexion')}}" class="text-blue-500 focus:outline-none focus:underline hover:underline">Retour</a>
     </form>
 
     @if ($errors->any())

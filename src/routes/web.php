@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AccueilController::class, 'show'])->name('pageAccueil');
+Route::get('/', [ConnexionController::class, 'show'])->name('pageAccueil');
 
 /**
  * URL à utiliser pour afficher les pages correspondantes / déconnecter un utilisateur
@@ -33,3 +33,4 @@ Route::post('/inscription', [InscriptionController::class, 'store'])->name('insc
 Route::post('/connexion', [ConnexionController::class, 'authenticate'])->name('connecterCompte');
 Route::get('/compte/update', [ModifierCompteController::class, 'update'])->name('modifierCompte');
 
+// Test
