@@ -10,7 +10,7 @@ use App\Models\User;
 class Evenement extends Model
 {
     use HasFactory;
-
+    protected $table = 'evenements_actifs';
     public $timestamps =false;
     protected $primaryKey = 'id_evenement';
 

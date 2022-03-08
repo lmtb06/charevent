@@ -25,7 +25,7 @@
         <br/>
         
         <label for="departement">Département *</label>
-        <input type="text" name="departement" id="departement" placeholder="N° Département" required="required">
+        <input type="number" name="departement" id="departement" placeholder="N° Département" required="required">
         <br/>
 
         <label for="ville">Ville *</label>
@@ -33,7 +33,7 @@
         <br/>
 
         <label for="codeZIP">Code postale *</label>
-        <input type="text" name="codeZIP" id="codeZIP" placeholder="Code ZIP" required="required">
+        <input type="number" name="codeZIP" id="codeZIP" placeholder="Code ZIP" required="required">
         <br/>
         
         <label for="email">Email *</label>
