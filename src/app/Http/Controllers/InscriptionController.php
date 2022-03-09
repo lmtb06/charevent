@@ -30,6 +30,7 @@ class InscriptionController extends Controller
 		'birth' => 'required|before:today',
 		'telephone' => 'nullable|digits:10|numeric',
 		'photo' => 'nullable',
+		'notifMail' => 'nullable'
 		]);
 
 
@@ -42,6 +43,11 @@ class InscriptionController extends Controller
 			'codePostal' => $request->codeZIP,
 			'departement' => $request->departement,
 		]);
+		if ($request->notifMail == NULL){
+			$notif = 0;
+		}else{
+			$notif = 1;
+		}
 
 		// Créer une entrée dans la table comptes_actifs
 		$user = User::create([
@@ -52,7 +58,7 @@ class InscriptionController extends Controller
 			'dateNaissance' => $request->birth,
 			'telephone' => $request->telephone,
 			'photo' => $request->photo,
-			'notificationMail' => $request->notifMail,
+			'notificationMail' => $notif,
 			'id_residence' => $local->id_localisation,
 		]);
 
