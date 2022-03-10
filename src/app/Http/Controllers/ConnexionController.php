@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use phpDocumentor\Reflection\Location;
 
 class ConnexionController extends Controller
 {
@@ -19,7 +21,14 @@ class ConnexionController extends Controller
 		// Connecter
 		if(Auth::attempt($creds)){
             $request->session()->regenerate();
-			return redirect()->intended("pageAccueil");
+			
+			$user = User::find(Auth::id());
+			$lieu = $user->localisation;
+			return redirect()->intended("pageProfil",
+		[
+			'user' => $user,
+			'lieu' => $lieu,
+		]);
 		}
 
 		return back()->withErrors([
