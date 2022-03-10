@@ -51,11 +51,7 @@
     
                             <div class="mt-6">
                                 <button
-<<<<<<< HEAD
                                     class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-yellow-300 rounded-md hover:bg-yellow-200 focus:outline-none focus:bg-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50">
-=======
-                                    class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
->>>>>>> da7ce002ab9c4a88f31e8dfe21fa7b84916c397a
                                     Connection
                                 </button>
                             </div>
