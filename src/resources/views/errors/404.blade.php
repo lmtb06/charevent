@@ -10,10 +10,16 @@
 
     <body class=" bg-orange-200 ">
         <main>
+
             <section>
-                <h1 class="font-bold flex items-center justify-center mt-5">
-                    ERREUR 404 - Page en construction...
-                </h1>
+                <div>
+                    <h1 class="font-bold flex items-center justify-center mt-5">
+                        ERREUR 404 - Page en construction...
+                    </h1>
+                </div>
+                <div class="flex items-center justify-center ">
+                    <button type="submit" class="border-black rounded-2xl border-2 p-2 mt-5 bg-gradient-to-b from-white to-white-500 ">REVENIR PAGE PRINCIPALE</button>
+                </div>
             </section>
         </main>
     </body>
