@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evenement;
 use App\Models\User;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
@@ -21,6 +22,11 @@ class AccueilController extends Controller
 		// 	'prenom' => 'Moussa',
 		// 	'id_localisation' => $loc->id_localisation
 		// ]);
-		return view('layout.welcome');
+
+		$events = Evenement::all();
+
+		return view('accueil_connecte', [
+			'events' => $events,
+		]);
 	}
 }
