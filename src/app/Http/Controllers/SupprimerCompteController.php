@@ -58,10 +58,12 @@ class SupprimerCompteController extends Controller
 
             return response()
             ->json(['message' => 'Le compte a été supprimé avec succès.']);
+            ->redirect()->route('pageAccueil');
         }
 
         return response()
             ->json(['message' => 'Le mot de passe entré est incorrecte.']);
+            ->redirect()->route('pageAccueil');
 
     }
 }
