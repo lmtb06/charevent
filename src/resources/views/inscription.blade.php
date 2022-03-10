@@ -1,8 +1,10 @@
-@extends('inscrire')
+@extends('base')
+
+@section('title')
+S'inscrire
+@endsection
 
 @section('content')
-
-
     <fieldset>
     <form method='POST' action={{ route("inscrireCompte") }} >
         @csrf

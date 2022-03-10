@@ -10,7 +10,6 @@
       <div class="max-w-2xl my-16 w-max">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
         <form method="POST" action="{{route('creerEvenement')}}">
-          @csrf  
           <div class="px-4 py-5 sm:px-6">
               <dd class="mt-1 text-sm text-gray-900 sm:mt-20 sm:ml-32 sm:col-span-2">
                 <h3 class="text-2xl leading-6 justify-center font-medium text-gray-900 mx-12">Création d'un événement</h3>
