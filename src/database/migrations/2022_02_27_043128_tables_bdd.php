@@ -45,7 +45,7 @@ return new class extends Migration
 			$table->date('dateCreationCompte');
 			$table->date('dateModifCompte');
 			$table->boolean('notificationMail');
-			$table->string('role');
+			$table->string('role')->default('user');
 		});
 
 		// Evenements

@@ -5,6 +5,7 @@ use App\Http\Controllers\CreerEvenementController;
 use App\Http\Controllers\DeconnexionController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ModifierCompteController;
+use App\Http\Controllers\SupprimerCompteController;
 use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,7 +40,7 @@ Route::get('/evenement/create', [CreerEvenementController::class, 'show'])->name
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');
 Route::post('/connexion', [ConnexionController::class, 'authenticate'])->name('connecterCompte');
 Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
-Route::post('/delete/{id}', [SupprimerCompteController::class])->name('effacerCompte')->whereNumber('id');
+Route::post('/delete/{id}', [SupprimerCompteController::class, 'delete'])->name('effacerCompte')->whereNumber('id');
 
 Route::post('/evenement/store', [CreerEvenementController::class, 'store'])->name('creerEvenement');
 
