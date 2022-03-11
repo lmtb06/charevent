@@ -14,7 +14,7 @@
                 <h3 class="text-2xl leading-6 font-medium text-gray-900">Modification du compte</h3>
             </div>
           </div>
-          <form method='post' action='{{route('modifierCompte', ['id' => $user->id_compte])}}'>
+          <form method='post' action='{{route('modifierCompte', ['id' => $user->id_compte])}}' enctype="multipart/form-data">
             @csrf
           <div class="border-t border-gray-200">
             <dl>

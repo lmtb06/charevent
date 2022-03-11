@@ -12,27 +12,16 @@ class AccueilController extends Controller
 {
 	public function show()
 	{
-
-
 		if (Auth::check()){
-			// Afficher la page d'accueil
-			$loc = Localisation::firstOrCreate([
-				'ville' => 'dakar',
-				'departement' => 'GY',
-				'codePostal' => '99'
-			]);
-			// User::create([
-			// 	'nom' => 'Faye',
-			// 	'prenom' => 'Moussa',
-			// 	'id_localisation' => $loc->id_localisation
-			// ]);
-
+			// Afficher la page d'accueil si on est connecté
 			$events = Evenement::all();
 
-			return view('accueil', [
+			return view('accueil_connecte', [
 				"events" => $events,
 			]);
 		}else{
+
+			// Affiche la page de connexion sinon
 			return view('layout.connection');
 		}
 

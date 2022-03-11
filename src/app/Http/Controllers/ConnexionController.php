@@ -22,13 +22,19 @@ class ConnexionController extends Controller
 		// Connecter
 		if(Auth::attempt($creds)){
             $request->session()->regenerate();
-			return redirect()->intended();
+
+			$events = Evenement::all();
+			return redirect()->route('pageAccueil', [
+				'events' => $events,
+			]);			
 		}
 
+
 		return back()->withErrors([
-            'mail' => "L'adresse e-mail n'est pas reconnue par nos services, ou est invalide.",
+			'mail' => "L'adresse e-mail n'est pas reconnue par nos services, ou est invalide.",
 			'hashMDP' => "Le mot de passe est erroné."
-        ]);
+		]);
+		
 	}
 
 	public function show()

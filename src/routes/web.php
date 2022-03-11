@@ -20,15 +20,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AccueilController::class, 'show'])->name('pageAccueil');
+Route::get('/home', [AccueilController::class, 'show'])->name('pageAccueil');
 
 /**
  * URL à utiliser pour afficher les pages correspondantes / déconnecter un utilisateur
  */
-Route::get('/connect', [ConnexionController::class, 'show'])->name('pageConnexion');
+Route::get('/', [ConnexionController::class, 'show'])->name('pageConnexion');
 
 Route::get('/inscription', [InscriptionController::class, 'show'])->name('pageInscription');
-Route::get('/connexion', [ConnexionController::class, 'show'])->name('pageConnexion');
 Route::get('/compte/edit/{id}', [ModifierCompteController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
 Route::get('/compte/show/{id}', [ModifierCompteController::class, 'show'])->whereNumber('id')->name('pageProfil');
 

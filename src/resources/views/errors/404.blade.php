@@ -17,9 +17,11 @@
                         ERREUR 404 - Page en construction...
                     </h1>
                 </div>
+                <a href="{{route('pageAccueil')}}">
                 <div class="flex items-center justify-center ">
-                    <button type="submit" class="border-black rounded-2xl border-2 p-2 mt-5 bg-gradient-to-b from-white to-white-500 ">REVENIR PAGE PRINCIPALE</button>
+                    <button type="submit" class="border-black rounded-2xl border-2 p-2 mt-5 bg-gradient-to-b from-white to-white-500 " > REVENIR PAGE PRINCIPALE</button>
                 </div>
+                </a>
             </section>
         </main>
     </body>

@@ -25,55 +25,52 @@
             <dl>
 
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Nom</dt>
+                <dt class="text-m font-medium text-gray-500">Nom :</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$user->nom}}</dd>
               </div>
 
               <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Prénom</dt>
+                <dt class="text-m font-medium text-gray-500">Prénom :</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$user->prenom}}</dd>
               </div>
 
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Date de naissance</dt>
+                <dt class="text-m font-medium text-gray-500">Date de naissance</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$user->dateNaissance}}</dd>
               </div>
 
               <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Département</dt>
+                <dt class="text-m font-medium text-gray-500">Département :</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$lieu->departement}}</dd>
               </div>
 
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Ville</dt>
+                <dt class="text-m font-medium text-gray-500">Ville :</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$lieu->ville}}</dd>
               </div>
 
               <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Code postale</dt>
+                <dt class="text-m font-medium text-gray-500">Code postale :</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$lieu->codePostal}}</dd>
               </div>
 
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Email</dt>
+                <dt class="text-m font-medium text-gray-500">Email :</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$user->mail}}</dd>
               </div>
 
-              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Mot de passe</dt>
-                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">***********</dd>
-              </div>
-
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt class="text-sm font-medium text-gray-500">Téléphone</dt>
+                <dt class="text-m font-medium text-gray-500">Téléphone :</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{{$user->numeroTelephone}}</dd>
               </div>
 
             </dl>
             <div class="flex justify-center">
-              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
-                <a href={{route('pageModificationCompte', ['id' => $user->id_compte])}}> Modifier mon compte </a>
+              <a href={{route('pageModificationCompte', ['id' => $user->id_compte])}}>
+              <button  class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-yellow-300 rounded-md hover:bg-yellow-200 focus:outline-none focus:bg-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50">
+                 Modifier mon compte 
               </button>
+            </a>
             </div>
           </div>
         </div>

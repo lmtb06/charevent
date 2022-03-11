@@ -48,6 +48,7 @@
             <section class="p-4 flex items-center justify-center" >
                 <!--Gros rectangle-->
                 <div class=" border-2 rounded-3xl border-orange-800 grid gap-1 grid-cols-2">
+                    @if (count($events)>0)
                     @foreach ($events as $event)
                     <!--Petit Rectangle-->
                     <div class=" drop-shadow-2xl bg-gradient-to-b from-white to-white-500 m-1 border-2 border-black rounded-2xl">
@@ -95,7 +96,14 @@
                     </div>
                     <!--Petit Rectangle FIN-->
 
-                    @endforeach
+                    @endforeach                        
+                    @else
+                    <div class=" m-1  text-xs flex items-center justify-center">
+                        <p class="p-1 bg-white border-2  rounded-3xl border-black ">
+                            Il n'y a aucun événements disponibles pour le moment.
+                        </p>
+                    </div>
+                    @endif
                 </div>
             </section>
         </main>

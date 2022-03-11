@@ -4,7 +4,7 @@
 
 
     <fieldset>
-    <form method='POST' action={{ route("inscrireCompte") }} >
+    <form method='POST' action="{{ route("inscrireCompte") }}" enctype="multipart/form-data" >
         @csrf
         <img src="{{asset('/images/logo.png')}}" alt="charEvent" height="120px">
         
