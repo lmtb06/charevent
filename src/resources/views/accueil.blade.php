@@ -47,6 +47,8 @@
             <!--Barre de recherche FIN-->
             <section class="p-4 flex items-center justify-center" >
                 <!--Gros rectangle-->
+            @foreach($event in $events)
+
                 <div class=" border-2 rounded-3xl border-orange-800 grid gap-1 grid-cols-2">
 
                     <!--Petit Rectangle-->
@@ -61,22 +63,25 @@
                             <div class="ml-2 grid-line-2 grid-rows-2">
                                 <!-- Nom-->
                                 <div class="mt-1 text-xs font-bold">
-                                        Nom de l'evenement
+                                        {{$event->titre}}
                                 </div>
                                 <!--Description-->
                                 <div class="mt-2 text-xs">
-                                        Description de l'evenement
+                                        {{$event->description}}
+
                                 </div>
                             </div>
                             <!-- 3e partie - Date+Bouton-->
                             <div class="  grid grid-cols-2 grid-rows-2 flex items-center justify-center">
                                 <!-- Date de debut-->
                                 <div class=" m-1  text-xs flex items-center justify-center">
-                                        <h1>10/08/2022</h1>
+                                        {{$event->dateDebut}}
+
                                 </div>
                                 <!-- Date de Fin-->
                                 <div class="  m-1  text-xs flex items-center justify-center">
-                                        12/10/2022
+                                        {{$event->dateFin}}
+
                                 </div>
                                 <!-- Bouton Rejoindre/Quitter-->
                                 <div class=" m-1 text-xs flex items-center justify-center">
@@ -92,15 +97,10 @@
                         </div>
 
                     </div>
-                    <!--Petit Rectangle FIN-->
-                    <!--Petit Rectangle-->
-                    <div class="p-2 m-1 border-2 border-black rounded-2xl bg-gradient-to-b from-white to-white-500">
-                        Test
-
-                    </div>
-                    <!--Petit Rectangle FIN-->
                     
                 </div>
+            @endforeach
+
             </section>
         </main>
     </body>

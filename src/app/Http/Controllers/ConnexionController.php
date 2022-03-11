@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Evenement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,14 +22,14 @@ class ConnexionController extends Controller
 		// Connecter
 		if(Auth::attempt($creds)){
             $request->session()->regenerate();
+
+			$events = Evenement::all();
+
+			return view('accueil', [
+				"events" => $events,
+			]);
 			
-			$user = User::find(Auth::id());
-			$lieu = $user->localisation;
-			return redirect()->intended("pageProfil",
-		[
-			'user' => $user,
-			'lieu' => $lieu,
-		]);
+			return redirect()->intended();
 		}
 
 		return back()->withErrors([
