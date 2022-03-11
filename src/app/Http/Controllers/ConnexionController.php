@@ -22,13 +22,6 @@ class ConnexionController extends Controller
 		// Connecter
 		if(Auth::attempt($creds)){
             $request->session()->regenerate();
-
-			$events = Evenement::all();
-
-			return view('accueil', [
-				"events" => $events,
-			]);
-			
 			return redirect()->intended();
 		}
 

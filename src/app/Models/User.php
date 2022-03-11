@@ -68,7 +68,7 @@ class User extends Authenticatable
     {
         return $this->hashMDP;
     }
-    
+
     public function getAuthIdentifier()
     {
         return $this->id_compte;

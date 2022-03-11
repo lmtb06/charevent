@@ -21,7 +21,7 @@ class InscriptionController extends Controller
 		// Valider le formulaire
 		$validated = $request->validate([
 		'email' => 'required|email|unique:comptes_actifs,mail|max:255',
-		'password' => 'required|confirmed',
+		'password' => 'required|confirmed|string|min:8|max:30',
 		'nom' => 'required|alpha_dash',
 		'prenom' => 'required|alpha_dash',
 		'departement' => 'required|numeric|digits_between:1,3',

@@ -13,6 +13,7 @@ class AccueilController extends Controller
 	public function show()
 	{
 
+
 		if (Auth::check()){
 			// Afficher la page d'accueil
 			$loc = Localisation::firstOrCreate([
