@@ -19,7 +19,7 @@ class ConnexionController extends Controller
 		// Connecter
 		if(Auth::attempt($creds)){
             $request->session()->regenerate();
-			return redirect()->intended("pageAccueil");
+			return redirect()->intended();
 		}
 
 		return back()->withErrors([

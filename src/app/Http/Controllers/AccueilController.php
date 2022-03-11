@@ -12,11 +12,13 @@ class AccueilController extends Controller
 	public function show()
 	{
 		// Afficher la page d'accueil
+		/*
 		$loc = Localisation::create([
 			'ville' => 'dakar',
 			'departement' => 'GY',
 			'codePostal' => '99'
 		]);
+		*/
 		// User::create([
 		// 	'nom' => 'Faye',
 		// 	'prenom' => 'Moussa',

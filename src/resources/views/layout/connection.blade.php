@@ -33,7 +33,7 @@
                     </div>
     
                     <div class="mt-8">
-                        <form method='POST' action={{ route('connecterCompte')}}>
+                        <form method='POST' action='{{ route('connecterCompte')}}'>
                             @csrf
                             <div>
                                 <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-200"> Addresse email</label>
