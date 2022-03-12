@@ -55,7 +55,7 @@ class InscriptionController extends Controller
 		$img = $request->file('photo')->storeAs(
 			'avatars',
 			$nomFichier,
-			//'public'
+			'public'
 		);
 
 		$user = User::create([
