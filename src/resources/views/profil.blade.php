@@ -13,8 +13,12 @@
             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt class="text-sm font-medium text-gray-500">
                 <div class="flex -space-x-1 overflow-hidden">
-                  <img class="inline-block h-13 w-13 rounded-full ring-2 ring-white" src="https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png" alt="">
-                </div>
+                  @if (is_null($user->photo))
+                    <img class="inline-block h-13 w-13 rounded-full ring-2 ring-white" src="https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png" alt="Image de profil inconnu">
+                  @else
+                  <img class="inline-block h-13 w-13 rounded-full ring-2 ring-white" src="{{asset("/storage/".$user->photo)}}" alt="Image de profil">
+                  @endif
+                  </div>
               </dt>
               <dd class="mt-1 text-sm text-gray-900 sm:mt-20 sm:ml-32 sm:col-span-2">
                 <h3 class="text-2xl leading-6 font-medium text-gray-900">Mon compte</h3>

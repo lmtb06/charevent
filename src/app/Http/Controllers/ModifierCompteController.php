@@ -58,8 +58,8 @@ class ModifierCompteController extends Controller
 			'codePostal' => 'required|numeric|digits:5',
 			'dateNaissance' => 'required|before:today',
 			'numeroTelephone' => 'nullable|digits:10|numeric',
-			'photo' => 'nullable',
-			]);
+			'photo' => 'nullable|file|max:2024',
+		]);
 
 		if (!Hash::check($request->hashMDP, $user->hashMDP)){
 			return back()->withErrors([
@@ -75,6 +75,12 @@ class ModifierCompteController extends Controller
 			'codePostal' => $request->codePostal,
 			'departement' => $request->departement,
 		]);
+
+		$nomFichier = time().'.'.$request->photo->extension();
+		$img = $request->file('photo')->storeAs(
+			'avatars',
+			$nomFichier
+		);
 
 		// Mettre à jour le modele utilisateur
 		if ($request->filled('nom')) $user->nom = $request->nom;
