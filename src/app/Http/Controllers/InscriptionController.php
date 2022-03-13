@@ -50,13 +50,7 @@ class InscriptionController extends Controller
 			$notif = 1;
 		}
 
-		// Créer une entrée dans la table comptes_actifs et enregistrement de l'avatar
-		$nomFichier = time().'.'.$request->photo->extension();
-		$img = $request->file('photo')->storeAs(
-			'avatars',
-			$nomFichier,
-			//'public'
-		);
+		
 		//TODO : trouver un moyen d'afficher la photo de profil malgré docker =)
 
 		$user = User::create([
@@ -68,9 +62,19 @@ class InscriptionController extends Controller
 			'telephone' => $validated['telephone'],
 			'notificationMail' => $notif,
 			'id_residence' => $local->id_localisation,
-			'photo' => $img,
 		]);
 
+		// Créer une entrée dans la table comptes_actifs et enregistrement de l'avatar
+		if (!is_null($request->photo)){
+			$nomFichier = time().'.'.$request->photo->extension();
+			$img = $request->file('photo')->storeAs(
+				'avatars',
+				$nomFichier,
+				//'public'
+			);
+
+			$user->photo = $img;
+		};
 
 		// Redirection vers la page d'accueil
 		return redirect()->route('pageAccueil');
