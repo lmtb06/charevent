@@ -55,8 +55,9 @@ class InscriptionController extends Controller
 		$img = $request->file('photo')->storeAs(
 			'avatars',
 			$nomFichier,
-			'public'
+			//'public'
 		);
+		//TODO : trouver un moyen d'afficher la photo de profil malgré docker =)
 
 		$user = User::create([
 			'mail' => $validated['email'],
