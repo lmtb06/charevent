@@ -48,7 +48,14 @@ class User extends Authenticatable
 
     public function evenements()
     {
-        return $this->belongsToMany(Evenement::class, 'id_compte');
+        return $this->belongsToMany(Evenement::class,
+        'participants' ,'id_compte', 'id_evenement');
+    }
+
+    public function createurDe()
+    {
+        return $this->hasMany(Evenement::class,
+        'id_createur');
     }
 
     /**
@@ -56,7 +63,7 @@ class User extends Authenticatable
      */
     public function besoins()
     {
-        return $this->hasMany(BesoinActif::class);
+        return $this->hasMany(BesoinActif::class, 'id_compte');
     }
 
     public function localisation()

@@ -17,21 +17,21 @@
             </section>
             
             <!-- Bloc d'evenement-->
-            <section  class="p-4  flex items-center justify-center">
+            <section  class="p-4 flex items-center justify-center ">
                 
 
                 <!-- Le gros rectangle-->
-                <div class=" mt-2 border-2 border-black m-1 rounded-2xl bg-gradient-to-b from-white to-white-700 max-w-6xl">
+                <div class=" mt-2 border-2 border-black m-1 rounded-2xl bg-gradient-to-b from-white to-white-700 max-w-6xl ">
                     <!-- Nom/date-->
                     <div class="grid gap-1 grid-cols-3 mt-2 ml-5">
                         <div class="px-4 flex items-center justify-center">
-                            <h2 class="text-2xl font-bold ml-3  mt-3">debut : (Ajouter DateD)</h2>
+                            <h2 class="text-2xl font-bold ml-3  mt-3">Début : {{$event->dateDebut}}</h2>
                         </div>
                         <div class="px-4 flex items-center justify-center">
-                            <h2 class="text-2xl font-bold ml-3  mt-3">NOM EVENEMENT</h2>
+                            <h2 class="text-2xl font-bold ml-3  mt-3">{{$event->titre}}</h2>
                         </div>
                         <div class="px-4 flex items-center justify-center">
-                            <h2 class="text-2xl font-bold ml-3  mt-3">debut : (Ajouter DateF)</h2>
+                            <h2 class="text-2xl font-bold ml-3  mt-3">Fin : {{$event->dateFin}}</h2>
                         </div>
                     </div>
                     <!-- Image à mettre -->
@@ -41,7 +41,7 @@
                     </div>
                     <!-- Description de l'évènement-->
                     <div class="px-4 ">
-                        <h2 class="text-2xl ml-3 mt-5 ">In hac habitasse platea dictumst. Ut laoreet dui et malesuada semper. Donec in tristique sapien, luctus tempor urna. Suspendisse potenti. Suspendisse placerat nunc quis feugiat vehicula. Nam orci diam, mattis ac posuere non, blandit non ex. Sed consequat ultrices velit sit amet rhoncus. Donec lacinia viverra eros quis sagittis. Praesent aliquam, magna vel feugiat tincidunt, lacus erat viverra diam, sed elementum quam sem suscipit lacus. Donec pellentesque tortor orci, vel auctor se</h2>
+                        <h2 class="text-2xl ml-3 mt-5 ">{{$event->description}}</h2>
                     </div>
                     <!-- Titre besoin -->
                     <div class="px-4">
@@ -87,35 +87,26 @@
                        
                         <!-- Liste Participants -->
                         <div class="grid px-1 grid-cols-2">
+                            @if (is_null($event->comptes))
+                                Pas encore de participants
+                            @else
+                            @foreach ($event->comptes as $p)
                              <!--Petit bloc une liste a mettre en boucle-->
                              <div class=" bg-gradient-to-b from-white to-white-500 m-1 border-2 border-black rounded-2xl">
                                  <!-- Un participant -->
+                                 <a href="{{route('pageProfil', ['id' => $p->id_compte])}}">
                                  <div class="m-1 grid px-1 grid-cols-2">
-                                     <div>
-                                        <h2 class="ml-5">JACQUES Louis</h2>
-                                     </div>
-                                     <div>
-                                        <h2 class="ml-5 flex items-center justify-center">54450</h2>
+                                    <div>
+                                        <h2 class="ml-5">{{$p->prenom}} {{$p->nom}}</h2>
                                     </div>
-                                     
+                                    <div>
+                                        <h2 class="ml-5 flex items-center justify-center">{{$p->localisation->codePostal}}</h2>
+                                    </div>                                     
                                  </div>
+                                </a>
                              </div>
- 
-                             <!--2e Petit bloc une liste a mettre en boucle-->
-                             <div class=" bg-gradient-to-b from-white to-white-500 m-1 border-2 border-black rounded-2xl">
-                                 <!-- Un Participant -->
-                                 <div class="m-1 grid px-1 grid-cols-2">
-                                    <div>
-                                       <h2 class="ml-5">Bohan Thomas</h2>
-                                    </div>
-                                    <div>
-                                       <h2 class="ml-5 flex items-center justify-center">54450</h2>
-                                   </div>
-                                    
-                                </div>
-                             </div>
-                             <!--2e  Fin du Petit bloc une liste a mettre en boucle-->
-                             
+                            @endforeach     
+                            @endif                        
                          </div>
                          
                      </div>
@@ -126,9 +117,12 @@
             <section class="mt-2 flex items-center justify-center" >
                 <!-- Bouton Inviter à l'évènement -->
                 <div>
-                    <button type="submit" class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
-                            Inviter des personnes
+                    <a href="">
+                    <button type="submit"
+                     class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
+                            Inviter des participants
                     </button>
+                    </a>
 
                 </div>
             </section>

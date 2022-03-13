@@ -31,21 +31,21 @@ class Evenement extends Model
 
     public function comptes()
     {
-        return $this->belongsToMany(User::class, 'participants');
+        return $this->belongsToMany(User::class,'participants', 'id_evenement', 'id_compte');
     }
 
     public function createur()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_evenement');
     }
 
     public function localisation()
     {
-        return $this->belongsTo(Localisation::class);
+        return $this->belongsTo(Localisation::class, 'id_evenement');
     }
 
     public function besoins()
     {
-        return $this->hasMany(BesoinActif::class);
+        return $this->hasMany(BesoinActif::class, 'id_evenement');
     }
 }

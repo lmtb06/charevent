@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\AfficherEvenement;
 use App\Http\Controllers\ConnexionController;
 use App\Http\Controllers\CreerEvenementController;
 use App\Http\Controllers\DeconnexionController;
@@ -34,7 +35,7 @@ Route::get('/compte/show/{id}', [ModifierCompteController::class, 'show'])->wher
 Route::get('/deconnexion', DeconnexionController::class)->name('deconnexion');
 
 Route::get('/evenement/create', [CreerEvenementController::class, 'show'])->name('pageCreationEvenement');
-Route::get('/evenement/create', [CreerEvenementController::class])->whereNumber('id')->name('pageEvenement');
+Route::get('/evenement/{id}', AfficherEvenement::class)->whereNumber('id')->name('pageEvenement');
 
 
 
