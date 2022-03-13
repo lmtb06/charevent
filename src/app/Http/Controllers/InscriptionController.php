@@ -51,7 +51,13 @@ class InscriptionController extends Controller
 		}
 
 		// Créer une entrée dans la table comptes_actifs et enregistrement de l'avatar
-		$img = Storage::disk('public')->put('avatars', $validated['photo']);
+		$nomFichier = time().'.'.$request->photo->extension();
+		$img = $request->file('photo')->storeAs(
+			'avatars',
+			$nomFichier,
+			//'public'
+		);
+		//TODO : trouver un moyen d'afficher la photo de profil malgré docker =)
 
 		$user = User::create([
 			'mail' => $validated['email'],
