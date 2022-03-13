@@ -66,7 +66,9 @@ class CreerEvenementController extends Controller
 		$evenement->save();
 
 		// Redirection vers la page d'accueil
-		return redirect()->route('pageAccueil');
+		return redirect()->route('pageEvenement', [
+			'id' => $evenement->id
+		]);
 
         
     }
