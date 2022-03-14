@@ -1,6 +1,5 @@
 <?php
 use App\Http\Controllers\AccueilController;
-use App\Http\Controllers\AfficherEvenement;
 use App\Http\Controllers\ConnexionController;
 use App\Http\Controllers\CreerEvenementController;
 use App\Http\Controllers\DeconnexionController;
@@ -8,6 +7,7 @@ use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ModifierCompteController;
 use App\Http\Controllers\SupprimerCompteController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\ModifierEvenementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,9 +35,7 @@ Route::get('/compte/show/{id}', [ModifierCompteController::class, 'show'])->wher
 Route::get('/deconnexion', DeconnexionController::class)->name('deconnexion');
 
 Route::get('/evenement/create', [CreerEvenementController::class, 'show'])->name('pageCreationEvenement');
-Route::get('/evenement/{id}', AfficherEvenement::class)->whereNumber('id')->name('pageEvenement');
-
-
+Route::get('/evenement/show/{id}', [ModifierEvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
 
 // Routes POST (traitement de données provenant des pages webs)
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');

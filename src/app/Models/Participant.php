@@ -17,7 +17,13 @@ class Participant extends Model
         'id_evenement',
     ];
 
+    public function getIdCompte()
+    {
+        return $this->id_compte;
+    }
 
-
-
+    public function getCompte()
+    {   
+        return $this->belongsTo(User::class, 'id_compte');
+    }
 }
