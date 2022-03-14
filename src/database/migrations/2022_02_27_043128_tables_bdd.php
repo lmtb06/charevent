@@ -84,7 +84,7 @@ return new class extends Migration
 		Schema::create('besoins_actifs', function (Blueprint $table) {
 				$table->integer('id_besoin',true);
 				$table->integer('id_evenement');
-				$table->integer('id_responsable');
+				$table->integer('id_responsable')->nullable();
 				$table->string('titre', 50);
 			}
 		);
@@ -92,7 +92,7 @@ return new class extends Migration
 		Schema::create('besoins_archives', function (Blueprint $table) {
 				$table->integer('id_besoin', true);
 				$table->integer('id_evenement');
-				$table->integer('id_responsable');
+				$table->integer('id_responsable')->nullable();
 				$table->string('titre', 50);
 			}
 		);
@@ -100,7 +100,7 @@ return new class extends Migration
 		Schema::create('besoins_en_attente', function (Blueprint $table) {
 				$table->integer('id_besoin', true);
 				$table->integer('id_evenement');
-				$table->integer('id_responsable');
+				$table->integer('id_responsable')->nullable();
 				$table->string('titre', 50);
 			}
 		);
@@ -120,7 +120,7 @@ return new class extends Migration
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->date('dateReception');
-				$table->date('dateLecture');
+				$table->date('dateLecture')->nullable();
 				$table->string('message', 50);
 				$table->boolean('supprime');
 			}
@@ -137,7 +137,7 @@ return new class extends Migration
 				$table->string('message', 50);
 				$table->boolean('supprime');
 				$table->boolean('accepte');
-				$table->date('dateChoix');
+				$table->date('dateChoix')->nullable();
 			}
 		);
 
