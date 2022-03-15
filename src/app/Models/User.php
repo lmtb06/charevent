@@ -80,4 +80,10 @@ class User extends Authenticatable
     {
         return $this->id_compte;
     }
+
+    public function getNomPrenom()
+    {
+        return $this->nom . " " . $this->prenom;
+    }
+
 }
