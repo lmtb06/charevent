@@ -31,7 +31,9 @@ class Evenement extends Model
 
     public function comptes()
     {
-        return $this->belongsToMany(User::class,'participants', 'id_evenement', 'id_compte');
+        return $this->belongsToMany(User::class,'participants', 'id_evenement', 'id_compte')
+                    ->join('localisations','comptes_actifs.id_compte','participants.id_compte')
+                    ->select('comptes_actifs.*', 'codePostal');
     }
 
     public function createur()

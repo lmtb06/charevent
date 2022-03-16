@@ -63,13 +63,11 @@ class ModifierEvenementController extends Controller
 
         $user = Auth::user();
         $event = Evenement::find($id);
-		$lieu = $event->localisation;
-
+	
         return view('evenement',[
             'user' => $user,
             'event' => $event,
             'participants' => $event->comptes,
-			'localisation' => $lieu
         ]);
 	}
 

@@ -100,7 +100,7 @@
                                         <h2 class="ml-5">{{$p->prenom}} {{$p->nom}}</h2>
                                     </div>
                                     <div>
-                                        <h2 class="ml-5 flex items-center justify-center">{{$p->localisation->codePostal ?? 'codePostal'}}</h2>
+                                        <h2 class="ml-5 flex items-center justify-center">{{$p->codePostal}}</h2>
                                     </div>                                     
                                  </div>
                                 </a>
