@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\BesoinActif;
 use App\Models\Participant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ModifierEvenementController extends Controller
 {
@@ -60,38 +61,16 @@ class ModifierEvenementController extends Controller
 		]);
         */
 
-        $evenement = Evenement::findOrFail($id);
-		$titre = $evenement -> titre;
-		$debut = $evenement -> dateDebut;
-		$fin = $evenement -> dateFin;
-		$description = $evenement -> description;
-		$nbBesoins = BesoinActif::count();
-        $participants = Participant::where([['id_evenement', $id],])->get();
-        $nbParticipants = Participant::where([['id_evenement', $id],])->count();
+        $user = Auth::user();
+        $event = Evenement::find($id);
+		$lieu = $event->localisation;
 
-		print("Nom d'evenement: " . $titre . "<br>");
-		print("Debut: " . $debut . "<br>");
-		print("Fin: " . $fin . "<br>");
-		if ($nbBesoins > 0){
-            print("Besoins: <br>");
-		    for ($i = 1; $i <= $nbBesoins; $i++) {
-			    print(BesoinActif::findOrFail($i) -> titre . "<br>");
-		    }
-        }
-
-		print("Description: ");
-		print($description . "<br>");
-        
-        if ($nbParticipants > 0){
-            $participants = Participant::where([['id_evenement', $id],])->get();
-            print("Participants: <br>");
-		    for ($i = 0; $i < $nbParticipants; $i++) {
-                $user = User::findOrFail($participants[$i]->getIdCompte());
-			    print($user->getNomPrenom() . "<br>");
-		    }
-        }
-
-
+        return view('evenement',[
+            'user' => $user,
+            'event' => $event,
+            'participants' => $event->comptes,
+			'localisation' => $lieu
+        ]);
 	}
 
 	//Affiche le formulaire pour modifier l'evenement
