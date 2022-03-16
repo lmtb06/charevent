@@ -10,12 +10,9 @@ use Illuminate\Http\Request;
 
 class ModifierEvenementController extends Controller
 {
-    /**
-	 * Affiche l'evenement
-	 */
+    //Affiche l'evenement
 	public function show($id)
 	{
-		
 		/*
 		$user = User::create([
 			'id_residence' => 1,
@@ -51,9 +48,7 @@ class ModifierEvenementController extends Controller
 			'titre' => 'besoin2',
 			'id_responsable' => 2,
 		]);
-		*/
 
-        /*
         $user = Participant::create([
 			'id_compte' => 2,
 			'id_evenement' => 1,
@@ -97,5 +92,41 @@ class ModifierEvenementController extends Controller
         }
 
 
+	}
+
+	//Affiche le formulaire pour modifier l'evenement
+	public function edit($id){
+		$evenement = Evenement::findOrFail($id);
+		print($evenement);
+	}
+	
+	public function update($id, Request $request)
+	{
+		// Récupère les données de l'utilisateur
+		$evenement = Evenement::findOrFail($id);
+
+
+		// Valider le formulaire
+		$validated = $request->validate([
+			'titre' => 'required|string|max:40',
+			'description' => 'required|string|min:50|max:1000',
+			'dateDebut' => 'required|date|after:today',
+			'dateFin' => 'nullable|date|after:dateDebut',
+			'expiration' => 'nullable',
+			]);
+
+		// Mettre à jour le modele utilisateur
+		if ($request->filled('titre')) $evenement->titre = $request->titre;
+        if ($request->filled('description')) $evenement->description = $request->description;
+        if ($request->filled('dateDebut')) $evenement->dateDebut = $request->dateDebut;
+		if ($request->filled('dateFin')) $evenement->dateFin = $request->dateFin;
+        if ($request->filled('expiration')) $evenement->expiration = $request->expiration;
+		$evenement->saveOrFail();	
+
+		// Redirection vers la page d'evenement
+		//Ca marche pas!
+		return redirect()->route('pageEvenement', [
+			'id' => $id,
+		]);
 	}
 }

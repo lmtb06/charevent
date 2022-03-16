@@ -36,6 +36,7 @@ Route::get('/deconnexion', DeconnexionController::class)->name('deconnexion');
 
 Route::get('/evenement/create', [CreerEvenementController::class, 'show'])->name('pageCreationEvenement');
 Route::get('/evenement/show/{id}', [ModifierEvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
+Route::get('/evenement/edit/{id}', [ModifierEvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
 // Routes POST (traitement de données provenant des pages webs)
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');
@@ -45,3 +46,4 @@ Route::post('/delete/{id}', [SupprimerCompteController::class, 'delete'])->name(
 
 Route::post('/evenement/store', [CreerEvenementController::class, 'store'])->name('creerEvenement');
 
+Route::post('/evenement/update/{id}', [ModifierEvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
