@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmationInscription;
 use Illuminate\Support\Facades\Storage;
 
 class InscriptionController extends Controller
@@ -76,6 +78,10 @@ class InscriptionController extends Controller
 
 			$user->photo = $img;
 		};
+
+		// Envoie d'un mail de confirmation d'inscription
+		Mail::to($user->mail)->send(new ConfirmationInscription($user));
+
 
 		// Connexion au compte
 		Auth::login($user);
