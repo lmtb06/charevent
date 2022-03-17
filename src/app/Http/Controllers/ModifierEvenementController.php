@@ -101,9 +101,6 @@ class ModifierEvenementController extends Controller
 		$evenement->saveOrFail();	
 
 		// Redirection vers la page d'evenement
-		//Ca marche pas!
-		return redirect()->route('pageEvenement', [
-			'id' => $id,
-		]);
+		$this->show($id);
 	}
 }
