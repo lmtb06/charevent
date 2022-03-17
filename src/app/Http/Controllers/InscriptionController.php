@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -50,7 +51,7 @@ class InscriptionController extends Controller
 			$notif = 1;
 		}
 
-		
+
 		//TODO : trouver un moyen d'afficher la photo de profil malgré docker =)
 
 		$user = User::create([
@@ -75,6 +76,9 @@ class InscriptionController extends Controller
 
 			$user->photo = $img;
 		};
+
+		// Connexion au compte
+		Auth::login($user);
 
 		// Redirection vers la page d'accueil
 		return redirect()->route('pageAccueil');
