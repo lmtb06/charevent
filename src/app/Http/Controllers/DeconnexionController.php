@@ -12,6 +12,6 @@ class DeconnexionController extends Controller
 		// Deconnecter l'utilisateur
         Auth::logout();
 		// Redirection
-		return redirect()->route('pageConnexion');
+		return redirect()->route('pageAccueil');
 	}
 }
