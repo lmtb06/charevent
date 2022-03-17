@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evenement;
+use App\Models\EvenementArchive;
 use App\Models\User;
 use App\Models\BesoinActif;
 use App\Models\Participant;
@@ -103,4 +104,21 @@ class ModifierEvenementController extends Controller
 		// Redirection vers la page d'evenement
 		$this->show($id);
 	}
+
+	public function delete($id){
+		$event = Evenement::find($id);
+
+		$eventarchive = EvenementArchive::create([
+            'id_createur' => $event -> id_createur,
+            'id_localisation' => $event -> id_localisation,
+            'titre' => $event -> titre,
+            'description' => $event -> description,
+            'dateDebut' => $event -> dateDebut,
+            'dateFin' => $event -> dateFin,
+        ]);
+
+		$event -> delete();
+		return redirect()->route('pageAccueil');
+	}
+
 }

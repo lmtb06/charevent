@@ -42,8 +42,8 @@ Route::get('/evenement/edit/{id}', [ModifierEvenementController::class, 'edit'])
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');
 Route::post('/connexion', [ConnexionController::class, 'authenticate'])->name('connecterCompte');
 Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
-Route::post('/delete/{id}', [SupprimerCompteController::class, 'delete'])->name('effacerCompte')->whereNumber('id');
 
 Route::post('/evenement/store', [CreerEvenementController::class, 'store'])->name('creerEvenement');
 
 Route::post('/evenement/update/{id}', [ModifierEvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
+Route::post('/evenement/delete/{id}', [ModifierEvenementController::class, 'delete'])->name('effacerEvenememt')->whereNumber('id');
