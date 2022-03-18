@@ -118,7 +118,8 @@ class ModifierEvenementController extends Controller
         ]);
 
 		$event -> delete();
-		return redirect()->route('pageAccueil');
+		//redirect marche pas
+		//return redirect()->route('pageAccueil');
 	}
 
 }
