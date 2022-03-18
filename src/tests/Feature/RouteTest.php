@@ -21,7 +21,7 @@ class RouteTest extends TestCase
 
         $response->assertStatus(200);
     }
-    /*
+
     public function test_post_evenement_update_1()
     {
         $evenement = Evenement::findOrFail(1);
@@ -29,7 +29,7 @@ class RouteTest extends TestCase
 
         $response->assertStatus(200);
     }
-    */
+
     public function test_post_evenement_delete_1()
     {
         $evenement = Evenement::findOrFail(1);
