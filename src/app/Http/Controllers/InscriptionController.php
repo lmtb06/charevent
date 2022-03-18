@@ -70,7 +70,7 @@ class InscriptionController extends Controller
 			$nomFichier = time().'.'.$request->photo->extension();
 			$img = $request->file('photo')->storeAs(
 				'avatars',
-				$nomFichier,
+				$user->id_compte,
 				//'public'
 			);
 
