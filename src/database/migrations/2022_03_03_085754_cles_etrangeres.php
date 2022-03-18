@@ -50,7 +50,7 @@ return new class extends Migration
         Schema::table('notifications_modification_besoin', function (Blueprint $table) {
             $table->foreign('id_destinataire')->references('id_compte')->on('comptes_actifs');
             $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs');
-            $table->foreign('id_envoyeur')->references('id_evenement')->on('evenements_actifs');
+            $table->foreign('id_envoyeur')->references('id_compte')->on('comptes_actifs');
             $table->foreign('id_besoin_en_attente')->references('id_besoin')->on('besoins_en_attente');
         });
 
@@ -64,27 +64,27 @@ return new class extends Migration
         Schema::table('notifications_proposition_besoin', function (Blueprint $table) {
             $table->foreign('id_destinataire')->references('id_compte')->on('comptes_actifs');
             $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs');
-            $table->foreign('id_envoyeur')->references('id_evenement')->on('evenements_actifs');
+            $table->foreign('id_envoyeur')->references('id_compte')->on('comptes_actifs');
             $table->foreign('id_besoin_en_attente')->references('id_besoin')->on('besoins_en_attente');
         });
         
         Schema::table('notifications_volontariat_besoin', function (Blueprint $table) {
             $table->foreign('id_destinataire')->references('id_compte')->on('comptes_actifs');
             $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs');
-            $table->foreign('id_envoyeur')->references('id_evenement')->on('evenements_actifs');
+            $table->foreign('id_envoyeur')->references('id_compte')->on('comptes_actifs');
             $table->foreign('id_besoin_en_attente')->references('id_besoin')->on('besoins_en_attente');
         });
 
         Schema::table('notifications_demande_participation', function (Blueprint $table) {
             $table->foreign('id_destinataire')->references('id_compte')->on('comptes_actifs');
             $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs');
-            $table->foreign('id_envoyeur')->references('id_evenement')->on('evenements_actifs');
+            $table->foreign('id_envoyeur')->references('id_compte')->on('comptes_actifs');
         });
 
         Schema::table('notifications_invitation_participation', function (Blueprint $table) {
             $table->foreign('id_destinataire')->references('id_compte')->on('comptes_actifs');
             $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs');
-            $table->foreign('id_envoyeur')->references('id_evenement')->on('evenements_actifs');
+            $table->foreign('id_envoyeur')->references('id_compte')->on('comptes_actifs');
         });
 
     }

@@ -87,7 +87,7 @@
                                 <!-- Bouton consulter-->
                                 <div>
                                     <div class=" m-1  text-xs flex items-center justify-center">
-                                        <button class="p-1 bg-white border-2  rounded-3xl border-black" type="submit">Consulter</button>
+                                        <a href="{{route('pageEvenement', ['id' => $event->id_evenement])}}"><button class="p-1 bg-white border-2  rounded-3xl border-black" type="submit">Consulter</button></a>
                                     </div>
                                 </div>
                             </div>

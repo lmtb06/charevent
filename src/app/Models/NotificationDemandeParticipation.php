@@ -28,4 +28,5 @@ class NotificationDemandeParticipation extends Model
         'accepte',
         'dateChoix'
     ];
+
 }

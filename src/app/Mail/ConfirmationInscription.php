@@ -31,6 +31,6 @@ class ConfirmationInscription extends Mailable
      */
     public function build()
     {
-        return $this->from('test@charevent.fr', 'Charevent')->view('mails.mail_inscription');
+        return $this->from('info@charevent.fr', 'Charevent')->view('mails.mail_inscription');
     }
 }

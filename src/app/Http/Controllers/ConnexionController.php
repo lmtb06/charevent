@@ -67,7 +67,7 @@ class ConnexionController extends Controller
 			$user->hashMDP = $hash;
 			$user->save();
 
-			// Envoi sa version en clair par mail
+			// Envoi le mdp temporaire par mail
 			Mail::to($user->mail)->send(new MdpOublieMail($user, $mdp));
 		}
 
