@@ -27,9 +27,9 @@ class ConnexionController extends Controller
             $request->session()->regenerate();
 
 			$events = Evenement::all();
-			return redirect()->route('pageAccueil', [
+			return redirect()->route('page_accueil', [
 				'events' => $events,
-			]);			
+			]);
 		}
 
 
@@ -37,13 +37,13 @@ class ConnexionController extends Controller
 			'mail' => "L'adresse e-mail n'est pas reconnue par nos services, ou est invalide.",
 			'hashMDP' => "Le mot de passe est erroné."
 		]);
-		
+
 	}
 
 	public function show()
 	{
 		// Afficher la page de connexion
-		return view('layout.connection');
+		return view('layout.connexion');
 	}
 
 
@@ -57,7 +57,7 @@ class ConnexionController extends Controller
 	public function traitementOubliMDP(Request $request){
 		$user = User::where('mail', $request->email)->first();
 
-		// Si un utilisateur a bien été récupéré : 
+		// Si un utilisateur a bien été récupéré :
 		if (!is_null($user)){
 			// Génération d'un nouveau mot de passe
 			$mdp = Str::random(8);
@@ -72,7 +72,7 @@ class ConnexionController extends Controller
 		}
 
 		// Retourne vers la page de connexion
-		return redirect()->route('pageConnexion');
+		return redirect()->route('page_connexion');
 	}
 
 

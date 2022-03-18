@@ -21,24 +21,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', [AccueilController::class, 'show'])->name('pageAccueil');
 
 /**
- * URL à utiliser pour afficher les pages correspondantes / déconnecter un utilisateur
+ * Routes GET
  */
-Route::get('/', [ConnexionController::class, 'show'])->name('pageConnexion');
-Route::get('/mdpOublie', [ConnexionController::class, 'showOubliMDP'])->name('pageOubliMDP');
-Route::get('/inscription', [InscriptionController::class, 'show'])->name('pageInscription');
+Route::get('/', [AccueilController::class, 'show'])->name('page_accueil');
+Route::get('/inscription', [InscriptionController::class, 'show'])->name('page_inscription');
+Route::get('/connexion', [ConnexionController::class, 'show'])->name('page_connexion');
+Route::get('/deconnexion', DeconnexionController::class)->name('page_deconnexion');
+Route::get('/recuperation', [ConnexionController::class, 'showOubliMDP'])->name('page_recuperation');
+
 Route::get('/compte/edit/{id}', [ModifierCompteController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
 Route::get('/compte/show/{id}', [ModifierCompteController::class, 'show'])->whereNumber('id')->name('pageProfil');
 
-Route::get('/deconnexion', DeconnexionController::class)->name('deconnexion');
 
 Route::get('/evenement/create', [CreerEvenementController::class, 'show'])->name('pageCreationEvenement');
 Route::get('/evenement/show/{id}', [ModifierEvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
 Route::get('/evenement/edit/{id}', [ModifierEvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
-// Routes POST (traitement de données provenant des pages webs)
+// Routes POST
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');
 Route::post('/connexion', [ConnexionController::class, 'authenticate'])->name('connecterCompte');
 Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');

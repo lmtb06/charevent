@@ -46,6 +46,8 @@ class User extends Authenticatable
         'hashMDP',
     ];
 
+
+
     public function evenements()
     {
         return $this->belongsToMany(Evenement::class,
