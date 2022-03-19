@@ -19,6 +19,10 @@ class ConnexionController extends Controller
     {
         // Deconnecter l'utilisateur
         Auth::logout();
+
+		$request->session()->invalidate();
+
+		$request->session()->regenerateToken();
         // Redirection
         return redirect()->route('accueil');
     }
@@ -36,15 +40,16 @@ class ConnexionController extends Controller
 
 
 		return back()->withErrors([
-			'mail' => "L'adresse e-mail n'est pas reconnue par nos services, ou est invalide.",
-			'hashMDP' => "Le mot de passe est erroné."
+			'default' => ['L\'adresse mail ou le mot de passe n\'est pas valide']
 		]);
 
 	}
 
 	public function index()
 	{
-		// Afficher la page de connexion
+		// Les utilisateurs connectés ne peuvent pas voir la page de connexion
+		if (Auth::check())
+			abort(403, 'Veuillez vous déconnecter d\'abord');
 		return view('layout.connexion');
 	}
 
