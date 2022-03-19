@@ -107,6 +107,10 @@
                 </dd>
               </div>
 
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <a href="{{url()->previous()}}"><button>Annuler</button></a>
+              </div>
+
             </dl>
             <div class="flex justify-center">
               <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-8"
@@ -132,7 +136,7 @@
                         </div>
                       </div>
                       <!--Body-->
-                      <p>Veuillez entrer votre mot de passe pour confirmer la suprresion de votre compte.</p>
+                      <p>Veuillez entrer votre mot de passe pour confirmer la suppression de votre compte.</p>
                       <p>Mot de passe :</p>
                       <p><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="confirmation_mot_de_passe_suppression" type="password"></p>
 
