@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Models\Evenement;
 use App\Models\BesoinActif;
 use Laravel\Sanctum\HasApiTokens;
@@ -84,6 +85,63 @@ class User extends Authenticatable
     public function getNomPrenom()
     {
         return $this->nom . " " . $this->prenom;
+    }
+
+    /**
+     * Calcule l'âge à partir de la date de naissance indiquée
+     * @return int l'âge de l'utilisateur
+     */
+    public function age()
+    {
+        return Carbon::parse($this->attributes['dateNaissance'])->age;
+    }
+
+
+    /**
+     * Récupère les utilisateurs contenant le nom ou le prénom indiqué
+     *
+     * @param [type] $builder
+     * @param [type] $name nom ou prénom
+     */
+    public function scopeWhereName($builder, $name){
+        if (!is_null($name)){
+            $builder->where('prenom', 'like', '%'.$name.'%')
+            ->orWhere('nom', 'like', '%'.$name.'%');
+        }else{
+            $builder->where('prenom', 'like', '%')
+            ->orWhere('nom', 'like', '%');
+        }
+        
+    }
+
+    /**
+     * Effectue une requête where sur le modèle
+     * Sélectionne les utilisateurs âgé entre les valeurs spécifiées
+     *
+     * @param [type] $builder
+     * @param Date $min date minimum 
+     * @param Date $max date maximum
+     */
+    public function scopeWhereAge($builder, $min, $max){
+
+        $builder->where([
+            ['dateNaissance', '>=', $max],
+            ['dateNaissance', '<=', $min]
+        ]);
+    }
+
+    /**
+     * Récupère les modèles qui ont soit un n° de téléphone
+     * soit tous les modèles
+     * @param [type] $builder
+     * @param boolean $tel le numéro de téléphone doit être présent
+     */
+    public function scopeWhereHasTelephone($builder, $tel = True){
+        if ($tel === True){
+            $builder->whereNotNull('numeroTelephone');
+        }else{
+            $builder->where('id_compte', '>=', '1');
+        }
     }
 
 }

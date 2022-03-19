@@ -1,14 +1,15 @@
 <?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\ConnexionController;
-use App\Http\Controllers\CreerEvenementController;
 use App\Http\Controllers\DeconnexionController;
 use App\Http\Controllers\InscriptionController;
+use App\Http\Controllers\CreerEvenementController;
 use App\Http\Controllers\ModifierCompteController;
 use App\Http\Controllers\SupprimerCompteController;
-use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ModifierEvenementController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RechercheParticipantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::get('/evenement/create', [CreerEvenementController::class, 'show'])->name
 Route::get('/evenement/show/{id}', [ModifierEvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
 Route::get('/evenement/edit/{id}', [ModifierEvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
+
 // Routes POST (traitement de données provenant des pages webs)
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');
 Route::post('/connexion', [ConnexionController::class, 'authenticate'])->name('connecterCompte');
@@ -48,3 +50,6 @@ Route::post('/evenement/store', [CreerEvenementController::class, 'store'])->nam
 
 Route::post('/evenement/update/{id}', [ModifierEvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
 Route::post('/connexion/mdpOubli', [ConnexionController::class, 'traitementOubliMDP'])->name('traitementOubli');
+
+Route::get('/evenement/{id}/recherche', [RechercheParticipantController::class, 'show'])->whereNumber('id')->name('pageRechercheParticipant');
+Route::post('/evenement/recherche', [RechercheParticipantController::class, 'search'])->name('rechercheParticipant');

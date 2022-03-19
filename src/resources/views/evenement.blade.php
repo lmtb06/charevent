@@ -117,13 +117,11 @@
             <section class="mt-2 flex items-center justify-center" >
                 <!-- Bouton Inviter à l'évènement -->
                 <div>
-                    <a href="">
-                    <button type="submit"
-                     class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
-                            Inviter des participants
-                    </button>
+                    <a href={{route('pageRechercheParticipant', ['id' => $event->id_evenement]) }}>
+                        <button class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
+                                Inviter des participants
+                        </button>
                     </a>
-
                 </div>
             </section>
             
