@@ -23,8 +23,31 @@ package app.Http.Controllers {
 		reset(RecuperationRequest request)
 	}
 
+}
+
+package app.Http.Helpers {
 	' class ApiFetcher {
 	' 	fetch(String $url)
 	' }
+	class GenerateurMDP {
+		generer()
+	}
+}
+
+package app.Http.Requests {
+	class InscriptionRequest extends FormRequest {
+		authorize()
+		rules()
+	}
+
+	class ConnexionRequest extends FormRequest {
+		authorize()
+		rules()
+	}
+
+	class RecuperationRequest extends FormRequest {
+		authorize()
+		rules()
+	}
 }
 @enduml
