@@ -50,4 +50,16 @@ package app.Http.Requests {
 		rules()
 	}
 }
+class EvenementController {
+	show()
+	edit()
+	update()
+	delete()
+}
+
+class EvenementCreationController {
+	show()
+	store()
+}
+
 @enduml

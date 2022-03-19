@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evenement;
+use App\Models\EvenementArchive;
 use App\Models\User;
 use App\Models\BesoinActif;
 use App\Models\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ModifierEvenementController extends Controller
+class EvenementController extends Controller
 {
     //Affiche l'evenement
 	public function show($id)
@@ -103,4 +104,22 @@ class ModifierEvenementController extends Controller
 		// Redirection vers la page d'evenement
 		$this->show($id);
 	}
+
+	public function delete($id){
+		$event = Evenement::find($id);
+
+		$eventarchive = EvenementArchive::create([
+            'id_createur' => $event -> id_createur,
+            'id_localisation' => $event -> id_localisation,
+            'titre' => $event -> titre,
+            'description' => $event -> description,
+            'dateDebut' => $event -> dateDebut,
+            'dateFin' => $event -> dateFin,
+        ]);
+
+		$event -> delete();
+		//redirect marche pas
+		//return redirect()->route('pageAccueil');
+	}
+
 }

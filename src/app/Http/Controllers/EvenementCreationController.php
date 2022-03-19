@@ -8,7 +8,7 @@ use App\Models\Localisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CreerEvenementController extends Controller
+class EvenementCreationController extends Controller
 {
     public function show(){
         return view('creationEvenement');
