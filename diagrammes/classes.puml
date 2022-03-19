@@ -1,26 +1,30 @@
 @startuml
 
-class AccueilController {
-	show()
-}
+package app.Http.Controllers {
+	class Controller
 
-class InscriptionController {
-	show()
-	store(Request r)
-}
+	class AccueilController extends Controller {
+		index()
+	}
 
-class ProfilController {
-	show()
-	update(Request r)
-}
+	class InscriptionController extends Controller {
+		index()
+		create(InscriptionRequest request)
+	}
 
-class ConnexionController {
-	show()
-	authenticate(Request $request)
-}
+	class ConnexionController extends Controller{
+		index()
+		login(LoginRequest request)
+		logout(Request request)
+	}
 
-class DeconnexionController {
-	__invoke()
-}
+	class RecuperationController extends Controller {
+		index()
+		reset(RecuperationRequest request)
+	}
 
+	' class ApiFetcher {
+	' 	fetch(String $url)
+	' }
+}
 @enduml
