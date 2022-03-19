@@ -50,3 +50,4 @@ Route::post('/evenement/update/{id}', [ModifierEvenementController::class, 'upda
 Route::post('/evenement/delete/{id}', [ModifierEvenementController::class, 'delete'])->name('effacerEvenememt')->whereNumber('id');
 
 Route::post('/connexion/mdpOubli', [ConnexionController::class, 'traitementOubliMDP'])->name('traitementOubli');
+
