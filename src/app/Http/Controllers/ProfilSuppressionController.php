@@ -9,7 +9,7 @@ use App\Models\CompteArchive;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class SupprimerCompteController extends Controller
+class ProfilSuppressionController extends Controller
 {
     /**
      * Handle the incoming request.

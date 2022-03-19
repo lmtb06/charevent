@@ -14,7 +14,7 @@ class InscriptionController{
     public store (Request request)
 }
 
-class ModifierCompteController{
+class ProfilController{
     public create()
     public update (Request request)
 }
