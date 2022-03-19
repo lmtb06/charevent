@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RecuperationRequest;
 use App\Mail\MdpOublieMail;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,18 +17,19 @@ class RecuperationController extends Controller
     {
         // Les utilisateurs connectés ne peuvent pas voir la page d'inscription
         if (Auth::check())
-            abort(403, 'Veuillez vous déconnecter pour récuperer un compte');
+            abort(403, 'Veuillez vous déconnecter d\'abord');
         return view('recuperation');
     }
 
-    public function reset(Request $request)
+    public function reset(RecuperationRequest $request)
     {
-        $user = User::where('mail', $request->email)->first();
+		$mail = $request->validated('email');
+        $user = User::where('mail', $mail)->first();
 
         // Si un utilisateur a bien été récupéré :
         if (!is_null($user)) {
             // Génération d'un nouveau mot de passe
-            $mdp = Str::random(8);
+            $mdp = Str::random(10);
             $hash = Hash::make($mdp);
 
             // Enregistrement de ce dernier dans la db
