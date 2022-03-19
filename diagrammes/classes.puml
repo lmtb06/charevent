@@ -11,16 +11,37 @@ class InscriptionController {
 
 class ProfilController {
 	show()
+	edit()
 	update(Request r)
+}
+
+ProfilSuppressionController {
+	__invoke()
+	delete()
 }
 
 class ConnexionController {
 	show()
 	authenticate(Request $request)
+	showOubliMDP()
+	traitementOubliMDP(Request $request)
+	username()
 }
 
 class DeconnexionController {
 	__invoke()
+}
+
+class EvenementController {
+	show()
+	edit()
+	update()
+	delete()
+}
+
+class EvenementCreationController {
+	show()
+	store()
 }
 
 @enduml

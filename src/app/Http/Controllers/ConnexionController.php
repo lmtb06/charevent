@@ -46,7 +46,6 @@ class ConnexionController extends Controller
 		return view('layout.connection');
 	}
 
-
 	/**
 	 * Affiche la page de mot de passe oublié
 	 */
@@ -74,8 +73,6 @@ class ConnexionController extends Controller
 		// Retourne vers la page de connexion
 		return redirect()->route('pageConnexion');
 	}
-
-
 
 	public function username(){
 		return 'mail';

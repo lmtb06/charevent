@@ -10,7 +10,7 @@ use App\Models\Participant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ModifierEvenementController extends Controller
+class EvenementController extends Controller
 {
     //Affiche l'evenement
 	public function show($id)

@@ -7,7 +7,7 @@ use App\Models\Localisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class ModifierCompteController extends Controller
+class ProfilController extends Controller
 {
 
 	/**
