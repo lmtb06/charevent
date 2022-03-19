@@ -26,19 +26,19 @@ return new class extends Migration
 
         // Participants
         Schema::table('participants', function (Blueprint $table) {
-            $table->foreign('id_compte')->references('id_compte')->on('comptes_actifs');
-            $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs');
+            $table->foreign('id_compte')->references('id_compte')->on('comptes_actifs')->onDelete('cascade');
+            $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs')->onDelete('cascade');
 		});
 
         // Besoins
         Schema::table('besoins_actifs', function (Blueprint $table) {
-            $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs');
-            $table->foreign('id_responsable')->references('id_compte')->on('comptes_actifs');
+            $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs')->onDelete('cascade');
+            $table->foreign('id_responsable')->references('id_compte')->on('comptes_actifs')->onDelete('cascade');
         });
 
         Schema::table('besoins_en_attente', function (Blueprint $table) {
-            $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs');
-            $table->foreign('id_responsable')->references('id_compte')->on('comptes_actifs');
+            $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs')->onDelete('cascade');
+            $table->foreign('id_responsable')->references('id_compte')->on('comptes_actifs')->onDelete('cascade');
         });
 
         // Notifications
