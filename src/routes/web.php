@@ -55,7 +55,6 @@ Route::get('/evenement/edit/{id}', [EvenementController::class, 'edit'])->whereN
 
 // Routes POST
 Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
-Route::post('/delete/{id}', [SupprimerCompteController::class, 'delete'])->name('effacerCompte')->whereNumber('id');
 // Routes POST (traitement de données provenant des pages webs)
 Route::post('/compte/update/{id}', [ProfilController::class, 'update'])->whereNumber('id')->name('modifierCompte');
 Route::post('/compte/delete/{id}', [ProfilSuppressionController::class, 'delete'])->whereNumber('id')->name('effacerCompte');
@@ -63,6 +62,4 @@ Route::post('/compte/delete/{id}', [ProfilSuppressionController::class, 'delete'
 Route::post('/evenement/store', [EvenementCreationController::class, 'store'])->name('creerEvenement');
 Route::post('/evenement/update/{id}', [EvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
 Route::post('/evenement/delete/{id}', [EvenementController::class, 'delete'])->name('effacerEvenememt')->whereNumber('id');
-
-Route::post('/evenement/update/{id}', [ModifierEvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
 
