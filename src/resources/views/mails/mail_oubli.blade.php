@@ -8,9 +8,12 @@
 
 <body>
     <div id="content">
-        <h1>Bienvenue sur Charevent, {{$user->prenom}}!</h1>
-        <p>Vous pouvez désormais vous  <a href="{{route('pageConnexion')}}">connecter</a> et accéder à toutes nos fonctionnalités!
+        <h1>Votre nouveau mot de passe</h1>
+        <p>Veuillez vous <a href="{{route('pageConnexion')}}">connecter</a> à l'aide de ce mot de passe afin de rapidement le modifier. Le voici:
+            {{$password}}
+
         </p>
+
     </div>
 
 </body>
