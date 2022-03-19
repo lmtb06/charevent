@@ -33,6 +33,6 @@ class MdpOublieMail extends Mailable
      */
     public function build()
     {
-        return $this->from('test@charevent.fr', 'Charevent')->view('mails.mail_oubli');
+        return $this->from('test@charevent.fr', 'Charevent')->view('mails.recuperation.nouveau')->text('mails.recuperation.nouveau_text');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Helpers\GenerateurMDP;
 use App\Http\Requests\RecuperationRequest;
 use App\Mail\MdpOublieMail;
 use App\Models\User;
@@ -29,11 +30,12 @@ class RecuperationController extends Controller
         // Si un utilisateur a bien été récupéré :
         if (!is_null($user)) {
             // Génération d'un nouveau mot de passe
-            $mdp = Str::random(10);
+            $mdp = GenerateurMDP::generer();
             $hash = Hash::make($mdp);
 
             // Enregistrement de ce dernier dans la db
             $user->hashMDP = $hash;
+
             $user->save();
 
             // Envoi sa version en clair par mail
