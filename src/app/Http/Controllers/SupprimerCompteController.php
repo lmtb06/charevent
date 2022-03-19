@@ -57,11 +57,11 @@ class SupprimerCompteController extends Controller
             Auth::logout();
 
             response()->json(['message' => 'Le compte a été supprimé avec succès.']);
-            return redirect()->route('page_accueil');
+            return redirect()->route('accueil');
         }
 
         response()->json(['message' => 'Le mot de passe entré est incorrecte.']);
-        return redirect()->route('page_accueil');
+        return redirect()->route('accueil');
 
     }
 }

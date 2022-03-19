@@ -83,9 +83,9 @@ class User extends Authenticatable
         return $this->id_compte;
     }
 
-    public function getNomPrenom()
+    public function isSuperUser()
     {
-        return $this->nom . " " . $this->prenom;
+        return $this->role === config('enums.user_roles.su');;
     }
 
 }

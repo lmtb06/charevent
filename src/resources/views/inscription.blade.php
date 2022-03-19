@@ -4,7 +4,7 @@
 
 
 <fieldset>
-	<form method='POST' action="{{ route("inscrireCompte") }}" enctype="multipart/form-data">
+	<form method='POST' action="{{ route("inscription") }}" enctype="multipart/form-data">
 		@csrf
 		<img src="{{asset('img/logo.png')}}" alt="charEvent" height="120px">
 
@@ -53,11 +53,11 @@
 		<br />
 
 		<label for="photo">Photo </label>
-		<input name="photo" type="file" accept="image/png, image/jpeg" value="{{ old('photo') }}">
+		<input name="photo" type="file" accept="image/png, image/jpeg">
 		<br />
 
 		<br />
-		<input type="checkbox" id="notifMail" name="notifMail" value="notifMail" {{ old("notifMail") ? "checked" : '' }}>
+		<input type="checkbox" id="notificationMail" name="notificationMail" value="true" {{ old('notificationMail') ? 'checked' : '' }}>
 		<label for="notifMail"> Recevoir les notifications par mail</label><br>
 		<br />
 

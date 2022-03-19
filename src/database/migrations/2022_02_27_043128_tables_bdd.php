@@ -28,8 +28,8 @@ return new class extends Migration
 			$table->string('numeroTelephone', 12)->nullable();
 			$table->date('dateCreationCompte');
 			$table->date('dateModifCompte');
-			$table->boolean('notificationMail')->default(0);
-			$table->string('role')->default('user');
+			$table->boolean('notificationMail')->default(false);
+			$table->string('role')->default(config('enums.user_roles.user'));
 		});
 
 		Schema::create('comptes_archives', function (Blueprint $table) {
@@ -44,8 +44,8 @@ return new class extends Migration
 			$table->string('numeroTelephone', 12)->nullable();
 			$table->date('dateCreationCompte');
 			$table->date('dateModifCompte');
-			$table->boolean('notificationMail');
-			$table->string('role')->default('user');
+			$table->boolean('notificationMail')->default(false);
+            $table->string('role')->default(config('enums.user_roles.user'));
 		});
 
 		// Evenements

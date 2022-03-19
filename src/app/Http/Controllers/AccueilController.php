@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AccueilController extends Controller
 {
-	public function show()
+	public function index()
 	{
 		if (Auth::check()){
 			// Afficher la page d'accueil si on est connecté
@@ -22,7 +22,7 @@ class AccueilController extends Controller
 		}else{
 
 			// Redirige vers la page de connexion sinon
-			return redirect()->route('page_connexion');
+			return redirect()->route('connexion');
 		}
 
 	}

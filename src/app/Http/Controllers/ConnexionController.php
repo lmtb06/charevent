@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ConnexionRequest;
 use App\Models\User;
 use App\Models\Evenement;
 use App\Mail\MdpOublieMail;
@@ -14,22 +15,23 @@ use phpDocumentor\Reflection\Location;
 
 class ConnexionController extends Controller
 {
-	public function authenticate(Request $request)
+    public function logout(Request $request)
+    {
+        // Deconnecter l'utilisateur
+        Auth::logout();
+        // Redirection
+        return redirect()->route('accueil');
+    }
+
+	public function login(ConnexionRequest $request)
 	{
 		// Valider le formulaire
-		$creds = $request->validate([
-			'mail' => 'required|email',
-			'hashMDP' => 'required',
-			]);
+		$creds = $request->validated();
 
 		// Connecter
-		if(Auth::attempt($creds)){
+		if(Auth::attempt(['mail' => $creds['mail'], 'hashMDP' => $creds['password']])){
             $request->session()->regenerate();
-
-			$events = Evenement::all();
-			return redirect()->route('page_accueil', [
-				'events' => $events,
-			]);
+			return redirect()->route('accueil');
 		}
 
 
@@ -40,7 +42,7 @@ class ConnexionController extends Controller
 
 	}
 
-	public function show()
+	public function index()
 	{
 		// Afficher la page de connexion
 		return view('layout.connexion');
@@ -51,7 +53,7 @@ class ConnexionController extends Controller
 	 * Affiche la page de mot de passe oublié
 	 */
 	public function showOubliMDP(){
-		return view('oubliMDP');
+		return view('recuperation');
 	}
 
 	public function traitementOubliMDP(Request $request){
@@ -72,7 +74,7 @@ class ConnexionController extends Controller
 		}
 
 		// Retourne vers la page de connexion
-		return redirect()->route('page_connexion');
+		return redirect()->route('connexion');
 	}
 
 

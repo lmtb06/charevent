@@ -3,6 +3,7 @@ use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\ConnexionController;
 use App\Http\Controllers\CreerEvenementController;
 use App\Http\Controllers\DeconnexionController;
+use App\Http\Controllers\RecuperationController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ModifierCompteController;
 use App\Http\Controllers\SupprimerCompteController;
@@ -22,14 +23,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-/**
- * Routes GET
- */
-Route::get('/', [AccueilController::class, 'show'])->name('page_accueil');
-Route::get('/inscription', [InscriptionController::class, 'show'])->name('page_inscription');
-Route::get('/connexion', [ConnexionController::class, 'show'])->name('page_connexion');
-Route::get('/deconnexion', DeconnexionController::class)->name('page_deconnexion');
-Route::get('/recuperation', [ConnexionController::class, 'showOubliMDP'])->name('page_recuperation');
+// Routes Accueil
+Route::get('/', [AccueilController::class, 'index'])->name('accueil');
+
+// Routes Inscription
+Route::get('/inscription', [InscriptionController::class, 'index'])->name('inscription');
+Route::post('/inscription', [InscriptionController::class, 'create'])->name('inscription');
+
+// Routes Authentification
+Route::get('/connexion', [ConnexionController::class, 'index'])->name('connexion');
+Route::post('/connexion', [ConnexionController::class, 'login'])->name('connexion');
+Route::post('/deconnexion', [ConnexionController::class, 'logout'])->name('deconnexion');
+
+// Routes Recupération mot de passe
+Route::get('/recuperation', [RecuperationController::class, 'index'])->name('recuperation');
+Route::post('/recuperation', [RecuperationController::class, 'reset'])->name('recuperation');
+
+
+
+
+
 
 Route::get('/compte/edit/{id}', [ModifierCompteController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
 Route::get('/compte/show/{id}', [ModifierCompteController::class, 'show'])->whereNumber('id')->name('pageProfil');
@@ -40,12 +53,10 @@ Route::get('/evenement/show/{id}', [ModifierEvenementController::class, 'show'])
 Route::get('/evenement/edit/{id}', [ModifierEvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
 // Routes POST
-Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');
-Route::post('/connexion', [ConnexionController::class, 'authenticate'])->name('connecterCompte');
 Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
 Route::post('/delete/{id}', [SupprimerCompteController::class, 'delete'])->name('effacerCompte')->whereNumber('id');
 
 Route::post('/evenement/store', [CreerEvenementController::class, 'store'])->name('creerEvenement');
 
 Route::post('/evenement/update/{id}', [ModifierEvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
-Route::post('/connexion/mdpOubli', [ConnexionController::class, 'traitementOubliMDP'])->name('traitementOubli');
+
