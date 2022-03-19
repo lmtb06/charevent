@@ -21,7 +21,7 @@ class InscriptionController extends Controller
 	{
         // Les utilisateurs connectés ne peuvent pas voir la page d'inscription
         if (Auth::check())
-            abort(403,'Veuillez vous déconnecter avant de créer un nouveau compte');
+            abort(403, 'Veuillez vous déconnecter d\'abord');
 		return view('inscription');
 	}
 
@@ -56,7 +56,7 @@ class InscriptionController extends Controller
 			'codePostal' => $validated['codeZIP'],
 			'departement' => $validated['departement'],
 		]);
-		
+
         // conversion de notification mail en booleen
 		if (isset($validated['notificationMail'])){
             $validated['notificationMail'] = true;
