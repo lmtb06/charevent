@@ -27,7 +27,7 @@ Route::get('/home', [AccueilController::class, 'show'])->name('pageAccueil');
  * URL à utiliser pour afficher les pages correspondantes / déconnecter un utilisateur
  */
 Route::get('/', [ConnexionController::class, 'show'])->name('pageConnexion');
-
+Route::get('/mdpOublie', [ConnexionController::class, 'showOubliMDP'])->name('pageOubliMDP');
 Route::get('/inscription', [InscriptionController::class, 'show'])->name('pageInscription');
 Route::get('/compte/edit/{id}', [ModifierCompteController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
 Route::get('/compte/show/{id}', [ModifierCompteController::class, 'show'])->whereNumber('id')->name('pageProfil');
@@ -46,4 +46,7 @@ Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])-
 Route::post('/evenement/store', [CreerEvenementController::class, 'store'])->name('creerEvenement');
 
 Route::post('/evenement/update/{id}', [ModifierEvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
+
 Route::post('/evenement/delete/{id}', [ModifierEvenementController::class, 'delete'])->name('effacerEvenememt')->whereNumber('id');
+
+Route::post('/connexion/mdpOubli', [ConnexionController::class, 'traitementOubliMDP'])->name('traitementOubli');

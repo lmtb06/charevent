@@ -8,20 +8,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ConfirmationInscription extends Mailable
+class MdpOublieMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public User $user;
+    public $password;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $u)
+    public function __construct(User $u, $pass)
     {
         $this->user = $u;
+        $this->password = $pass;
     }
 
     /**
@@ -31,6 +33,6 @@ class ConfirmationInscription extends Mailable
      */
     public function build()
     {
-        return $this->from('test@charevent.fr', 'Charevent')->view('mails.mail_inscription');
+        return $this->from('test@charevent.fr', 'Charevent')->view('mails.mail_oubli');
     }
 }
