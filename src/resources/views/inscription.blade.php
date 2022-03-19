@@ -1,8 +1,11 @@
 @extends('layout.base')
+
+<!-- Titre de la page -->
 @section('title')
 S'inscrire
 @endsection
 
+<!--Bandeau commun en haut-->
 @section('header')
 <nav class="flex items-center bg-[#988568] flex-wrap">
       <a href="#" class="p-2 mr-4 inline-flex items-center">
@@ -26,7 +29,7 @@ S'inscrire
     </nav>
 @endsection
 
-
+<!-- Contenue de la page -->
 @section('content')
     <fieldset>
     <form method='POST' action={{ route("inscrireCompte") }} >

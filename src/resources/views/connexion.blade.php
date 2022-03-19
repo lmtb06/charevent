@@ -6,6 +6,7 @@
 Connexion
 @endsection
 
+<!--Bandeau commun en haut-->
 @section('header')
 <nav class="flex items-center bg-[#988568] flex-wrap">
       <a href="#" class="p-2 mr-4 inline-flex items-center">
