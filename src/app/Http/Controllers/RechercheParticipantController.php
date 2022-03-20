@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Evenement;
+use App\Models\Localisation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,7 +41,7 @@ class RechercheParticipantController extends Controller
         
         $tel = !is_null($request->tel);
 
-        // Traitement de la date
+        // Traitement de la date - avec age compris entre 1 et 150 par défaut si les champs sont vides
         $ageMin = 1;
         $ageMax = 150;
         if (filled($validated['age_min'])) $ageMin = $validated['age_min'];
@@ -49,14 +50,27 @@ class RechercheParticipantController extends Controller
         $min = Carbon::now()->subYears($ageMin)->toDate();
         $max = Carbon::now()->subYears($ageMax)->toDate();
 
-        // Requête si tous les critères concernant l'utilisateurs sont remplis
+        // Requête si tous les critères concernant l'utilisateurs
         $users = User::whereHasTelephone($tel)
             ->whereName($validated['name'])
             ->whereAge($min, $max)
             ->get();
 
+        $ville = $validated['ville'];
+        $dpt = $validated['departement'];
 
-        dd($users);
-        // Requête concernant la localisation de l'utilisateurs
+        // Requête concernant les localisations
+        $localisations = Localisation::when($dpt, function ($query, $dpt){
+            return $query->where('departement', $dpt);
+        })->when($ville, function ($query, $ville){
+            return $query->where('ville', 'like', '%'.$ville.'%');
+        })
+        ->distinct()->get();
+
+        // Filtre les utilisateurs correspondant aux localisations retournées
+        $users = $users->intersect($localisations);
+
+        // TODO: afficher le résultat
+
     }
 }
