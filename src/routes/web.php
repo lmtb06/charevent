@@ -8,6 +8,7 @@ use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ProfilSuppressionController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\InvitationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,10 +49,12 @@ Route::post('/recuperation', [RecuperationController::class, 'reset'])->name('re
 Route::get('/compte/edit/{id}', [ProfilController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
 Route::get('/compte/show/{id}', [ProfilController::class, 'show'])->whereNumber('id')->name('pageProfil');
 
-
 Route::get('/evenement/create', [EvenementCreationController::class, 'show'])->name('pageCreationEvenement');
-Route::get('/evenement/show/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
-Route::get('/evenement/edit/{id}', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
+Route::get('/evenement/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
+Route::get('/evenement/{id}/edit', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
+
+Route::get('/evenement/{id}/invitation', [InvitationController::class, 'showForm'])->whereNumber('id')->name('pageFromRechercheParticipants');
+Route::get('/evenement/{id}/invitation/resultat', [InvitationController::class, 'showResult'])->whereNumber('id')->name('pageResultRechercheParticipants');
 
 // Routes POST
 Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');

@@ -20,7 +20,7 @@
             <!--Titre de la page-->
             <section class=" p-4 flex content-center justify-center">
                 <div class="px-4 ">
-                    <h2 class="text-2xl font-bold">Evenement "ajout du nom de l'event"</h2>
+                    <h2 class="text-2xl font-bold">Evenement "{{$nomEvent}}"</h2>
                 </div>
             </section>
             <!--Bloc de recherche-->
