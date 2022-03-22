@@ -53,34 +53,6 @@ class ConnexionController extends Controller
 		return view('layout.connexion');
 	}
 
-	/**
-	 * Affiche la page de mot de passe oublié
-	 */
-	public function showOubliMDP(){
-		return view('recuperation');
-	}
-
-	public function traitementOubliMDP(Request $request){
-		$user = User::where('mail', $request->email)->first();
-
-		// Si un utilisateur a bien été récupéré :
-		if (!is_null($user)){
-			// Génération d'un nouveau mot de passe
-			$mdp = Str::random(8);
-			$hash = Hash::make($mdp);
-
-			// Enregistrement de ce dernier dans la db
-			$user->hashMDP = $hash;
-			$user->save();
-
-			// Envoi sa version en clair par mail
-			Mail::to($user->mail)->send(new MdpOublieMail($user, $mdp));
-		}
-
-		// Retourne vers la page de connexion
-		return redirect()->route('connexion');
-	}
-
 	public function username(){
 		return 'mail';
 	}
