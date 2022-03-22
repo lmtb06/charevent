@@ -31,7 +31,7 @@ class ConnexionRequest extends FormRequest
     {
         return [
 			'mail' => ['required', 'email'],
-			'password' => ['required', 'max:30', Password::min(8)->mixedCase()->numbers()->symbols()],
+			'password' => ['required'],
 		];
     }
 }
