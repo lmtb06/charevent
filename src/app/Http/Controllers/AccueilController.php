@@ -10,19 +10,19 @@ use Illuminate\Support\Facades\Auth;
 
 class AccueilController extends Controller
 {
-	public function show()
+	public function index()
 	{
 		if (Auth::check()){
 			// Afficher la page d'accueil si on est connecté
-			$events = Evenement::all();
+			$events = Evenement::paginate(20);
 
 			return view('accueil_connecte', [
 				"events" => $events,
 			]);
 		}else{
 
-			// Affiche la page de connexion sinon
-			return view('layout.connection');
+			// Redirige vers la page de connexion sinon
+			return redirect()->route('connexion');
 		}
 
 	}

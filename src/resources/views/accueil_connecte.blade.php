@@ -12,9 +12,18 @@
         <main>
             <section>
             <!--Div de la barre navigation en haut de l'écran à ajouter
-            
-            
+
+
             -->
+                <form action="{{ route('deconnexion') }}" method="post">
+                    @csrf
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Deconnexion
+                    </button>
+                </form>
+
+
+
             </section>
             <section class=" p-4 flex content-center justify-center">
                 <div class="px-4 ">
@@ -31,7 +40,7 @@
                             </path>
                         </svg>
                         <input type="text" placeholder="Search..." class="ml-6 bg-transparent text-black">
-                        
+
                     </div>
                 </div>
                 <div class="bg-orange-200 flex items-center justify-center text-gray-300">
@@ -96,7 +105,7 @@
                     </div>
                     <!--Petit Rectangle FIN-->
 
-                    @endforeach                        
+                    @endforeach
                     @else
                     <div class=" m-1  text-xs flex items-center justify-center">
                         <p class="p-1 bg-white border-2  rounded-3xl border-black ">

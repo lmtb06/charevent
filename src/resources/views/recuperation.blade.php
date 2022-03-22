@@ -12,7 +12,7 @@
         <p>Un mot de passe temporaire vous sera envoyer par email.
             Attention, si nous ne reconnaissons pas votre adresse e-mail, vous ne recevrez pas de nouveau mot de passe.
         </p>
-        <form action="{{route('traitementOubli')}}" method="post">
+        <form action="{{route('recuperation')}}" method="post">
             @csrf
             <label for="email">Rentrez votre adresse e-mail ici :</label>
             <input type="email" name="email" id="email" required>

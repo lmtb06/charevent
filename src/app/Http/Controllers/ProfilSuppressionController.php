@@ -23,7 +23,7 @@ class ProfilSuppressionController extends Controller
     }
 
     /**
-     * Supprime le compte de l'utilisateur connecté et transfert les données de son compte 
+     * Supprime le compte de l'utilisateur connecté et transfert les données de son compte
      * dans la table d'archivage dédiée
      *
      * @return Response
@@ -33,9 +33,9 @@ class ProfilSuppressionController extends Controller
         $creds = $request->validate([
 			'password' => 'required'
 			]);
-        
+
         $user = User::findOrFail($id);
-        
+
         $mdp = Hash::check($creds["password"], $user->hashMDP);
         if($mdp) {
 
@@ -57,11 +57,11 @@ class ProfilSuppressionController extends Controller
             Auth::logout();
 
             response()->json(['message' => 'Le compte a été supprimé avec succès.']);
-            return redirect()->route('pageAccueil');
+            return redirect()->route('accueil');
         }
 
         response()->json(['message' => 'Le mot de passe entré est incorrecte.']);
-        return redirect()->route('pageAccueil');
+        return redirect()->route('accueil');
 
     }
 }

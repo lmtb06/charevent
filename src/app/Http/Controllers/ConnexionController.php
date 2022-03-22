@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ConnexionRequest;
 use App\Models\User;
 use App\Models\Evenement;
 use App\Mail\MdpOublieMail;
@@ -14,49 +15,55 @@ use phpDocumentor\Reflection\Location;
 
 class ConnexionController extends Controller
 {
-	public function authenticate(Request $request)
+    public function logout(Request $request)
+    {
+        // Deconnecter l'utilisateur
+        Auth::logout();
+
+		$request->session()->invalidate();
+
+		$request->session()->regenerateToken();
+        // Redirection
+        return redirect()->route('accueil');
+    }
+
+	public function login(ConnexionRequest $request)
 	{
 		// Valider le formulaire
-		$creds = $request->validate([
-			'mail' => 'required|email',
-			'hashMDP' => 'required',
-			]);
+		$creds = $request->validated();
 
 		// Connecter
-		if(Auth::attempt($creds)){
+		if(Auth::attempt(['mail' => $creds['mail'], 'hashMDP' => $creds['password']])){
             $request->session()->regenerate();
-
-			$events = Evenement::all();
-			return redirect()->route('pageAccueil', [
-				'events' => $events,
-			]);			
+			return redirect()->route('accueil');
 		}
 
 
 		return back()->withErrors([
-			'mail' => "L'adresse e-mail n'est pas reconnue par nos services, ou est invalide.",
-			'hashMDP' => "Le mot de passe est erroné."
+			'default' => ['L\'adresse mail ou le mot de passe n\'est pas valide']
 		]);
-		
+
 	}
 
-	public function show()
+	public function index()
 	{
-		// Afficher la page de connexion
-		return view('layout.connection');
+		// Les utilisateurs connectés ne peuvent pas voir la page de connexion
+		if (Auth::check())
+			abort(403, 'Veuillez vous déconnecter d\'abord');
+		return view('layout.connexion');
 	}
 
 	/**
 	 * Affiche la page de mot de passe oublié
 	 */
 	public function showOubliMDP(){
-		return view('oubliMDP');
+		return view('recuperation');
 	}
 
 	public function traitementOubliMDP(Request $request){
 		$user = User::where('mail', $request->email)->first();
 
-		// Si un utilisateur a bien été récupéré : 
+		// Si un utilisateur a bien été récupéré :
 		if (!is_null($user)){
 			// Génération d'un nouveau mot de passe
 			$mdp = Str::random(8);
@@ -71,7 +78,7 @@ class ConnexionController extends Controller
 		}
 
 		// Retourne vers la page de connexion
-		return redirect()->route('pageConnexion');
+		return redirect()->route('connexion');
 	}
 
 	public function username(){

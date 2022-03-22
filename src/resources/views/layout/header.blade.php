@@ -1,4 +1,4 @@
-@extends('layout.connection')
+@extends('layout.connexion')
 <div class="bg-gray-900">
   <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
     <div class="relative flex items-center justify-between">
@@ -41,7 +41,7 @@
             <path fill="currentColor" d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"></path>
           </svg>
         </button>
-        
+
         <div class="absolute top-0 left-0 w-full">
           <div class="p-5 bg-white border rounded shadow-sm">
             <div class="flex items-center justify-between mb-4">
@@ -88,7 +88,7 @@
             </nav>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>
