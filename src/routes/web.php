@@ -23,46 +23,58 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Routes Accueil
+// Routes Accueil, accessible connecté ou non
 Route::get('/', [AccueilController::class, 'index'])->name('accueil');
 
-// Routes Inscription
-Route::get('/inscription', [InscriptionController::class, 'index'])->name('inscription');
-Route::post('/inscription', [InscriptionController::class, 'create'])->name('inscription');
 
-// Routes Authentification
-Route::get('/connexion', [ConnexionController::class, 'index'])->name('connexion');
-Route::post('/connexion', [ConnexionController::class, 'login'])->name('connexion');
-Route::post('/deconnexion', [ConnexionController::class, 'logout'])->name('deconnexion');
+// On ne peut accéder à ces routes que si l'on est pas connecté
+Route::group(['middleware' => 'guest'], function(){
+    // Routes Inscription
+    Route::get('/inscription', [InscriptionController::class, 'index'])->name('inscription');
+    Route::post('/inscription', [InscriptionController::class, 'create'])->name('inscription');
 
-// Routes Recupération mot de passe
-Route::get('/recuperation', [RecuperationController::class, 'index'])->name('recuperation');
-Route::post('/recuperation', [RecuperationController::class, 'reset'])->name('recuperation');
+    // Routes Authentification
+    Route::get('/connexion', [ConnexionController::class, 'index'])->name('connexion');
+    Route::post('/connexion', [ConnexionController::class, 'login'])->name('connexion');
 
+    // Routes Recupération mot de passe
+    Route::get('/recuperation', [RecuperationController::class, 'index'])->name('recuperation');
+    Route::post('/recuperation', [RecuperationController::class, 'reset'])->name('recuperation');
 
+});
 
 
 
 /**
- * URL à utiliser pour afficher les pages correspondantes / déconnecter un utilisateur
+ * Groupe de routes nécessitant à l'utilisateur d'être authentifier
  */
-Route::get('/compte/edit/{id}', [ProfilController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
-Route::get('/compte/show/{id}', [ProfilController::class, 'show'])->whereNumber('id')->name('pageProfil');
+Route::group(['middleware' => 'auth'], function(){
+    Route::post('/deconnexion', [ConnexionController::class, 'logout'])->name('deconnexion');
 
-Route::get('/evenement/create', [EvenementCreationController::class, 'show'])->name('pageCreationEvenement');
-Route::get('/evenement/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
-Route::get('/evenement/{id}/edit', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
+    /**
+     * URL à utiliser pour afficher les pages correspondantes / déconnecter un utilisateur
+     */
+    Route::get('/compte/edit/{id}', [ProfilController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
+    Route::get('/compte/show/{id}', [ProfilController::class, 'show'])->whereNumber('id')->name('pageProfil');
 
-Route::get('/evenement/{id}/invitation', [InvitationController::class, 'showForm'])->whereNumber('id')->name('pageFromRechercheParticipants');
-Route::get('/evenement/{id}/invitation/resultat', [InvitationController::class, 'showResult'])->whereNumber('id')->name('pageResultRechercheParticipants');
 
-// Routes POST
-Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
-// Routes POST (traitement de données provenant des pages webs)
-Route::post('/compte/update/{id}', [ProfilController::class, 'update'])->whereNumber('id')->name('modifierCompte');
-Route::post('/compte/delete/{id}', [ProfilSuppressionController::class, 'delete'])->whereNumber('id')->name('effacerCompte');
+    Route::get('/evenement/{id}/invitation', [InvitationController::class, 'showForm'])->whereNumber('id')->name('pageFromRechercheParticipants');
+    Route::get('/evenement/{id}/invitation/resultat', [InvitationController::class, 'showResult'])->whereNumber('id')->name('pageResultRechercheParticipants');
 
-Route::post('/evenement/store', [EvenementCreationController::class, 'store'])->name('creerEvenement');
-Route::post('/evenement/update/{id}', [EvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
-Route::post('/evenement/delete/{id}', [EvenementController::class, 'delete'])->name('effacerEvenememt')->whereNumber('id');
+
+    Route::get('/evenement/create', [EvenementCreationController::class, 'show'])->name('pageCreationEvenement');
+    Route::get('/evenement/show/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
+    Route::get('/evenement/edit/{id}', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
+
+    // Routes POST
+    Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
+    // Routes POST (traitement de données provenant des pages webs)
+    Route::post('/compte/update/{id}', [ProfilController::class, 'update'])->whereNumber('id')->name('modifierCompte');
+    Route::post('/compte/delete/{id}', [ProfilSuppressionController::class, 'delete'])->whereNumber('id')->name('effacerCompte');
+
+    Route::post('/evenement/store', [EvenementCreationController::class, 'store'])->name('creerEvenement');
+    Route::post('/evenement/update/{id}', [EvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
+    Route::post('/evenement/delete/{id}', [EvenementController::class, 'delete'])->name('effacerEvenememt')->whereNumber('id');
+
+});
 

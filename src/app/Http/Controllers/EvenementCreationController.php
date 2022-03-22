@@ -64,7 +64,7 @@ class EvenementCreationController extends Controller
 			$evenement->expiration = $newDateTime;
 		}
 		$evenement->save();
-		dd($evenement);
+
 		// Redirection vers la page d'accueil
 		return redirect()->route('pageEvenement', [
 			'id' => $evenement->id_evenement
