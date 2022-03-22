@@ -39,7 +39,7 @@
                         </div>
                         <!--Partie de droite Departement (champs)-->
                         <div class=" bg-white p-2 border-2 border-black text-ms m-1 mr-5">
-                            <input type="text" placeholder="Département..." class=" bg-transparent text-black">
+                            <input type="numeric" placeholder="Département..." class=" bg-transparent text-black">
                         </div>
                         <!--Partie de gauche Ville (texte)-->
                         <div class="m-1 font-bold flex content-center justify-center mt-3">
@@ -55,7 +55,7 @@
                         </div>
                         <!--Partie de droite Age minimal (champs)-->
                         <div class=" bg-white p-2 border-2 border-black text-ms m-1 mr-5 ">
-                            <input type="text" placeholder="Age minimum..." class=" bg-transparent text-black">
+                            <input type="numeric" placeholder="Age minimum..." class=" bg-transparent text-black">
                         </div>
                         <!--Partie de gauche Age maximal (texte)-->
                         <div class="m-1 font-bold flex content-center justify-center mt-3">
@@ -63,7 +63,7 @@
                         </div>
                         <!--Partie de droite Age maximal (champs)-->
                         <div class=" bg-white p-2 border-2 border-black text-ms m-1 mr-5">
-                            <input type="text" placeholder="Age maximum..." class=" bg-transparent text-black">
+                            <input type="numeric" placeholder="Age maximum..." class=" bg-transparent text-black">
                         </div>
 
                         <!--Partie de gauche numero de telephone requis (texte)-->
@@ -79,13 +79,9 @@
                     <!--Bouton submit-->
                     <div class=" mt-2 flex items-center justify-center">
                             <button type="submit" class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
-                                    LANCER LA RECHERCHE
+                                    Lancer la recherche
                             </button>
                     </div>
-
-
-
-
                 </div>
             </section>
         </main>

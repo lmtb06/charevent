@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Evenement;
-use App\Models\User;
-use Illuminate\Http\Request;
-
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Evenement;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InvitationController extends Controller
 {
     // Afficher le formulaire de recherche
     public function showForm($id)
 	{
-        $nomEvent = Evenement::findOrFail($id)->titre;
+        $event = Evenement::findOrFail($id)->titre;
+
+        // Si l'utilisateur identifié n'est pas le propriétaire de l'événement
+        if ($event->id_createur != Auth::id()){
+            return redirect()->route('pageEvenement',
+                ['id' => $event->id_evenement]);
+        }
         return view('invitation',[
-            'nomEvent' => $nomEvent,
+            'nomEvent' => $event->titre,
         ]);
 	}
 

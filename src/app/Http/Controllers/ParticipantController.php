@@ -19,7 +19,7 @@ class ParticipantController extends Controller
      * @param int $id
      * @return void
      */
-    public function postule($id){
+    public function create($id){
         $event = Evenement::findorFail($id);
         $user_id = Auth::id();
         
@@ -49,7 +49,7 @@ class ParticipantController extends Controller
      * @param int $id
      * @return void
      */
-    public function quitte ($id){
+    public function delete ($id){
         $event = Evenement::findorFail($id);
         $user_id = Auth::id();
         $prenom = User::find($user_id)->prenom;

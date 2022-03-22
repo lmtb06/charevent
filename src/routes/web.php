@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfilSuppressionController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +62,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/evenement/{id}/invitation', [InvitationController::class, 'showForm'])->whereNumber('id')->name('pageFromRechercheParticipants');
     Route::get('/evenement/{id}/invitation/resultat', [InvitationController::class, 'showResult'])->whereNumber('id')->name('pageResultRechercheParticipants');
 
+    Route::get('/evenement/{id}/canditature', [ParticipantController::class, 'create'])->whereNumber('id')->name('postule');
 
     Route::get('/evenement/create', [EvenementCreationController::class, 'show'])->name('pageCreationEvenement');
     Route::get('/evenement/show/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');

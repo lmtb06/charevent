@@ -94,11 +94,11 @@
                              <!--Petit bloc une liste a mettre en boucle-->
                              <div class=" bg-gradient-to-b from-white to-white-500 m-1 border-2 border-black rounded-2xl">
                                  <!-- Un participant -->
-                                 <a href="{{route('pageProfil', ['id' => $p->id_compte])}}">
-                                 <div class="m-1 grid px-1 grid-cols-2">
-                                    <div>
-                                        <h2 class="ml-5">{{$p->prenom}} {{$p->nom}}</h2>
-                                    </div>
+                                <a href="{{route('pageProfil', ['id' => $p->id_compte])}}">
+                                    <div class="m-1 grid px-1 grid-cols-2">
+                                        <div>
+                                            <h2 class="ml-5">{{$p->prenom}} {{$p->nom}}</h2>
+                                        </div>
                                     <div>
                                         <h2 class="ml-5 flex items-center justify-center">{{$p->codePostal}}</h2>
                                     </div>                                     
@@ -117,13 +117,22 @@
             <section class="mt-2 flex items-center justify-center" >
                 <!-- Bouton Inviter à l'évènement -->
                 <div>
-                    <a href="">
-                    <button type="submit"
-                     class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
-                            Inviter des participants
-                    </button>
-                    </a>
+                    @if ($event->id_createur == Auth::id())
+                        <a href="{{route('pageFromRechercheParticipants', ['id' => $event->id_evenement])}}">
+                        <button type="submit"
+                        class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
+                                Inviter des participants
+                        </button>
+                        </a>
+                    @else
+                        <a href="{{route('postule', ['id' => $user->id_compte])}}">
+                        <button type="submit"
+                        class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
+                                Postuler
+                        </button>
+                        </a>
 
+                    @endif
                 </div>
             </section>
             
