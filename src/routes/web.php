@@ -35,11 +35,11 @@ Route::get('/compte/show/{id}', [ProfilController::class, 'show'])->whereNumber(
 Route::get('/deconnexion', DeconnexionController::class)->name('pageDeconnexion');
 
 Route::get('/evenement/create', [EvenementCreationController::class, 'show'])->name('pageCreationEvenement');
-Route::get('/evenement/show/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
-Route::get('/evenement/edit/{id}', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
+Route::get('/evenement/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
+Route::get('/evenement/{id}/edit', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
-Route::get('/evenement/edit/{id}/recherche/form', [InvitationController::class, 'showForm'])->whereNumber('id')->name('pageFromRechercheParticipants');
-Route::get('/evenement/edit/{id}/recherche/result', [InvitationController::class, 'showResult'])->whereNumber('id')->name('pageResultRechercheParticipants');
+Route::get('/evenement/{id}/invitation', [InvitationController::class, 'showForm'])->whereNumber('id')->name('pageFromRechercheParticipants');
+Route::get('/evenement/{id}/invitation/resultat', [InvitationController::class, 'showResult'])->whereNumber('id')->name('pageResultRechercheParticipants');
 
 // Routes POST (traitement de données provenant des pages webs)
 Route::post('/inscription', [InscriptionController::class, 'store'])->name('inscrireCompte');
