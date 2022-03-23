@@ -70,6 +70,8 @@ class RechercheParticipantController extends Controller
         // Filtre les utilisateurs correspondant aux localisations retournées
         $users = $users->intersect($localisations);
 
+        dd($users);
+
         // TODO: afficher le résultat
 
     }

@@ -20,7 +20,7 @@ class EvenementController extends Controller
 		// Récupération de la demande la plus récente 
 		$demande = NotificationDemandeParticipation::where([
 			['id_evenement', $id],
-			['id_compte', $user->id_compte],
+			['id_envoyeur', $user->id_compte],
 		])->orderBy('dateReception', 'DESC')->first();
 
 	

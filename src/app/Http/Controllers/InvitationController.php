@@ -22,8 +22,8 @@ class InvitationController extends Controller
                 ['id' => $event->id_evenement]);
         }
         return view('invitation',[
-            'nomEvent' => $event->titre,
-            'idEvent' => $event->id_evenement,
+            'user' => User::find(Auth::id()),
+            'event' => $event
         ]);
 	}
 
