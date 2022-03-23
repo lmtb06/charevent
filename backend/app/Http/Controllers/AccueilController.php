@@ -20,7 +20,6 @@ class AccueilController extends Controller
 				"events" => $events,
 			]);
 		}else{
-
 			// Redirige vers la page de connexion sinon
 			return redirect()->route('connexion');
 		}
