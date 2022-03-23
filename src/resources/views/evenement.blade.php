@@ -127,7 +127,7 @@
 
                         <!-- Bouton pour modifier l'événement -->
 
-                        <a href="">
+                        <a href="{{route('pageModificationEvenement', ['id' => $event->id_evenement])}}">
                         <button type="submit"
                         class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
                                 Modifier l'événement

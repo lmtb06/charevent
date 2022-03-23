@@ -7,6 +7,7 @@ use App\Models\Evenement;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\EvenementRequest;
 
 class EvenementCreationController extends Controller
 {
@@ -14,25 +15,16 @@ class EvenementCreationController extends Controller
         return view('creationEvenement');
     }
 
-    public function store(Request $request){
+    public function store(EvenementRequest $request){
         // Valider le formulaire
-		$validated = $request->validate([
-		'titre' => 'required|string|max:40',
-		'description' => 'required|string|min:5|max:1000',
-		'departement' => 'required|numeric|digits_between:1,3',
-		'ville' => 'required|alpha_dash',
-		'codePostal' => 'required|numeric|digits:5',
-		'dateDebut' => 'required|date|after:today',
-		'dateFin' => 'nullable|date|after:dateDebut',
-		'expiration' => 'nullable',
-		]);
+		$validated = $request->validated();
 
 
 		// Génère une entrée dans localisation si nécessaire
 		$local = Localisation::firstOrCreate([
-			'ville' => $request->ville,
-			'codePostal' => $request->codePostal,
-			'departement' => $request->departement,
+			'ville' => $validated['ville'],
+			'codePostal' => $validated['codePostal'],
+			'departement' => $request['departement'],
 		]);
 
 		// Créer une entrée dans la table comptes_actifs
@@ -41,9 +33,9 @@ class EvenementCreationController extends Controller
         $evenement = Evenement::create([
             'id_createur' => $user_id,
             'id_localisation' => $local->id_localisation,
-            'titre' => $request->titre,
-            'description' => $request->description,
-            'dateDebut' => $request->dateDebut,
+            'titre' => $validated['titre'],
+            'description' => $validated['description'],
+            'dateDebut' => $validated['dateDebut'],
             'dateFin' => $request->dateFin,
         ]);
 

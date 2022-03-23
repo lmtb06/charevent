@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Evenement;
+use App\Models\Localisation;
 use App\Models\EvenementArchive;
-use App\Models\NotificationDemandeParticipation;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\EvenementRequest;
+use App\Models\NotificationDemandeParticipation;
 
 class EvenementController extends Controller
 {
     //Affiche l'evenement
 	public function show($id)
 	{
-
-        $user = Auth::user();
         $event = Evenement::find($id);
+		$user = User::find(Auth::id());
 
 		// Récupération de la demande la plus récente 
 		$demande = NotificationDemandeParticipation::where([
@@ -35,28 +37,56 @@ class EvenementController extends Controller
 	//Affiche le formulaire pour modifier l'evenement
 	public function edit($id){
 		$evenement = Evenement::findOrFail($id);
-		print($evenement);
+		if (Auth::id() != $evenement->id_createur){
+			return $this->show($id);
+		}
+
+		return view('modifierEvent', [
+			'user' => User::find(Auth::id()),
+			'event' => $evenement,
+			'lieu' => $evenement->localisation,
+		]);
+	
 	}
 	
-	public function update($id, Request $request)
+	public function update($id, EvenementRequest $request)
 	{
 		// Valider le formulaire
-		$validated = $request->validate([
-			'titre' => 'required|string|max:40',
-			'description' => 'required|string|min:50|max:1000',
-			'dateDebut' => 'required|date|after:today',
-			'dateFin' => 'nullable|date|after:dateDebut',
-			'expiration' => 'nullable',
-			]);
+		$validated = $request->validated();
 		
 		$evenement = Evenement::findOrFail($id);
 
+		// Génère une entrée dans localisation si nécessaire
+		$local = Localisation::firstOrCreate([
+			'ville' => $validated['ville'],
+			'codePostal' => $validated['codePostal'],
+			'departement' => $request['departement'],
+		]);
+
 		// Mettre à jour le modele utilisateur
-		if ($request->filled('titre')) $evenement->titre = $request->titre;
-        if ($request->filled('description')) $evenement->description = $request->description;
-        if ($request->filled('dateDebut')) $evenement->dateDebut = $request->dateDebut;
-		if ($request->filled('dateFin')) $evenement->dateFin = $request->dateFin;
-        if ($request->filled('expiration')) $evenement->expiration = $request->expiration;
+		if ($request->filled('titre')) $evenement->titre = $validated['titre'];
+        if ($request->filled('description')) $evenement->description = $validated['description'];
+        if ($request->filled('dateDebut')) $evenement->dateDebut = $validated['dateDebut'];
+		if ($request->filled('dateFin')) $evenement->dateFin = $validated['dateFin'];
+        if ($request->filled('expiration')) $evenement->expiration = $validated['expiration'];
+		$evenement->id_localisation = $local->id_localisation;
+
+		if ($request->expiration != null){
+			$newDateTime = Carbon::now();
+
+			switch ($request->expiration){
+				case "option1":
+					$newDateTime->addYear();
+					break;
+				case "option2":
+					$newDateTime->addMonths(6);
+					break;
+				case "option3":
+					$newDateTime->addMonths(3);
+					break;
+			}
+			$evenement->expiration = $newDateTime;
+		}
 		$evenement->saveOrFail();	
 
 		// Redirection vers la page d'evenement
@@ -66,6 +96,10 @@ class EvenementController extends Controller
 	public function delete($id){
 		$event = Evenement::find($id);
 
+		if (Auth::id() != $event->id_createur){
+			return $this->show($id);
+		}
+
 		$eventarchive = EvenementArchive::create([
             'id_createur' => $event -> id_createur,
             'id_localisation' => $event -> id_localisation,
@@ -74,6 +108,8 @@ class EvenementController extends Controller
             'dateDebut' => $event -> dateDebut,
             'dateFin' => $event -> dateFin,
         ]);
+
+		// Prévenir tous les participants ici
 
 		$event -> delete();
 		

@@ -74,7 +74,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('/evenement/store', [EvenementCreationController::class, 'store'])->name('creerEvenement');
     Route::post('/evenement/update/{id}', [EvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
-    Route::post('/evenement/delete/{id}', [EvenementController::class, 'delete'])->name('effacerEvenememt')->whereNumber('id');
+    Route::post('/evenement/delete/{id}', [EvenementController::class, 'delete'])->name('effacerEvenement')->whereNumber('id');
 
     Route::post('/evenement/{id}/invitation/resultat', [ParticipantController::class, 'search'])->name('rechercheParticipant');
     Route::post('/evenement/{id}/canditature', [ParticipantController::class, 'create'])->whereNumber('id')->name('postule');

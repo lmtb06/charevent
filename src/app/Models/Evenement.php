@@ -43,11 +43,11 @@ class Evenement extends Model
 
     public function localisation()
     {
-        return $this->belongsTo(Localisation::class, 'id_evenement');
+        return $this->belongsTo(Localisation::class, 'id_localisation');
     }
 
     public function besoins()
     {
-        return $this->hasMany(BesoinActif::class, 'id_evenement');
+        return $this->hasMany(BesoinActif::class, 'id_besoin');
     }
 }
