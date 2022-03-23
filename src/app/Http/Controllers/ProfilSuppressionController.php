@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Localisation;
 use App\Models\CompteArchive;
+use App\Models\Evenement;
+use App\Models\Participant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -37,31 +39,40 @@ class ProfilSuppressionController extends Controller
         $user = User::findOrFail($id);
 
         $mdp = Hash::check($creds["password"], $user->hashMDP);
-        if($mdp) {
-
-            $userarchive = CompteArchive::create([
-                'mail' => $user->mail,
-                'hashMDP' => $user->hashMDP,
-                'nom' => $user->nom,
-                'prenom' => $user->prenom,
-                'dateNaissance' => $user->dateNaissance,
-                'telephone' => $user->telephone,
-                'photo' => $user->photo,
-                'notificationMail' => $user->notificationMail,
-                'id_residence' => $user->id_residence,
-                'dateCreationCompte' => $user->dateCreationCompte,
-                'dateModifCompte' => $user->dateModifCompte
-            ]);
-
-            $user->delete();
-            Auth::logout();
-
-            response()->json(['message' => 'Le compte a été supprimé avec succès.']);
+        if(!$mdp) {
+            response()->json(['message' => 'Le mot de passe entré est incorrecte.']);
             return redirect()->route('accueil');
         }
+        
+        $userarchive = CompteArchive::create([
+            'mail' => $user->mail,
+            'hashMDP' => $user->hashMDP,
+            'nom' => $user->nom,
+            'prenom' => $user->prenom,
+            'dateNaissance' => $user->dateNaissance,
+            'telephone' => $user->telephone,
+            'photo' => $user->photo,
+            'notificationMail' => $user->notificationMail,
+            'id_residence' => $user->id_residence,
+            'dateCreationCompte' => $user->dateCreationCompte,
+            'dateModifCompte' => $user->dateModifCompte
+        ]);
 
-        response()->json(['message' => 'Le mot de passe entré est incorrecte.']);
+        // Récupération des événements crées par cet utilisateur
+        $events = Evenement::where('id_createur', $user->id_compte)->get();
+        
+        foreach ($events as $event) {
+            Participant::where('id_evenement', $event->id_evenement)->delete();
+        }
+
+        $user->delete();
+        Auth::logout();
+
+        response()->json(['message' => 'Le compte a été supprimé avec succès.']);
         return redirect()->route('accueil');
+    
+
+        
 
     }
 }

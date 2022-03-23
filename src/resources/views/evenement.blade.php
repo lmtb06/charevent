@@ -124,6 +124,16 @@
                                 Inviter des participants
                         </button>
                         </a>
+
+                        <!-- Bouton pour modifier l'événement -->
+
+                        <a href="">
+                        <button type="submit"
+                        class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
+                                Modifier l'événement
+                        </button>
+                        </a>
+
                     @else
                     <form method="POST" action="{{route('postule', ['id' =>  $event->id_evenement])}}">
                         @csrf
@@ -132,7 +142,7 @@
                         value="Postuler"
                         @if (!is_null($demande))
                             @if (!isset($demande->accepte) && !isset($demande->dateChoix))
-                                disabled
+                                hidden disabled
                             @endif
                         @endif
                         />
