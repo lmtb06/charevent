@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Evenement;
 use App\Models\User;
-use App\Models\Localisation;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AccueilController extends Controller
@@ -17,6 +15,8 @@ class AccueilController extends Controller
 			$events = Evenement::paginate(20);
 
 			return view('accueil_connecte', [
+				"user" => User::find(Auth::id()),
+				"message" => "Les événements de l'association",
 				"events" => $events,
 			]);
 		}else{
@@ -24,6 +24,5 @@ class AccueilController extends Controller
 			// Redirige vers la page de connexion sinon
 			return redirect()->route('connexion');
 		}
-
 	}
 }
