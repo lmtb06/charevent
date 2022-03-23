@@ -32,7 +32,7 @@ class ParticipantController extends Controller
             'id_destinataire' => $event->id_createur,
             'id_envoyeur' => $user_id,
             'id_evenement' => $event->id_evenement,
-            'date_receeption' => Carbon::now()->toDate(),
+            'dateReception' => Carbon::now()->toDate(),
         ]);      
 
 
@@ -72,7 +72,7 @@ class ParticipantController extends Controller
             'id_destinataire' => $event->id_createur,
             'id_envoyeur' => $user_id,
             'id_evenement' => $event->id_evenement,
-            'date_reception' => Carbon::now()->toDate(),
+            'dateReception' => Carbon::now()->toDate(),
             'message' => $prenom . " a quitté l'événement ". $event->titre. "."
         ]);      
 

@@ -14,7 +14,7 @@ class InvitationController extends Controller
     // Afficher le formulaire de recherche
     public function showForm($id)
 	{
-        $event = Evenement::findOrFail($id)->titre;
+        $event = Evenement::findOrFail($id);
 
         // Si l'utilisateur identifié n'est pas le propriétaire de l'événement
         if ($event->id_createur != Auth::id()){
@@ -23,6 +23,7 @@ class InvitationController extends Controller
         }
         return view('invitation',[
             'nomEvent' => $event->titre,
+            'idEvent' => $event->id_evenement,
         ]);
 	}
 
@@ -32,8 +33,9 @@ class InvitationController extends Controller
 
         $data = $request->all();
 
-        $user=User::select('departement','ville','dateNaissance','numeroTelephone','nom','prenom')
+        $user= User::select('departement','ville','dateNaissance','numeroTelephone','nom','prenom')
                     ->join('localisations','comptes_actifs.id_residence','localisations.id_localisation')
+
                     ->when(!empty($data['departement']) , function ($query) use($data){
                         return $query->where('departement', $data['departement']);
                         })
@@ -41,10 +43,10 @@ class InvitationController extends Controller
                         return $query->where('ville' ,$data['ville']);
                         })
                     ->when(!empty($data['ageMin']) , function ($query) use($data){
-                        return $query->whereDate('dateNaissance', '<', Carbon::now()->subYears($data['ageMin'])->toDateString());
+                        return $query->whereDate('dateNaissance', '<', Carbon::now()->subYears($data['ageMax'])->toDate());
                         })
                     ->when(!empty($data['ageMax']) , function ($query) use($data){
-                        return $query->whereDate('dateNaissance', '>', Carbon::now()->subYears($data['ageMax'])->toDateString());
+                        return $query->whereDate('dateNaissance', '>', Carbon::now()->subYears($data['ageMin'])->toDate());
                         })
                     ->when(!empty($data['tel']) , function ($query) use($data){
                         return $query->where('numeroTelephone', '<>', 'null');

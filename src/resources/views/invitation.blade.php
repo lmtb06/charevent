@@ -25,6 +25,8 @@
             </section>
             <!--Bloc de recherche-->
             <section class="p-4 flex items-center justify-center" >
+                <form method='POST' action="{{route('pageResultRechercheParticipants', ['id' => $idEvent])}}">
+                    @csrf
                 <!--Le gros rectangle-->
                 <div class="mt-2 border-2 border-black m-1 rounded-2xl bg-gradient-to-b from-white to-white-700">
                     <!-- Titre recherche de participants-->
@@ -78,11 +80,12 @@
                     </div>
                     <!--Bouton submit-->
                     <div class=" mt-2 flex items-center justify-center">
-                            <button type="submit" class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
-                                    Lancer la recherche
-                            </button>
+                            <input type="submit" class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 "
+                                value="Lancer la recherche"
+                            />
                     </div>
                 </div>
+                </form>
             </section>
         </main>
     </body>

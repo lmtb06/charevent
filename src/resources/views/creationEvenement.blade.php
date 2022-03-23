@@ -34,8 +34,7 @@
                 <dt class="text-sm font-medium justify-center text-gray-500">Description de l'événement</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                   <textarea class="shadow appearance-none border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                  id="description" name="description" type="text" placeholder="">
-                </textarea> 
+                  id="description" name="description" type="text" placeholder=""></textarea> 
                 </dd>
               </div>
 

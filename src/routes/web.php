@@ -60,9 +60,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     Route::get('/evenement/{id}/invitation', [InvitationController::class, 'showForm'])->whereNumber('id')->name('pageFromRechercheParticipants');
-    Route::get('/evenement/{id}/invitation/resultat', [InvitationController::class, 'showResult'])->whereNumber('id')->name('pageResultRechercheParticipants');
 
-    Route::get('/evenement/{id}/canditature', [ParticipantController::class, 'create'])->whereNumber('id')->name('postule');
 
     Route::get('/evenement/create', [EvenementCreationController::class, 'show'])->name('pageCreationEvenement');
     Route::get('/evenement/show/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
@@ -77,6 +75,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/evenement/store', [EvenementCreationController::class, 'store'])->name('creerEvenement');
     Route::post('/evenement/update/{id}', [EvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
     Route::post('/evenement/delete/{id}', [EvenementController::class, 'delete'])->name('effacerEvenememt')->whereNumber('id');
+
+    Route::post('/evenement/{id}/invitation/resultat', [InvitationController::class, 'showResult'])->whereNumber('id')->name('pageResultRechercheParticipants');
+    Route::post('/evenement/{id}/canditature', [ParticipantController::class, 'create'])->whereNumber('id')->name('postule');
 
 });
 

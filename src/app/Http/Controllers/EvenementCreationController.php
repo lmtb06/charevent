@@ -18,7 +18,7 @@ class EvenementCreationController extends Controller
         // Valider le formulaire
 		$validated = $request->validate([
 		'titre' => 'required|string|max:40',
-		'description' => 'required|string|min:50|max:1000',
+		'description' => 'required|string|min:5|max:1000',
 		'departement' => 'required|numeric|digits_between:1,3',
 		'ville' => 'required|alpha_dash',
 		'codePostal' => 'required|numeric|digits:5',

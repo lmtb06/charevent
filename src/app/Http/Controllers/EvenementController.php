@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Evenement;
 use App\Models\EvenementArchive;
+use App\Models\NotificationDemandeParticipation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,11 +16,19 @@ class EvenementController extends Controller
 
         $user = Auth::user();
         $event = Evenement::find($id);
+
+		// Récupération de la demande la plus récente 
+		$demande = NotificationDemandeParticipation::where([
+			['id_evenement', $id],
+			['id_compte', $user->id_compte],
+		])->orderBy('dateReception', 'DESC')->first();
+
 	
         return view('evenement',[
             'user' => $user,
             'event' => $event,
             'participants' => $event->comptes,
+			'demande' => $demande,
         ]);
 	}
 

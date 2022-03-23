@@ -125,12 +125,18 @@
                         </button>
                         </a>
                     @else
-                        <a href="{{route('postule', ['id' => $user->id_compte])}}">
-                        <button type="submit"
-                        class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 ">
-                                Postuler
-                        </button>
-                        </a>
+                    <form method="POST" action="{{route('postule', ['id' =>  $event->id_evenement])}}">
+                        @csrf
+                        <input type="submit"
+                        class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 "
+                        value="Postuler"
+                        @if (!is_null($demande))
+                            @if (!isset($demande->accepte) && !isset($demande->dateChoix))
+                                disabled
+                            @endif
+                        @endif
+                        />
+                    </form>
 
                     @endif
                 </div>
