@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\ConnexionController;
 use App\Http\Controllers\EvenementCreationController;
@@ -6,11 +8,9 @@ use App\Http\Controllers\DeconnexionController;
 use App\Http\Controllers\RecuperationController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ProfilSuppressionController;
-use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\ParticipantController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,8 +76,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/evenement/update/{id}', [EvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
     Route::post('/evenement/delete/{id}', [EvenementController::class, 'delete'])->name('effacerEvenememt')->whereNumber('id');
 
-    Route::post('/evenement/{id}/invitation/resultat', [InvitationController::class, 'showResult'])->whereNumber('id')->name('pageResultRechercheParticipants');
+    Route::post('/evenement/{id}/invitation/resultat', [ParticipantController::class, 'search'])->name('rechercheParticipant');
     Route::post('/evenement/{id}/canditature', [ParticipantController::class, 'create'])->whereNumber('id')->name('postule');
-
 });
 

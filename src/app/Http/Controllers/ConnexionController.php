@@ -3,15 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ConnexionRequest;
-use App\Models\User;
-use App\Models\Evenement;
-use App\Mail\MdpOublieMail;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use phpDocumentor\Reflection\Location;
+
 
 class ConnexionController extends Controller
 {
