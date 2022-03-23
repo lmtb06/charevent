@@ -44,6 +44,26 @@ class ParticipantController extends Controller
 
     }
 
+    public function store($id, Request $request){
+        $event = Evenement::find($id);
+
+        $participant = $request->participant;
+
+        
+        foreach ($participant as $p){
+            $notif = NotificationInvitationParticipation::create([
+                'id_destinataire' => (int)$p,
+                'id_envoyeur' => $event->id_createur,
+                'id_evenement' => $event->id_evenement,
+                'dateReception' => Carbon::now()->toDate(),
+                'message' => "Vous êtes invité à participer à l'événement ".$event->titre.".",
+            ]);
+        }
+        return redirect()->route('pageEvenement', [
+            'id' => $event->id_evenement,
+        ]);
+    }
+
 
     /**
      * Un utilisateur quitte un événement
@@ -117,7 +137,7 @@ class ParticipantController extends Controller
             ->whereName($validated['name'])
             ->whereAge($min, $max)
             ->get();
-
+        
         $ville = $validated['ville'];
         $dpt = $validated['departement'];
 
@@ -127,34 +147,40 @@ class ParticipantController extends Controller
         })->when($ville, function ($query, $ville){
             return $query->where('ville', 'like', '%'.$ville.'%');
         })
-        ->distinct()->get();
-
+        ->get();
+        
         // Filtre les utilisateurs correspondant aux localisations retournées
-        $users = $users->intersect($localisations);
+        foreach ($localisations as $lieu){
+            $users = $users->intersect($lieu->comptes);
+        }
+
+
 
         // Filtre les participants déjà présents dans l'événement
         $participants = Participant::where('id_evenement', $event->id_evenement)->get();
+        $users = $users->diff($participants);
 
         // Filtre les participants potentiels qui n'ont pas encore répondu
-        $users = $users->intersect($participants);
-
         $notifs = NotificationInvitationParticipation::where([
             ['id_evenement', $event->id_evenement],
-            ['accepte', null]
+            ['accepte', null],
+            ['supprime', false]
             ])
         ->get();
-        $users = $users->intersect($notifs);
+        $users = $users->diff($notifs);
 
         $notifs = NotificationDemandeParticipation::where([
             ['id_evenement', $event->id_evenement],
-            ['accepte', null]
+            ['accepte', null],
+            ['supprime', false]
             ])
         ->get();
-        $users = $users->intersect($notifs);
+        $users = $users->diff($notifs);
 
-        return view('');
-
-        // TODO: afficher le résultat
-
+        return view('rechercheParticipants', [
+            'participants' => $users,
+            'event' => $event,
+            'user' => User::find(Auth::id()),
+        ]);
     }
 }

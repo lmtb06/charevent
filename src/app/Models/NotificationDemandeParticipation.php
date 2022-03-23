@@ -46,9 +46,4 @@ class NotificationDemandeParticipation extends Model
         );
     }
 
-    // Pas fini
-    public function destinataire(){
-        return $this->hasOne(User::class);
-    }
-
 }

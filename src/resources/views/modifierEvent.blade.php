@@ -93,7 +93,8 @@
 
             </dl>
             <div class="flex justify-between">
-              <input type="submit" value="Ajouter" class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" Modifier />
+              <a href=""><button type="submit"  class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">Annuler</button></a>
+              <input type="submit" value="Valider" class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" Valider />
               <input type="submit" value="Supprimer" class="modal-open mr-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" data-modal-toggle="authentication-modal" Supprimer />
               <!--Modal-->
               <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
