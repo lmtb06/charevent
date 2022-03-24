@@ -5,13 +5,20 @@
 @endsection
 
 @section('content')
-  <body class="h-full pt-10" style="background-color: #E4D9BC;">
-  <div class="flex justify-center" style="background-color: #E4D9BC;">
-  <div class="w-1/2 mb-10 border border-black rounded-md" style="background-color: white;">
+  <body class="pt-10 w-full h-full lg:bg-blue-300 ">
+  <div class="flex justify-center">
+  <div class="lg:w-1/2 mb-10 lg:border lg:border-black lg:rounded-md" style="background-color: white;">
     <form class="m-12" method='POST' action="{{ route('inscription') }}" enctype="multipart/form-data" >
     @csrf
-        <div class="relative z-0 mb-10 text-center text-4xl w-full group text-black">
-            Inscription
+    
+    <div class="relative z-0 mb-10 text-center text-4xl w-full group text-black">
+    <p><a href="{{route('connexion')}}">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM22NlnKKa_D0qRcdKFM0ndIeDYDd548F80QO61yy-am7gXR52qeiOAASkhPQyJSeLclg&usqp=CAU" class=" h-6" alt="CharEvent"  />
+    </a></p>
+    
+    <span class=" before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
+        <span class="relative z-0 mb-10 ml-1 mr-1 text-center text-4xl group font-semibold text-white"> INSCRIPTION </span>
+    </span>
         </div>
 
         <div class="grid xl:grid-cols-2 xl:gap-6">
@@ -88,9 +95,10 @@
 		
 
         
-        <button type="submit" id="submit" value="S'inscrire" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Valider</button>
+        <button type="submit" id="submit" value="S'inscrire" class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-150  text-white bg-blue-500 hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-5 py-2.5 text-center fond-semibold "> VALIDER </button>
     </form>
   </div>
+</div>
   </div>
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -101,5 +109,6 @@
             </ul>
         </div>
     @endif
+    
   </body>
 @endsection
