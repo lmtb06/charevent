@@ -12,14 +12,9 @@
 <nav class="bg-white border-bg-orange-300 py-2.5 shadow-lg shadow-red-500 md:shadow-xl">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <div class="flex items-center">
-            <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/logo.png?raw=true" class=" h-6 sm:h-16" alt="CharEvent" />
+            <a href="{{route('accueil')}}">
+            <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/logo.png?raw=true" class=" h-6 sm:h-16" alt="CharEvent"  />
             <span class="self-center text-xl font-semibold whitespace-nowrap text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-300 ">CharEvent</span>
-            <form action="{{ route('deconnexion') }}" method="post" >
-                @csrf
-                <button class=" hover:text-purple-400 text-indigo-500 italic py-2 px-4 rounded">
-                    Deconnexion 
-                </button>
-            </form>
         </div>
         <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
@@ -38,10 +33,10 @@
                     <ul>
                     <div id="menu_perso" style="display:none;" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <!-- Active: "bg-gray-100", Not Active: "" -->
-                        <li><a href="{{route('pageProfil')}}" class="block px-4 py-2 text-sm  hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-0">mon profil</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-1">mes événements</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-2">mes trucs</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm bg-indigo-500 text-white hover:text-purple-400 hover:bg-white" role="menuitem" tabindex="-1" id="user-menu-item-2">Deconnexion</a></li>
+                        <li><a href="{{route('pageProfil')}}" class="block px-4 py-2 text-sm  hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-0">Mon Profil</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-sm hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-1">Mes Evénements</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-sm hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-2">Mes Trucs</a></li>
+                        <li><a href="{{ route('deconnexion') }}" class="block px-4 py-2 text-sm bg-indigo-500 text-white hover:text-purple-400 hover:bg-white" role="menuitem" tabindex="-1" id="user-menu-item-2">Deconnexion</a></li>
 
                     </div>
                 </ul>
