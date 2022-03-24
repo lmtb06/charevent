@@ -37,9 +37,9 @@ class RecuperationController extends Controller
             $user->hashMDP = $hash;
 
             $user->save();
-
             // Envoi sa version en clair par mail
             Mail::to($user->mail)->send(new MdpOublieMail($user, $mdp));
+
         }
 
         // Retourne vers la page de connexion

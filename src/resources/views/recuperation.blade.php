@@ -21,22 +21,22 @@
 					<div class="text-center mt-2">
 						<h2 class="text-4xl  mt-2 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-yellow-600 ">CharEvent</h2>
                         <h2 class="text-xl mt-2 text-[#6477bd]  text-center">Récuperation de mot de passe</h2>
-            
+
                     </div>
-                    <p class="mt-8 text-gray-500 ">Un mot de passe temporaire vous sera envoyé par email. 
+                    <p class="mt-8 text-gray-500 ">Un mot de passe temporaire vous sera envoyé par email.
                         Attention, si nous ne reconnaissons pas votre adresse e-mail, vous ne recevrez pas de nouveau mot de passe.</p>
-                
+
 
 					<div class="mt-2">
-						<form method='POST' action='{{ route('connexion')}}'>
+						<form method='POST' action=''>
 							@csrf
 
 							<div class="mt-3">
 								<div class="flex justify-between mb-2">
-									<label for="password" class="text-sm text-gray-600">Veuillez entrez votre email </label>
+									<label for="email" class="text-sm text-gray-600">Veuillez entrez votre email </label>
 								</div>
 
-								<input type="password" name="password" id="password" placeholder="mot de passe" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+								<input type="email" name="email" id="email" placeholder="email" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
 							</div>
 
                             <div class="flex content-center justify-center mt-16">
@@ -47,18 +47,18 @@
                             </div>
 
 						</form>
-				
+
 					</div>
 				</div>
-			</div> 
+			</div>
         </div>
-       
+
     </div>
 </div>
 <div id='content'>
     @yield('content')
 </div>
-    
+
 
 </body>
 

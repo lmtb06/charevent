@@ -6,9 +6,8 @@
 </head>
 <body>
 	<div id="content">
-		<h1>Votre nouveau mot de passe</h1>
-		<p>Veuillez vous <a href="{{route('connexion')}}">connecter</a> à l'aide de ce mot de passe afin de rapidement le modifier. Le voici:
-		</br>{{$password}}
+		<h1>Votre nouveau mot de passe : </h1> <strong>{!!$password!!}</strong>
+		<p>Veuillez vous <a href="{{route('connexion')}}">connecter</a> à l'aide de ce mot de passe afin de rapidement le modifier
 		</p>
 	</div>
 </body>
