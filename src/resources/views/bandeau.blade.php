@@ -1,4 +1,4 @@
-<?php  $truc="compte/edit/".(string) auth::id(); echo $truc ; ?>
+<?php  $lien="compte/edit/".(string) auth::id(); ?>
 <script>
     function myFunction() {
         var x = document.getElementById("menu_perso");
@@ -20,7 +20,7 @@
                 
                 <li>
                     <button onclick="">
-                    <a href="<?php echo $truc ?>">
+                    <a href="<?php echo $lien ?>">
                         <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" class="mr-8 h-10" alt="CharEvent" />
                     </a></button> 
                     
