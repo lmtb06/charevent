@@ -32,9 +32,8 @@ class ConnexionController extends Controller
 			return redirect()->route('accueil');
 		}
 
-
 		return back()->withErrors([
-			'default' => ['L\'adresse mail ou le mot de passe n\'est pas valide']
+			'default' => ['pourquoi ca s\'affiche ici']
 		]);
 
 	}
