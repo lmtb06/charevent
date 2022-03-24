@@ -32,13 +32,13 @@
                     <ul>
                     <div id="menu_perso" style="display:none;" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <!-- Active: "bg-gray-100", Not Active: "" -->
-                        <li><a href="{{route('pageProfil')}}" class="block px-4 py-2 text-sm  hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-0">Mon Profil</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-1">Mes Evénements</a></li>
-                        <li><a href="#" class="block px-4 py-2 text-sm hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-2">Mes Trucs</a></li>
+                        <li><a href="{{route('pageProfil')}}" class="block px-4 py-2 text-xl  hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-0">Mon Profil</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-1">Mes Evénements</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-2">Mes Trucs</a></li>
                         <li>
                             <form method = "POST" action={{ route('deconnexion') }}>
                             @csrf
-                                <input type="submit"  value="Déconnexion" class="block px-4 py-2 text-sm bg-indigo-500 text-white hover:text-purple-400 hover:bg-white" role="menuitem" tabindex="-1" id="user-menu-item-2"/></li>
+                                <input type="submit"  value="Déconnexion" class=" block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500" role="menuitem" tabindex="-1" id="user-menu-item-3"/></li>
                             </form>
                     </div>
                 </ul>
