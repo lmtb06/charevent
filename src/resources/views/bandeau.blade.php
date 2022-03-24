@@ -9,12 +9,11 @@
     }
     </script>
 
-<nav class="bg-white border-bg-orange-300 py-2.5 shadow-lg shadow-red-500 md:shadow-xl">
+<nav class="bg-white border-bg-orange-300 py-2.5 shadow-lg shadow-red-500 md:shadow-xl fixed inset-x-0">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <div class="flex items-center">
-            <a href="{{route('accueil')}}">
             <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/logo.png?raw=true" class=" h-6 sm:h-16" alt="CharEvent"  />
-            <span class="self-center text-xl font-semibold whitespace-nowrap text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-300 ">CharEvent</span>
+            <span class="self-center text-xl font-semibold whitespace-nowrap text-center text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-yellow-300 "><a href="{{route('accueil')}}" CharEvent>CharEvent</span>
         </div>
         <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
