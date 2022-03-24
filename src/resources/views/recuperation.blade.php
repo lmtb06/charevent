@@ -5,48 +5,59 @@
 @endsection
 
 @section('content')
-<body class=" bg-orange-200 ">
-    <main>
-        <section>
-            <!--Div de la barre navigation en haut de l'écran à ajouter-->
-        </section>
-        <section>
-            <div id="content">
-                <div class="m-1 text-4xl font-bold flex content-center justify-center">
-                    <h1>Mot de passe oublié?</h1>
-                </div>
-                <div class="m-1 text-xl flex content-center justify-center">
-                    <p>Un mot de passe temporaire vous sera envoyer par email.
-                        Attention, si nous ne reconnaissons pas votre adresse e-mail, vous ne recevrez pas de nouveau
-                        mot de passe.
-                    </p>
-                </div>
-                <!-- Le gros Rectangle -->
-                <div class=" text-2xl font-bold flex content-center justify-center">
-                    <div class="mt-2 border-2 border-black m-4 rounded-2xl bg-gradient-to-b from-white to-white-700">
-
-                        <form action="{{ route('recuperation') }}" method="post">
-                            @csrf
-                            <div>
-                                <label class="m-5" for="email">Rentrez votre adresse e-mail ici :</label>
-                                <input class="m-5 bg-white p-2 border-2 border-black text-ms" placeholder="Email..."
-                                    class=" bg-transparent text-black" type="email" name="email" id="email" required>
-                            </div>
-                            <div class="flex content-center justify-center">
-                                <input
-                                    class=" mb-3 modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 ml-8"
-                                    data-modal-toggle="authentication-modal" type="submit"
-                                    value="M'envoyer un mot de passe temporaire">
-                            </div>
-
-                        </form>
+<!DOCTYPE html>
+<html lang="fr">
+<body class = "bg-white">
+<!-- ici c'est la boite avec l'image -->
+<div class="bg-yellow-300 w-full h-full">
+    <div class="flex justify-center h-screen">
+        <div class="flex content-center justify-center mt-10 mb-10 px-2 rounded-2xl ">
+			<div class="flex items-center w-full max-w-md px-6 mx-auto bg-white">
+				<div class="flex-1">
+					<div class="text-center">
+						<h2 class="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-red-500 ">CharEvent</h2>
+                        <h2 class="text-xl  text-center">Récuperation de mot de passe</h2>
+            
                     </div>
-                </div>
-            </div>
-        </section>
-    </main>
+                    <p class="mt-3 text-gray-500 dark:text-gray-300">Un mot de passe temporaire vous sera envoyé par email. </p>
+                    <p class="mt-3 text-gray-500 dark:text-gray-300">Attention, si nous ne reconnaissons pas votre adresse e-mail, vous ne recevrez pas de nouveau mot de passe.</p>
+                
 
+					<div class="mt-8">
+						<form method='POST' action='{{ route('connexion')}}'>
+							@csrf
+
+							<div class="mt-6">
+								<div class="flex justify-between mb-2">
+									<label for="password" class="text-sm text-gray-600 dark:text-gray-200">Veuillez entrez votre email </label>
+								</div>
+
+								<input type="password" name="password" id="password" placeholder="mot de passe" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+							</div>
+
+                            <div class="flex content-center justify-center mt-6">
+                                <input
+                                    class=" rounded-full modal-open w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-yellow-300 hover:bg-yellow-200 focus:outline-none focus:bg-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50"
+                                    data-modal-toggle="authentication-modal" type="submit"
+                                    value="Envoyer un mot de passe temporaire">
+                            </div>
+
+						</form>
+				
+					</div>
+				</div>
+			</div> 
+        </div>
+       
+    </div>
+</div>
+<div id='content'>
+    @yield('content')
+</div>
+    
 
 </body>
+
+</html>
 
 @endsection
