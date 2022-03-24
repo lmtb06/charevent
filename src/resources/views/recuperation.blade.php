@@ -11,9 +11,13 @@
 <!-- ici c'est la boite avec l'image -->
 <div class="bg-yellow-300 w-full h-full">
     <div class="flex justify-center h-screen">
-        <div class="flex content-center justify-center mt-10 mb-10 px-2 rounded-2xl ">
-			<div class="flex items-center w-full max-w-md px-6 mx-auto bg-white">
+        <div class="flex content-center justify-center mt-10 mb-10 px-2 rounded-full ">
+			<div class="flex items-center w-full max-w-md px-6 mx-auto bg-white rounded-xl">
+
 				<div class="flex-1">
+                    <p class=""><a href="{{route('connexion')}}" class="text-blue-500 focus:outline-none focus:underline hover:underline">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM22NlnKKa_D0qRcdKFM0ndIeDYDd548F80QO61yy-am7gXR52qeiOAASkhPQyJSeLclg&usqp=CAU" class=" h-6" alt="CharEvent"  />
+                    </a></p>
 					<div class="text-center">
 						<h2 class="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-red-500 ">CharEvent</h2>
                         <h2 class="text-xl  text-center">Récuperation de mot de passe</h2>

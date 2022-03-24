@@ -61,7 +61,7 @@ Charevent - Accueil
                                 </div>
                             </div>
                             <!-- 3e partie - Date+Bouton-->
-                            <div class="  grid grid-cols-2 grid-rows-2 flex items-center justify-center">
+                            <div class="  grid grid-cols-2 grid-rows-2 items-center justify-center">
                                 <!-- Date de debut-->
                                 <div class=" m-1  text-xs flex items-center justify-center">
                                         {{$event->dateDebut}}
