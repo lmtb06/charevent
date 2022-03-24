@@ -12,7 +12,7 @@
 <body>
     @if (Auth::check())
         @include('bandeau', ['user' => $user])
-    @endif
+    @endif 
     @yield('content')
 </body>
 
