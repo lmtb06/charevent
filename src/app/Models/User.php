@@ -145,5 +145,4 @@ class User extends Authenticatable
             $builder->where('id_compte', '>=', '1');
         }
     }
-
 }
