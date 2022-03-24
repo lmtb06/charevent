@@ -22,7 +22,7 @@
                     </li>
                     <li>
                         
-                        <a href="{{route('pageProfil', ['id' => $user->id_compte])}}">
+                        <a href="{{route('pageProfil')}}">
                             <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" class="mr-8 h-16" alt="Profil" />
                         </a>
                     </li>

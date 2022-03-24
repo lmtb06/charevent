@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function(){
      * URL à utiliser pour afficher les pages correspondantes / déconnecter un utilisateur
      */
     Route::get('/compte/edit/{id}', [ProfilController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
-    Route::get('/compte/show/{id}', [ProfilController::class, 'show'])->whereNumber('id')->name('pageProfil');
+    Route::get('/compte', [ProfilController::class, 'show'])->name('pageProfil');
 
 
     Route::get('/evenement/{id}/invitation', [InvitationController::class, 'showForm'])->whereNumber('id')->name('pageFromRechercheParticipants');

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilController extends Controller
 {
@@ -26,9 +27,10 @@ class ProfilController extends Controller
 	/**
 	 * Affiche le compte
 	 */
-	public function show($id)
+	public function show()
 	{
 		// Afficher la page de profil d'un compte
+		$id = Auth::id();
 		$user = User::findOrFail($id);
 		$lieu = $user->localisation;
 
