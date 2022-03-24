@@ -19,8 +19,10 @@
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM22NlnKKa_D0qRcdKFM0ndIeDYDd548F80QO61yy-am7gXR52qeiOAASkhPQyJSeLclg&usqp=CAU" class=" h-6" alt="CharEvent"  />
                     </a></p>
 					<div class="text-center mt-2">
-						<h2 class="text-4xl  mt-2 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-yellow-600 ">CharEvent</h2>
-                        <h2 class="text-xl mt-2 text-[#6477bd]  text-center">Récuperation de mot de passe</h2>
+                        <h2 class="text-4xl  mt-2 mb-2 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-yellow-600 ">CharEvent</h2>
+                        <span class=" before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
+                            <span class="relative z-0 mb-10 ml-1 mr-1 text-center font-medium text-lg group  text-white"> RÉCUPERATION DE MOT DE PASSE </span>
+                        </span>
             
                     </div>
                     <p class="mt-8 text-gray-500 ">Un mot de passe temporaire vous sera envoyé par email. 

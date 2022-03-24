@@ -13,7 +13,7 @@
     
     <div class="relative z-0 mb-10 text-center text-4xl w-full group text-black">
     <p><a href="{{route('connexion')}}">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM22NlnKKa_D0qRcdKFM0ndIeDYDd548F80QO61yy-am7gXR52qeiOAASkhPQyJSeLclg&usqp=CAU" class=" h-6" alt="CharEvent"  />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM22NlnKKa_D0qRcdKFM0ndIeDYDd548F80QO61yy-am7gXR52qeiOAASkhPQyJSeLclg&usqp=CAU" class=" h-6" alt="retour"  />
     </a></p>
     
     <span class=" before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
@@ -93,7 +93,7 @@
             <label for="password_confirmation" class="absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirmation*</label>
         </div>
 		
-
+    <div id="ERREUR"></div>
         
         <button type="submit" id="submit" value="S'inscrire" class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-150  text-white bg-blue-500 hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-5 py-2.5 text-center fond-semibold "> VALIDER </button>
     </form>
