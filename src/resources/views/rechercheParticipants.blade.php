@@ -1,12 +1,10 @@
-<!doctype html>
-<html class="h-full">
+@extends('layout.layout')
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+@section('titre')
+    Charevent - {{$event->titre}} - Recherche participants
+@endsection
 
+@section('content')
 <body class="h-full" style="background-color: #E4D9BC;">
   <div class="flex justify-center h-full">
     <div class="max-w-4xl my-16 w-full">
@@ -70,5 +68,4 @@
     </div>
   </div>
 </body>
-
-</html>
+@endsection

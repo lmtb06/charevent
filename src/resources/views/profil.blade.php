@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
+@extends('layout.layout')
 
-<head>
-  <meta charset="utf-8">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Mon compte</title>
-</head>
+@section('titre')
+    Charevent - Profil {{$user->prenom}} {{$user->nom}}
+@endsection
 
+@section('content')
 <body>
   <div class="flex justify-center" style="background-color: #E4D9BC;">
     <div class="max-w-2xl my-16 w-max">
@@ -86,4 +84,4 @@
   </div>
 </body>
 
-</html>
+@endsection

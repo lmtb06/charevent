@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Evenement;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
@@ -12,7 +13,9 @@ use App\Http\Requests\EvenementRequest;
 class EvenementCreationController extends Controller
 {
     public function show(){
-        return view('creationEvenement');
+        return view('creationEvenement', [
+			'user' => User::find(Auth::id())
+		]);
     }
 
     public function store(EvenementRequest $request){

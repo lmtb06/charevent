@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
+@extends('layout.layout')
 
-<head>
-  <meta charset="utf-8">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Mon compte</title>
-</head>
+@section('titre')
+    Charevent - Modifier {{$user->prenom}} {{$user->nom}}
+@endsection
 
+@section('content')
 <body>
   <div class="flex justify-center" style="background-color: #E4D9BC;">
     <form method='post' action="{{route('modifierCompte', ['id' => $user->id_compte])}}" enctype="multipart/form-data" class="max-w-2xl my-16 w-max">
@@ -191,5 +189,4 @@
   </div>
   @endif
 </body>
-
-</html>
+@endsection

@@ -1,30 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible"content="ie=edge">
-        <title>Accueil</title>
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    </head>
+@extends('layout.layout')
 
+@section('titre')
+Charevent - Accueil
+@endsection
+
+@section('content')
     <body class=" bg-orange-200 ">
         <main>
-            <section>
-            <!--Div de la barre navigation en haut de l'écran à ajouter
-
-
-            -->
-                <form action="{{ route('deconnexion') }}" method="post">
-                    @csrf
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Deconnexion
-                    </button>
-                </form>
-
-
-
-            </section>
             <section class=" p-4 flex content-center justify-center">
                 <div class="px-4 ">
                     <h2 class="text-2xl font-bold">Les évènements de l'association</h2>
@@ -121,4 +103,4 @@
             </section>
         </main>
     </body>
-</html>
+@endsection

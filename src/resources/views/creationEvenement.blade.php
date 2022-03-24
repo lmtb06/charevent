@@ -1,11 +1,11 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+@extends('layout.layout')
+
+@section('titre')
+    Charevent - Création d'un événement
+@endsection
+
+@section('content')
+<body class=" bg-orange-200 ">
     <div class="flex justify-center" style="background-color: #E4D9BC;">
       <div class="max-w-2xl my-16 w-max">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
@@ -122,4 +122,4 @@
       </div>
     </div>
   </body>
-</html>
+@endsection

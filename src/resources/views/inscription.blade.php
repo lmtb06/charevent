@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head class="h-0">
-    <meta charset="utf-8">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Inscription</title>
-  </head>
+@extends('layout.layout')
+
+@section('titre')
+    Charevent - Inscription
+@endsection
+
+@section('content')
+
   <body class="h-full pt-10" style="background-color: #E4D9BC;">
   <div class="flex justify-center" style="background-color: #E4D9BC;">
   <div class="w-1/2 mb-10 border border-black rounded-md" style="background-color: white;">
@@ -102,4 +103,4 @@
         </div>
     @endif
   </body>
-</html>
+@endsection

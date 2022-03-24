@@ -1,11 +1,10 @@
-<!doctype html>
-<html class="h-full">
+@extends('layout.layout')
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+@section('titre')
+    Charevent - Modifier {{$event->titre}}
+@endsection
+
+@section('content')
 
 <body class="h-full" style="background-color: #E4D9BC;">
   <div class="flex justify-center h-full">
@@ -112,7 +111,8 @@
                     <!--Body-->
                     <br><p>Êtes-vous sûr de vouloir supprimer cet événement?</p><br>
                     <div class="flex justify-between pt-2">
-                      <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Annuler</button>
+                      <input type="submit" formaction="{{route('pageEvenement', ['id' => $event->id_evenement])}}"
+                         class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400" value="Annuler" />
                       <input type="submit" formaction="{{route('effacerEvenement', ['id' => $event->id_evenement])}}"
                         class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2 border"
                         value="Confirmer" />
@@ -170,4 +170,4 @@
   </div>
 </body>
 
-</html>
+@endsection
