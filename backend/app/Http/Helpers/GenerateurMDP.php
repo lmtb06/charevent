@@ -12,7 +12,7 @@ class GenerateurMDP
 	 *
 	 * @return string
 	 */
-	public static function generer()
+	public static function generer(): string
 	{
 		$faker = Factory::create();
 		return $faker->password(8,30);

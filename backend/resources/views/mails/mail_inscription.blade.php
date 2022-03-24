@@ -9,7 +9,7 @@
 <body>
 	<div id="content">
 		<h1>Bienvenue sur Charevent, {{$user->prenom}}!</h1>
-		<p>Vous pouvez désormais vous <a href="{{route('connexion')}}">connecter</a> et accéder à toutes nos fonctionnalités!
+		{{-- <p>Vous pouvez désormais vous <a href="{{route('connexion')}}">connecter</a> et accéder à toutes nos fonctionnalités! --}}
 		</p>
 	</div>
 

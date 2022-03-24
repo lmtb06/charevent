@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# # Copie du code github
-# printf '\n--Clonage du code github--\n\n'
-# git clone git@github.com:lmtb06/charevent.git
+# Copie du code github
+printf '\n--Clonage du code github--\n\n'
+git clone git@github.com:lmtb06/charevent.git
 
-# # On se met dans le dossier des fichiers sources
-# cd "charevent/backend"
+# On se met dans le dossier des fichiers sources
+cd "charevent/src"
 
 # On installe l'environnement laravel via une petite image docker
 printf "\n--Installation de l'environnement laravel--\n\n"
@@ -29,8 +29,8 @@ printf "\n--Installation des dépendances npm--\n\n"
 ./vendor/bin/sail down -v
 ./vendor/bin/sail up -d
 
-printf "\n--Migrations BDD--\n\n"
-./vendor/bin/sail artisan migrate:fresh
+# printf "\n--Migrations BDD--\n\n"
+# ./vendor/bin/sail artisan migrate:fresh
 
 # On crée un alias pour se faciliter la vie
 alias sail="./vendor/bin/sail"
