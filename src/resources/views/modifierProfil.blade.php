@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Mon compte</title>
 </head>
 
-<body>
-  <div class="flex justify-center" style="background-color: #E4D9BC;">
-    <form method='post' action="{{route('modifierCompte', ['id' => $user->id_compte])}}" enctype="multipart/form-data" class="max-w-2xl my-16 w-max">
+<body class="h-full scroll-mb-8 mt-0" style="background-color: #E4D9BC;">
+  <?php include 'bandeau.blade.php'; ?>
+  <div class="flex justify-center " style="background-color: #E4D9BC;">
+    <form method='post' action="{{route('modifierCompte', ['id' => $user->id_compte])}}" enctype="multipart/form-data" class="max-w-2xl mt-24 mb-18 w-max">
       @csrf
       <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
         <div class="px-4 py-5 sm:px-6">

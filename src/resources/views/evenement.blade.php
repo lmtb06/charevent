@@ -87,7 +87,7 @@
                        
                         <!-- Liste Participants -->
                         <div class="grid px-1 grid-cols-2">
-                            @if (count($event->comptes) < 1)
+                            @if (is_null($event->comptes))
                                 Pas encore de participants
                             @else
                             @foreach ($event->comptes as $p)

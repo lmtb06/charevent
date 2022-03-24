@@ -7,9 +7,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="h-full" style="background-color: #E4D9BC;">
-  <div class="flex justify-center h-full">
-    <div class="max-w-4xl my-16 w-full">
+<body class="h-full scroll-mb-8" style="background-color: #E4D9BC;">
+  <?php include 'bandeau.blade.php'; ?>
+  <div class="flex justify-center ">
+    <div class="max-w-4xl mt-36 mb-24 w-full">
       <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
         <form method="POST" action="{{route('modifierEvenement', ['id' => $event->id_evenement])}}">
           @csrf
@@ -22,54 +23,49 @@
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium justify-center text-gray-500">Nom de l'événement</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="name" name="titre" type="text" placeholder="" value="{{$event->titre}}">
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="titre" type="text" placeholder="" value="{{$event->titre}}">
                 </dd>
               </div>
 
               <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium justify-center text-gray-500">Description de l'événement</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  <textarea class="shadow appearance-none border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="description" name="description" type="text" placeholder="">{{$event->description}}</textarea>
+                  <textarea class="shadow appearance-none border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" name="description" type="text" placeholder="">{{$event->description}}</textarea>
                 </dd>
               </div>
 
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Début de l'événement</dt>
                 <div class="flex items-center justify-center">
-                  <input type="date" id="start" name="dateDebut" value="{{$event->dateDebut}}"  max="2050-12-31">
+                  <input type="date" id="start" name="dateDebut" value="{{$event->dateDebut}}" max="2050-12-31">
                 </div>
               </div>
 
               <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Fin de l'événement</dt>
                 <div class="flex items-center justify-center">
-                  <input type="date" id="end" name="dateFin" value="{{$event->dateFin}}"  max="2050-12-31">
+                  <input type="date" id="end" name="dateFin" value="{{$event->dateFin}}" max="2050-12-31">
                 </div>
               </div>
 
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Ville</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="ville" name="ville" type="text" placeholder="" value={{$lieu->ville}}>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="ville" name="ville" type="text" placeholder="" value={{$lieu->ville}}>
                 </dd>
               </div>
 
               <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium text-gray-500">Code postal</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="codepostal" name="codePostal" type="numeric" placeholder="" value={{$lieu->codePostal}}>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="codepostal" name="codePostal" type="numeric" placeholder="" value={{$lieu->codePostal}}>
                 </dd>
               </div>
 
               <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                 <dt class="text-sm font-medium justify-center text-gray-500">Département</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="departement" name="departement" type="numeric" placeholder="" value={{$lieu->departement}}>
+                  <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="departement" name="departement" type="numeric" placeholder="" value={{$lieu->departement}}>
                 </dd>
               </div>
 
@@ -93,8 +89,7 @@
 
             </dl>
             <div class="flex justify-between">
-              <a href=""><button type="submit"  class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">Annuler</button></a>
-              <input type="submit" value="Valider" class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" Valider />
+              <input type="submit" value="Ajouter" class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" Modifier />
               <input type="submit" value="Supprimer" class="modal-open mr-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2" data-modal-toggle="authentication-modal" Supprimer />
               <!--Modal-->
               <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
@@ -110,12 +105,11 @@
                       </div>
                     </div>
                     <!--Body-->
-                    <br><p>Êtes-vous sûr de vouloir supprimer cet événement?</p><br>
+                    <br>
+                    <p>Êtes-vous sûr de vouloir supprimer cet événement?</p><br>
                     <div class="flex justify-between pt-2">
                       <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Annuler</button>
-                      <input type="submit" formaction="{{route('effacerEvenement', ['id' => $event->id_evenement])}}"
-                        class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2 border"
-                        value="Confirmer" />
+                      <input type="submit" formaction="{{route('effacerEvenement', ['id' => $event->id_evenement])}}" class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2 border" value="Confirmer" />
                     </div>
                   </div>
                 </div>

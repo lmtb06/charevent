@@ -20,9 +20,7 @@
             <!--Titre de la page-->
             <section class=" p-4 flex content-center justify-center">
                 <div class="px-4 ">
-                    <a href="{{route('pageEvenement', ['id' => $event->id_evenement])}}">
-                        <h2 class="text-2xl font-bold">Evenement "{{$event->titre}}"</h2>
-                    </a>
+                    <h2 class="text-2xl font-bold">Evenement "{{$event->titre}}"</h2>
                 </div>
             </section>
             <!--Bloc de recherche-->

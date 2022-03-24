@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
 
 <head>
   <meta charset="utf-8">
@@ -7,9 +7,10 @@
   <title>Mon compte</title>
 </head>
 
-<body>
+<body class="h-full scroll-mb-8" style="background-color: #E4D9BC;">
+  <?php include 'bandeau.blade.php'; ?>
   <div class="flex justify-center" style="background-color: #E4D9BC;">
-    <div class="max-w-2xl my-16 w-max">
+    <div class="max-w-2xl mt-36 mb-24 w-max">
       <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
         <div class="px-4 py-5 sm:px-6">
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
