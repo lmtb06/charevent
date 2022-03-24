@@ -89,4 +89,18 @@ class AddDataTest extends TestCase
 		]);
     }
     */
+	/*
+	public function test_ajouter_event()
+    {
+		$evenement = Evenement::create([
+			'id_localisation' => 1,
+        	'id_createur' => 2,
+        	'titre' => 'event',
+        	'description' => 'descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription',
+        	'dateDebut' => '2022-04-01',
+        	'dateFin' => '2022-05-01',
+        	'expiration' => '2023-03-24',
+		]);
+    }
+	*/
 }

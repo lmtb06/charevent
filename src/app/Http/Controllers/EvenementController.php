@@ -25,13 +25,18 @@ class EvenementController extends Controller
 			['id_envoyeur', $user->id_compte],
 		])->orderBy('dateReception', 'DESC')->first();
 
-	
         return view('evenement',[
             'user' => $user,
             'event' => $event,
             'participants' => $event->comptes,
 			'demande' => $demande,
         ]);
+	}
+
+	public function showAll(){
+		$user = User::find(Auth::id())->id_compte;
+		$event = Evenement::all()->where('id_createur', '=', $user);
+		print($event);
 	}
 
 	//Affiche le formulaire pour modifier l'evenement
