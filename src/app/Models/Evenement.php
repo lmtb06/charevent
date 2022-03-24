@@ -31,21 +31,23 @@ class Evenement extends Model
 
     public function comptes()
     {
-        return $this->belongsToMany(User::class, 'participants');
+        return $this->belongsToMany(User::class,'participants', 'id_evenement', 'id_compte');
+                    //->join('localisations','comptes_actifs.id_compte','participants.id_compte')
+                    //->select('comptes_actifs.*', 'codePostal');
     }
 
     public function createur()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_evenement');
     }
 
     public function localisation()
     {
-        return $this->belongsTo(Localisation::class);
+        return $this->belongsTo(Localisation::class, 'id_localisation');
     }
 
     public function besoins()
     {
-        return $this->hasMany(BesoinActif::class);
+        return $this->hasMany(BesoinActif::class, 'id_besoin');
     }
 }

@@ -1,11 +1,11 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+@extends('layout.layout')
+
+@section('titre')
+    Charevent - Création d'un événement
+@endsection
+
+@section('content')
+<body class=" bg-orange-200 ">
     <div class="flex justify-center" style="background-color: #E4D9BC;">
       <div class="max-w-2xl my-16 w-max">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
@@ -34,8 +34,7 @@
                 <dt class="text-sm font-medium justify-center text-gray-500">Description de l'événement</dt>
                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                   <textarea class="shadow appearance-none border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                  id="description" name="description" type="text" placeholder="">
-                </textarea> 
+                  id="description" name="description" type="text" placeholder=""></textarea> 
                 </dd>
               </div>
 
@@ -123,4 +122,4 @@
       </div>
     </div>
   </body>
-</html>
+@endsection

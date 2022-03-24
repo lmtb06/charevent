@@ -10,7 +10,7 @@ class NotificationDemandeParticipation extends Model
     use HasFactory;
     protected $table = 'notifications_demande_participation';
     protected $primaryKey = 'id_notification';
-    public $timestamps =false;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -28,4 +28,22 @@ class NotificationDemandeParticipation extends Model
         'accepte',
         'dateChoix'
     ];
+
+    public function evenement()
+    {
+        return $this->belongsTo(Evenement::class, 'id_evenement');
+    }
+
+    public function createurEvenement()
+    {
+        return $this->hasOneThrough(
+            User::class, 
+            Evenement::class, 
+            'id_createur', +
+            'id_evenement', 
+            'id_envoyeur', 
+            'id_createur'
+        );
+    }
+
 }

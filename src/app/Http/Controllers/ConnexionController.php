@@ -2,36 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ConnexionRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+
 
 class ConnexionController extends Controller
 {
-	public function authenticate(Request $request)
+    public function logout(Request $request)
+    {
+        // Deconnecter l'utilisateur
+        Auth::logout();
+
+		$request->session()->invalidate();
+
+		$request->session()->regenerateToken();
+        // Redirection
+        return redirect()->route('accueil');
+    }
+
+	public function login(ConnexionRequest $request)
 	{
 		// Valider le formulaire
-		$creds = $request->validate([
-			'mail' => 'required|email',
-			'hashMDP' => 'required',
-			]);
+		$creds = $request->validated();
 
 		// Connecter
-		if(Auth::attempt($creds)){
+		if(Auth::attempt(['mail' => $creds['mail'], 'hashMDP' => $creds['password']])){
             $request->session()->regenerate();
-			return redirect()->intended("pageAccueil");
+			return redirect()->route('accueil');
 		}
 
+
 		return back()->withErrors([
-            'mail' => "L'adresse e-mail n'est pas reconnue par nos services, ou est invalide.",
-			'hashMDP' => "Le mot de passe est erroné."
-        ]);
+			'default' => ['L\'adresse mail ou le mot de passe n\'est pas valide']
+		]);
+
 	}
 
-	public function show()
+	public function index()
 	{
-		// Afficher la page de connexion
-		return view('layout.connection');
+		// Les utilisateurs connectés ne peuvent pas voir la page de connexion
+		if (Auth::check())
+			abort(403, 'Veuillez vous déconnecter d\'abord');
+		return view('layout.connexion');
 	}
 
 	public function username(){

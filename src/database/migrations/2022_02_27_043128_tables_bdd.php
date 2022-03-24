@@ -28,8 +28,8 @@ return new class extends Migration
 			$table->string('numeroTelephone', 12)->nullable();
 			$table->date('dateCreationCompte');
 			$table->date('dateModifCompte');
-			$table->boolean('notificationMail')->default(0);
-			$table->string('role')->default('user');
+			$table->boolean('notificationMail')->default(false);
+			$table->string('role')->default(config('enums.user_roles.user'));
 		});
 
 		Schema::create('comptes_archives', function (Blueprint $table) {
@@ -44,8 +44,8 @@ return new class extends Migration
 			$table->string('numeroTelephone', 12)->nullable();
 			$table->date('dateCreationCompte');
 			$table->date('dateModifCompte');
-			$table->boolean('notificationMail');
-			$table->string('role')->default('user');
+			$table->boolean('notificationMail')->default(false);
+            $table->string('role')->default(config('enums.user_roles.user'));
 		});
 
 		// Evenements
@@ -84,7 +84,7 @@ return new class extends Migration
 		Schema::create('besoins_actifs', function (Blueprint $table) {
 				$table->integer('id_besoin',true);
 				$table->integer('id_evenement');
-				$table->integer('id_responsable');
+				$table->integer('id_responsable')->nullable();
 				$table->string('titre', 50);
 			}
 		);
@@ -92,7 +92,7 @@ return new class extends Migration
 		Schema::create('besoins_archives', function (Blueprint $table) {
 				$table->integer('id_besoin', true);
 				$table->integer('id_evenement');
-				$table->integer('id_responsable');
+				$table->integer('id_responsable')->nullable();
 				$table->string('titre', 50);
 			}
 		);
@@ -100,7 +100,7 @@ return new class extends Migration
 		Schema::create('besoins_en_attente', function (Blueprint $table) {
 				$table->integer('id_besoin', true);
 				$table->integer('id_evenement');
-				$table->integer('id_responsable');
+				$table->integer('id_responsable')->nullable();
 				$table->string('titre', 50);
 			}
 		);
@@ -118,11 +118,12 @@ return new class extends Migration
 		Schema::create('notifications_simple', function (Blueprint $table) {
 				$table->integer('id_notification',true);
 				$table->integer('id_destinataire');
+				$table->integer('id_envoyeur');
 				$table->integer('id_evenement');
 				$table->date('dateReception');
-				$table->date('dateLecture');
+				$table->date('dateLecture')->nullable();
 				$table->string('message', 50);
-				$table->boolean('supprime');
+				$table->boolean('supprime')->default(False);
 			}
 		);
 
@@ -133,11 +134,11 @@ return new class extends Migration
 				$table->integer('id_envoyeur');
 				$table->integer('id_besoin_en_attente');
 				$table->date('dateReception');
-				$table->date('dateLecture');
-				$table->string('message', 50);
-				$table->boolean('supprime');
-				$table->boolean('accepte');
-				$table->date('dateChoix');
+				$table->date('dateLecture')->nullable();
+				$table->string('message', 50)->nullable();
+				$table->boolean('supprime')->default(False);
+				$table->boolean('accepte')->nullable();
+				$table->date('dateChoix')->nullable();
 			}
 		);
 
@@ -148,11 +149,11 @@ return new class extends Migration
 				$table->integer('id_envoyeur');
 				$table->integer('id_besoin_en_attente');
 				$table->date('dateReception');
-				$table->date('dateLecture');
-				$table->string('message', 50);
-				$table->boolean('supprime');
-				$table->boolean('accepte');
-				$table->date('dateChoix');
+				$table->date('dateLecture')->nullable();
+				$table->string('message', 50)->nullable();
+				$table->boolean('supprime')->default(False);
+				$table->boolean('accepte')->nullable();
+				$table->date('dateChoix')->nullable();
 			}
 		);
 
@@ -163,11 +164,11 @@ return new class extends Migration
 				$table->integer('id_envoyeur');
 				$table->integer('id_besoin_en_attente');
 				$table->date('dateReception');
-				$table->date('dateLecture');
-				$table->string('message', 50);
-				$table->boolean('supprime');
-				$table->boolean('accepte');
-				$table->date('dateChoix');
+				$table->date('dateLecture')->nullable();
+				$table->string('message', 50)->nullable();
+				$table->boolean('supprime')->default(False);
+				$table->boolean('accepte')->nullable();
+				$table->date('dateChoix')->nullable();
 			}
 		);
 
@@ -178,11 +179,11 @@ return new class extends Migration
 				$table->integer('id_envoyeur');
 				$table->integer('id_besoin_en_attente');
 				$table->date('dateReception');
-				$table->date('dateLecture');
-				$table->string('message', 50);
-				$table->boolean('supprime');
-				$table->boolean('accepte');
-				$table->date('dateChoix');
+				$table->date('dateLecture')->nullable();
+				$table->string('message', 50)->nullable();
+				$table->boolean('supprime')->default(False);
+				$table->boolean('accepte')->nullable();
+				$table->date('dateChoix')->nullable();
 			}
 		);
 
@@ -192,11 +193,11 @@ return new class extends Migration
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
 				$table->date('dateReception');
-				$table->date('dateLecture');
-				$table->string('message', 50);
-				$table->boolean('supprime');
-				$table->boolean('accepte');
-				$table->date('dateChoix');
+				$table->date('dateLecture')->nullable();
+				$table->string('message', 50)->nullable();
+				$table->boolean('supprime')->default(False);
+				$table->boolean('accepte')->nullable();
+				$table->date('dateChoix')->nullable();
 			}
 		);
 
@@ -206,11 +207,11 @@ return new class extends Migration
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
 				$table->date('dateReception');
-				$table->date('dateLecture');
-				$table->string('message', 50);
-				$table->boolean('supprime');
-				$table->boolean('accepte');
-				$table->date('dateChoix');
+				$table->date('dateLecture')->nullable();
+				$table->string('message', 50)->nullable();
+				$table->boolean('supprime')->default(False);
+				$table->boolean('accepte')->nullable();
+				$table->date('dateChoix')->nullable();
 			}
 		);
 	}

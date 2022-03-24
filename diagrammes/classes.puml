@@ -1,26 +1,65 @@
 @startuml
 
-class AccueilController {
-	show()
+package app.Http.Controllers {
+	class Controller
+
+	class AccueilController extends Controller {
+		index()
+	}
+
+	class InscriptionController extends Controller {
+		index()
+		create(InscriptionRequest request)
+	}
+
+	class ConnexionController extends Controller{
+		index()
+		login(LoginRequest request)
+		logout(Request request)
+	}
+
+	class RecuperationController extends Controller {
+		index()
+		reset(RecuperationRequest request)
+	}
+
 }
 
-class InscriptionController {
-	show()
-	store(Request r)
+package app.Http.Helpers {
+	' class ApiFetcher {
+	' 	fetch(String $url)
+	' }
+	class GenerateurMDP {
+		generer()
+	}
 }
 
-class ProfilController {
+package app.Http.Requests {
+	class InscriptionRequest extends FormRequest {
+		authorize()
+		rules()
+	}
+
+	class ConnexionRequest extends FormRequest {
+		authorize()
+		rules()
+	}
+
+	class RecuperationRequest extends FormRequest {
+		authorize()
+		rules()
+	}
+}
+class EvenementController {
 	show()
-	update(Request r)
+	edit()
+	update()
+	delete()
 }
 
-class ConnexionController {
+class EvenementCreationController {
 	show()
-	authenticate(Request $request)
-}
-
-class DeconnexionController {
-	__invoke()
+	store()
 }
 
 @enduml

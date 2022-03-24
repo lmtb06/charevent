@@ -2,67 +2,98 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InscriptionRequest;
 use App\Models\User;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmationInscription;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 class InscriptionController extends Controller
 {
 
-	public function show()
+	public function index()
 	{
-		// Afficher la page d'inscription
+        // Les utilisateurs connectés ne peuvent pas voir la page d'inscription
+        if (Auth::check())
+            abort(403, 'Veuillez vous déconnecter d\'abord');
 		return view('inscription');
 	}
-	public function store(Request $request)
-	{
-		// Valider le formulaire
-		$validated = $request->validate([
-		'email' => 'required|email|unique:comptes_actifs,mail|max:255',
-		'password' => 'required|confirmed',
-		'nom' => 'required|alpha_dash',
-		'prenom' => 'required|alpha_dash',
-		'departement' => 'required|numeric|digits_between:1,3',
-		'ville' => 'required|alpha_dash',
-		'codeZIP' => 'required|numeric|digits:5',
-		'birth' => 'required|before:today',
-		'telephone' => 'nullable|digits:10|numeric',
-		'photo' => 'nullable',
-		'notifMail' => 'nullable'
-		]);
 
+	public function create(InscriptionRequest $request)
+	{
+
+		// Validation du formulaire
+		$validated = $request->validated();
+
+		// Normalisation de l'adresse postale
+		$response = Http::get('https://api-adresse.data.gouv.fr/search/', [
+			'q' => $validated['ville'] . ' ' . $validated['codeZIP'] . ' ' . $validated['departement'],
+			'type' => 'street',
+			'autocomplete' => '0',
+			'limit' => '1'
+		])->json()['features'][0]['properties'];
+
+		// Verifie que les champs nécessaires sont renseignés
+		if (!isset($response['city']) || !isset($response['postcode']) || !isset($response['context']))
+			abort(403, "Adresse postale non existante");
+
+		$validated['ville'] = $response['city'];
+		$validated['codeZIP'] = $response['postcode'];
+		$validated['departement'] = substr($response['context'], 0, 2);
 
 		// Hash le mot de passe avant de l'entrée dans la base de données
-		$mdp = Hash::make($request->password);
+        $validated['password'] = Hash::make($validated['password']);
 
 		// Génère une entrée dans localisation si nécessaire
 		$local = Localisation::firstOrCreate([
-			'ville' => $request->ville,
-			'codePostal' => $request->codeZIP,
-			'departement' => $request->departement,
+			'ville' => $validated['ville'],
+			'codePostal' => $validated['codeZIP'],
+			'departement' => $validated['departement'],
 		]);
-		if ($request->notifMail == NULL){
-			$notif = 0;
+
+        // conversion de notification mail en booleen
+		if (isset($validated['notificationMail'])){
+            $validated['notificationMail'] = true;
 		}else{
-			$notif = 1;
+            $validated['notificationMail'] = false;
 		}
 
-		// Créer une entrée dans la table comptes_actifs
+		// Création de l'utilisateur et enregistrement de l'avatar
+
 		$user = User::create([
-			'mail' => $request->email,
-			'hashMDP' => $mdp,
-			'nom' => $request->nom,
-			'prenom' => $request->prenom,
-			'dateNaissance' => $request->birth,
-			'telephone' => $request->telephone,
-			'photo' => $request->photo,
-			'notificationMail' => $notif,
+			'mail' => $validated['email'],
+			'hashMDP' => $validated['password'],
+			'nom' => $validated['nom'],
+			'prenom' => $validated['prenom'],
+			'dateNaissance' => $validated['birth'],
+			'telephone' => $validated['telephone'],
+			'notificationMail' => $validated['notificationMail'],
 			'id_residence' => $local->id_localisation,
 		]);
 
+		if (isset($validated['photo'])){
+			$nomFichier = $user->id_compte.'.'.$validated['photo']->extension();
+			$img = $request->file('photo')->storeAs(
+				'avatars',
+				$nomFichier
+			);
+			$user->photo = $img;
+		};
+
+		// Envoie d'un mail de confirmation d'inscription
+		Mail::to($user->mail)->send(new ConfirmationInscription($user));
+
+
+		// Connexion au compte
+		Auth::login($user);
+
 		// Redirection vers la page d'accueil
-		return redirect()->route('pageAccueil');
+		return redirect()->route('accueil');
 	}
 }

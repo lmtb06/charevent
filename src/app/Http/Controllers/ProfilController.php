@@ -7,7 +7,7 @@ use App\Models\Localisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class ModifierCompteController extends Controller
+class ProfilController extends Controller
 {
 
 	/**
@@ -49,39 +49,47 @@ class ModifierCompteController extends Controller
 
 		// Valider le formulaire
 		$validated = $request->validate([
-			'mail' => 'required|email|max:255',
-			'hashMDP' => 'required|confirmed',
-			'nom' => 'required|alpha_dash',
-			'prenom' => 'required|alpha_dash',
-			'departement' => 'required|numeric|digits_between:1,3',
-			'ville' => 'required|alpha_dash',
-			'codePostal' => 'required|numeric|digits:5',
-			'dateNaissance' => 'required|before:today',
+			'mail' => 'nullable|email|max:255',
+			'hashMDP' => 'required|string|min:8|max:30',
+			'mdp' => 'nullable|confirmed|string|min:8|max:30',
+			'nom' => 'nullable|alpha_dash',
+			'prenom' => 'nullable|alpha_dash',
+			'departement' => 'nullable|numeric|digits_between:1,3',
+			'ville' => 'nullable|alpha_dash',
+			'codePostal' => 'nullable|numeric|digits:5',
+			'dateNaissance' => 'nullable|before:today',
 			'numeroTelephone' => 'nullable|digits:10|numeric',
-			'photo' => 'nullable',
-			]);
-
-		if (!Hash::check($request->hashMDP, $user->hashMDP)){
-			return back()->withErrors([
-				'mail' => "L'adresse e-mail n'est pas reconnue par nos services, ou est invalide.",
-				'hashMDP' => "Le mot de passe est erroné.",
-				'MauvaisMDP' => "Le mot de passe est erroné."
-			]);
-		}
+			'photo' => 'nullable|file|max:2024',
+		]);		
 
 		// Mets à jour le modèle localisation (nouveau ou réutilisation d'une entrée existante)
-		$local = Localisation::firstOrCreate([
-			'ville' => $request->ville,
-			'codePostal' => $request->codePostal,
-			'departement' => $request->departement,
-		]);
+		if (isset($request->ville) && isset($request->codePostal) && isset($request->departement)){
+			$local = Localisation::firstOrCreate([
+				'ville' => $request->ville,
+				'codePostal' => $request->codePostal,
+				'departement' => $request->departement,
+			]);
+		}else{
+			$local = $user->id_residence;
+		}
+
+		if (isset($request->photo)){
+			$nomFichier = time().'.'.$request->photo->extension();
+			$img = $request->file('photo')->storeAs(
+				'avatars',
+				$nomFichier
+			);
+		}
 
 		// Mettre à jour le modele utilisateur
+		if ($request->filled('mail')) $user->mail = $request->mail;
 		if ($request->filled('nom')) $user->nom = $request->nom;
         if ($request->filled('prenom')) $user->prenom = $request->prenom;
+		if ($request->filled('mdp') && Hash::check($request->filled('mdp'), $user->hashMDP)){
+			$user->hashMDP = Hash::make($validated['mdp']);
+		}
 		$user->notificationMail = !empty($request->notificationMail);
         if ($request->filled('dateNaissance')) $user->dateNaissance = $request->dateNaissance;
-        if ($request->filled('mail')) $user->mail = $request->mail;
 		if ($request->filled('numeroTelephone')) $user->numeroTelephone = $request->numeroTelephone;
 		$user->id_residence = $local->id_localisation;
 		$user->saveOrFail();

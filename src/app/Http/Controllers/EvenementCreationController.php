@@ -3,36 +3,31 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Evenement;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\EvenementRequest;
 
-class CreerEvenementController extends Controller
+class EvenementCreationController extends Controller
 {
     public function show(){
-        return view('creationEvenement');
+        return view('creationEvenement', [
+			'user' => User::find(Auth::id())
+		]);
     }
 
-    public function store(Request $request){
+    public function store(EvenementRequest $request){
         // Valider le formulaire
-		$validated = $request->validate([
-		'titre' => 'required|string|max:40',
-		'description' => 'required|string|min:50|max:1000',
-		'departement' => 'required|numeric|digits_between:1,3',
-		'ville' => 'required|alpha_dash',
-		'codePostal' => 'required|numeric|digits:5',
-		'dateDebut' => 'required|date|after:today',
-		'dateFin' => 'nullable|date|after:dateDebut',
-		'expiration' => 'nullable',
-		]);
+		$validated = $request->validated();
 
 
 		// Génère une entrée dans localisation si nécessaire
 		$local = Localisation::firstOrCreate([
-			'ville' => $request->ville,
-			'codePostal' => $request->codePostal,
-			'departement' => $request->departement,
+			'ville' => $validated['ville'],
+			'codePostal' => $validated['codePostal'],
+			'departement' => $request['departement'],
 		]);
 
 		// Créer une entrée dans la table comptes_actifs
@@ -41,9 +36,9 @@ class CreerEvenementController extends Controller
         $evenement = Evenement::create([
             'id_createur' => $user_id,
             'id_localisation' => $local->id_localisation,
-            'titre' => $request->titre,
-            'description' => $request->description,
-            'dateDebut' => $request->dateDebut,
+            'titre' => $validated['titre'],
+            'description' => $validated['description'],
+            'dateDebut' => $validated['dateDebut'],
             'dateFin' => $request->dateFin,
         ]);
 
@@ -64,9 +59,10 @@ class CreerEvenementController extends Controller
 			$evenement->expiration = $newDateTime;
 		}
 		$evenement->save();
-
 		// Redirection vers la page d'accueil
-		return redirect()->route('pageAccueil');
+		return redirect()->route('pageEvenement', [
+			'id' => $evenement->id_evenement
+		]);
 
         
     }

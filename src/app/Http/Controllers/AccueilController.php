@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evenement;
 use App\Models\User;
-use App\Models\Localisation;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccueilController extends Controller
 {
-	public function show()
+	public function index()
 	{
-		// Afficher la page d'accueil
-		$loc = Localisation::create([
-			'ville' => 'dakar',
-			'departement' => 'GY',
-			'codePostal' => '99'
-		]);
-		// User::create([
-		// 	'nom' => 'Faye',
-		// 	'prenom' => 'Moussa',
-		// 	'id_localisation' => $loc->id_localisation
-		// ]);
-		return view('layout.welcome');
+		if (Auth::check()){
+			// Afficher la page d'accueil si on est connecté
+			$events = Evenement::paginate(20);
+
+			return view('accueil_connecte', [
+				"user" => User::find(Auth::id()),
+				"message" => "Les événements de l'association",
+				"events" => $events,
+			]);
+		}else{
+
+			// Redirige vers la page de connexion sinon
+			return redirect()->route('connexion');
+		}
 	}
 }

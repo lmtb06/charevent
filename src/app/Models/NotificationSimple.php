@@ -25,4 +25,21 @@ class NotificationSimple extends Model
         'message',
         'supprime',
     ];
+
+    public function evenement()
+    {
+        return $this->belongsTo(Evenement::class, 'id_evenement');
+    }
+
+    public function createurEvenement()
+    {
+        return $this->hasOneThrough(
+            User::class, 
+            Evenement::class, 
+            'id_createur', +
+            'id_evenement', 
+            'id_envoyeur', 
+            'id_createur'
+        );
+    }
 }
