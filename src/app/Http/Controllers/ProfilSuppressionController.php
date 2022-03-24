@@ -8,8 +8,11 @@ use App\Models\Localisation;
 use App\Models\CompteArchive;
 use App\Models\Evenement;
 use App\Models\Participant;
+use App\Models\BesoinActif;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\ParticipantController;
 
 class ProfilSuppressionController extends Controller
 {
@@ -43,6 +46,31 @@ class ProfilSuppressionController extends Controller
             response()->json(['message' => 'Le mot de passe entré est incorrecte.']);
             return redirect()->route('accueil');
         }
+
+        // Récupération des besoins auquel cet utilisateur participe
+        $besoins = BesoinActif::where('id_responsable', $user->id_compte)->get();
+        
+        foreach ($besoins as $besoin) {
+            $besoin->id_responsable = null;
+            $besoin->saveOrFail();
+        }
+
+        // Récupération des événements crées par cet utilisateur
+        $events = Evenement::where('id_createur', $user->id_compte)->get();
+        $evenementcontroller = new EvenementController();
+        
+        foreach ($events as $event) {
+            $evenementcontroller->delete($event->id_evenement);
+        }
+
+        // Récupération des événements auquels cet utilisateur participe
+        $participations = Participant::where('id_compte', $user->id_compte)->get();
+        $participantcontroller = new ParticipantController();
+        
+        foreach ($participations as $participation) {
+            $participantcontroller->delete($participation->id_evenement);
+        }
+
         
         $userarchive = CompteArchive::create([
             'mail' => $user->mail,
@@ -57,13 +85,6 @@ class ProfilSuppressionController extends Controller
             'dateCreationCompte' => $user->dateCreationCompte,
             'dateModifCompte' => $user->dateModifCompte
         ]);
-
-        // Récupération des événements crées par cet utilisateur
-        $events = Evenement::where('id_createur', $user->id_compte)->get();
-        
-        foreach ($events as $event) {
-            Participant::where('id_evenement', $event->id_evenement)->delete();
-        }
 
         $user->delete();
         Auth::logout();

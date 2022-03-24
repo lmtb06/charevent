@@ -118,6 +118,7 @@ return new class extends Migration
 		Schema::create('notifications_simple', function (Blueprint $table) {
 				$table->integer('id_notification',true);
 				$table->integer('id_destinataire');
+				$table->integer('id_envoyeur');
 				$table->integer('id_evenement');
 				$table->date('dateReception');
 				$table->date('dateLecture')->nullable();
