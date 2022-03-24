@@ -11,27 +11,27 @@
 <!-- ici c'est la boite avec l'image -->
 <div class="lg:bg-blue-300 w-full h-full">
     <div class="flex justify-center h-screen ">
-        <div class="flex content-center justify-center mt-10 mb-10 px-2  rounded-full ">
+        <div class="flex content-center justify-center lg:mt-10 mb-10 px-2  rounded-full ">
 			<div class="flex lg:w-1/3 mb-10 lg:border lg:border-black lg:rounded-md px-6 mt-6 bg-white rounded-xl">
 
 				<div class="flex-1 mt-5">
                     <p class=""><a href="{{route('connexion')}}" class="text-blue-500 focus:outline-none focus:underline hover:underline">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM22NlnKKa_D0qRcdKFM0ndIeDYDd548F80QO61yy-am7gXR52qeiOAASkhPQyJSeLclg&usqp=CAU" class=" h-6" alt="CharEvent"  />
                     </a></p>
-					<div class="text-center">
-						<h2 class="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-yellow-600 ">CharEvent</h2>
-                        <h2 class="text-xl text-blue-900  text-center">Récuperation de mot de passe</h2>
+					<div class="text-center mt-2">
+						<h2 class="text-4xl  mt-2 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-yellow-600 ">CharEvent</h2>
+                        <h2 class="text-xl mt-2 text-[#6477bd]  text-center">Récuperation de mot de passe</h2>
             
                     </div>
-                    <p class="mt-3 text-gray-500 ">Un mot de passe temporaire vous sera envoyé par email. 
+                    <p class="mt-8 text-gray-500 ">Un mot de passe temporaire vous sera envoyé par email. 
                         Attention, si nous ne reconnaissons pas votre adresse e-mail, vous ne recevrez pas de nouveau mot de passe.</p>
                 
 
-					<div class="mt-8">
+					<div class="mt-2">
 						<form method='POST' action='{{ route('connexion')}}'>
 							@csrf
 
-							<div class="mt-6">
+							<div class="mt-3">
 								<div class="flex justify-between mb-2">
 									<label for="password" class="text-sm text-gray-600">Veuillez entrez votre email </label>
 								</div>
