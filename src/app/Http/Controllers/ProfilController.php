@@ -82,10 +82,13 @@ class ProfilController extends Controller
 		}
 
 		// Mettre à jour le modele utilisateur
-		if ($request->filled('mail')) $user->mail = $request->mail;
+		if ($request->filled('mail') && $request->mail != $user->mail && 
+			(User::where('mail', $request->mail)->first() == null)){
+				$user->mail = $request->mail;
+			}
 		if ($request->filled('nom')) $user->nom = $request->nom;
         if ($request->filled('prenom')) $user->prenom = $request->prenom;
-		if ($request->filled('mdp') && Hash::check($request->filled('mdp'), $user->hashMDP)){
+		if ($request->filled('mdp') && Hash::check($request->hashMDP, $user->hashMDP)){
 			$user->hashMDP = Hash::make($validated['mdp']);
 		}
 		$user->notificationMail = !empty($request->notificationMail);

@@ -27,7 +27,7 @@
 
           <div class="border-t border-gray-200">
 
-            @if (count($participants) < 1)
+            @if (count($participants) < 1 )
             <div class="text-sm font-medium mt-8 justify-center text-gray-500">
               <p>Nous n'avons pas trouvé d'utilisateurs correspondant à vos critères. Il est possible que des utilisateurs correspondant aux critères :
                 <ul>

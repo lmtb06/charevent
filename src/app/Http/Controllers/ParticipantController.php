@@ -154,8 +154,6 @@ class ParticipantController extends Controller
             $users = $users->intersect($lieu->comptes);
         }
 
-
-
         // Filtre les participants déjà présents dans l'événement
         $participants = Participant::where('id_evenement', $event->id_evenement)->get();
         $users = $users->diff($participants);
