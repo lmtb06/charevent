@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
   <body class="h-full pt-10" style="background-color: #E4D9BC;">
   <div class="flex justify-center" style="background-color: #E4D9BC;">
   <div class="w-1/2 mb-10 border border-black rounded-md" style="background-color: white;">

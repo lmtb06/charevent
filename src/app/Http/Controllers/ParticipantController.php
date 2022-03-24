@@ -150,11 +150,11 @@ class ParticipantController extends Controller
         ->get();
         
         // Filtre les utilisateurs correspondant aux localisations retournées
-        foreach ($localisations as $lieu){
-            $users = $users->intersect($lieu->comptes);
+        if (count($localisations) == 1){
+            foreach ($localisations as $lieu){
+                $users = $users->diff($lieu->comptes);
+            }
         }
-
-
 
         // Filtre les participants déjà présents dans l'événement
         $participants = Participant::where('id_evenement', $event->id_evenement)->get();
