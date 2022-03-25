@@ -22,6 +22,7 @@ class NotificationModificationBesoin extends Model
         'id_envoyeur',
         'id_evenement',
         'id_besoin_en_attente',
+        'id_besoin_original',
         'dateReception',
         'dateLecture',
         'message',

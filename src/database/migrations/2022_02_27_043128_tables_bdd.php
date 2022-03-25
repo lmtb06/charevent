@@ -131,6 +131,7 @@ return new class extends Migration
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
+				$table->integer('id_besoin_original');
 				$table->integer('id_besoin_en_attente');
 				$table->date('dateReception');
 				$table->date('dateLecture')->nullable();
@@ -146,7 +147,7 @@ return new class extends Migration
 				$table->integer('id_destinataire');
 				$table->integer('id_evenement');
 				$table->integer('id_envoyeur');
-				$table->integer('id_besoin_en_attente');
+				$table->integer('id_besoin');
 				$table->date('dateReception');
 				$table->date('dateLecture')->nullable();
 				$table->string('message', 50)->nullable();

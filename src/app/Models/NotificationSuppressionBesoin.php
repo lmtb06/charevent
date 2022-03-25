@@ -21,7 +21,7 @@ class NotificationSuppressionBesoin extends Model
         'id_destinataire',
         'id_envoyeur',
         'id_evenement',
-        'id_besoin_en_attente',
+        'id_besoin',
         'dateReception',
         'dateLecture',
         'message',
