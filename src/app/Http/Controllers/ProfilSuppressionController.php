@@ -44,11 +44,6 @@ class ProfilSuppressionController extends Controller
             return redirect()->route('accueil');
         }
         
-        $userarchive = CompteArchive::where('mail', '=', $user->mail);
-
-        if (!empty($userarchive->get())){
-            $userarchive -> delete();
-        }
         $userarchive = CompteArchive::create([
             'mail' => $user->mail,
             'hashMDP' => $user->hashMDP,

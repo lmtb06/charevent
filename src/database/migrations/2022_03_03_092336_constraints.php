@@ -16,10 +16,6 @@ return new class extends Migration
         Schema::table('comptes_actifs', function (Blueprint $table) {
             $table->unique('mail');
         });
-
-        Schema::table('comptes_archives', function (Blueprint $table) {
-            $table->unique('mail');
-        });
     }
 
     /**
@@ -30,10 +26,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('comptes_actifs', function (Blueprint $table) {
-            $table->dropUnique(['mail']);
-        });
-
-        Schema::table('comptes_archives', function (Blueprint $table) {
             $table->dropUnique(['mail']);
         });
     }
