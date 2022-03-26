@@ -1,1 +1,1 @@
-Votre nouveau mot de passe est : {!!$password!!}
+Votre nouveau mot de passe est : {{$password}}
