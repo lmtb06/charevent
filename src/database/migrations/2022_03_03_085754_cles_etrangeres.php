@@ -20,7 +20,7 @@ return new class extends Migration
 
         // Evenements
         Schema::table('evenements_actifs', function (Blueprint $table) {
-            $table->foreign('id_createur')->references('id_compte')->on('comptes_actifs');
+            $table->foreign('id_createur')->references('id_compte')->on('comptes_actifs')->onDelete('cascade');
             $table->foreign('id_localisation')->references('id_localisation')->on('localisations');
         });
 
