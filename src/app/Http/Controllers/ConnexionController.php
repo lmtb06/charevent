@@ -29,12 +29,8 @@ class ConnexionController extends Controller
 		// Connecter
 		if(Auth::attempt(['mail' => $creds['mail'], 'hashMDP' => $creds['password']])){
             $request->session()->regenerate();
-			return redirect()->route('accueil');
 		}
-
-		return back()->withErrors([
-			'default' => ['pourquoi ca s\'affiche ici']
-		]);
+		return redirect()->route('accueil');
 
 	}
 
