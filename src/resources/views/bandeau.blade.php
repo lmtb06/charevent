@@ -1,4 +1,4 @@
-<?php  $lien="compte/edit/".(string) auth::id(); ?>
+
 <script>
     function myFunction() {
         var x = document.getElementById("menu_perso");
@@ -10,6 +10,7 @@
     }
     </script>
 
+
 <nav class="">
     <div class=" flex flex-wrap h-16 w-full justify-between items-center mx-auto bg-white border-bg-orange-300 shadow-lg shadow-red-500 md:shadow-xl fixed inset-x-0">
         <div class="flex items-center">
@@ -20,17 +21,45 @@
                 
                 <li>
                     <button onclick="">
-                    <a href="<?php echo $lien ?>">
-                        <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" class="mr-8 h-10" alt="CharEvent" />
+                    <a href="compte/">
+                        <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/2.png?raw=true" class="mr-8 h-10" alt="CharEvent" />
                     </a></button> 
                     
                     <button onclick="myFunction()">
-                            <img src="data:image/png;base64,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" class="mr-8 h-10" alt="CharEvent" />
+                            <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/4.png?raw=true" class="mr-8 h-10" alt="CharEvent" />
                     </button> 
                    
                 </li>
             </ul>
     </div>
+
+
+            <!--Barre de recherche-->
+            <section class="p-4 flex items-center justify-center">
+                <div class="  bg-orange-200 flex items-start">
+                    <div class="bg-orange-200  text-gray-300">
+                        <div class="relative bg-white p-2 rounded-3xl border-2 border-orange-800">
+                            <svg class="h-6 w-5 absolute left-0 ml-2" fill="black" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd">
+                                </path>
+                            </svg>
+                            <input type="text" placeholder="Search..." class="ml-6 bg-transparent text-black">
+    
+                        </div>
+                    </div>
+                    <div class="bg-orange-200 flex items-center justify-center text-gray-300">
+                        <div class="relative p-2 ">
+                                <svg  class="h-7 w-8 absolute left-0 pointer-events-none" fill="white" viewBox="0 0 24 24" stroke="black" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+                </section>
+                <!--Barre de recherche FIN-->
+
+
     <ul>
         <div id="menu_perso" style="display:none; " class="mt-20 fixed z-40 mr-3 origin-top-right right-0 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <!-- Active: "bg-gray-100", Not Active: "" -->
