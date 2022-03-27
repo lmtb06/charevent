@@ -17,7 +17,8 @@ module.exports = {
 				'logo-red' : '#e33b35',
 			},
 			backgroundImage: theme => ({
-				'logo':"url('/img/main2.png')",
+				'logo':"url('/img/logo.png')",
+				'logo2':"url('/img/main4.png')",
 				'hand-grass': "url('/img/solid1.jpg')",
 				'hand-plain': "url('/img/solid2.lpg')",
 				})
