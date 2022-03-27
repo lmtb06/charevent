@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ParticipantAPostule;
+use App\Events\ParticipantEstInvite;
+use App\Events\ParticipantQuitte;
+use App\Models\BesoinActif;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Evenement;
@@ -23,20 +27,13 @@ class ParticipantController extends Controller
      */
     public function create($id){
         $event = Evenement::findorFail($id);
-        $user_id = Auth::id();
+        $user = User::find(Auth::id());
         
-        if ($user_id == $event->id_createur){
+        if ($user->id_compte == $event->id_createur){
             abort(403, 'Vous ne pouvez pas rejoindre cet événement car vous en êtes le créateur');
         }
-
-        // Création de la demande de participation
-        $demande = NotificationDemandeParticipation::firstOrCreate([
-            'id_destinataire' => $event->id_createur,
-            'id_envoyeur' => $user_id,
-            'id_evenement' => $event->id_evenement,
-            'dateReception' => Carbon::now()->toDate(),
-        ]);      
-
+        // Création de la demande de participation  
+        event(new ParticipantAPostule($user, $event));
 
         return redirect()->route('pageEvenement', [
             'id' => $event->id_evenement,
@@ -44,20 +41,17 @@ class ParticipantController extends Controller
 
     }
 
+    /**
+     * Enregistre les invitations à participer à un événement
+     *
+     * @param [type] $id
+     * @param Request $request
+     */
     public function store($id, Request $request){
         $event = Evenement::find($id);
-
-        $participant = $request->participant;
-
-        
+        $participant = $request->participant;        
         foreach ($participant as $p){
-            $notif = NotificationInvitationParticipation::create([
-                'id_destinataire' => (int)$p,
-                'id_envoyeur' => $event->id_createur,
-                'id_evenement' => $event->id_evenement,
-                'dateReception' => Carbon::now()->toDate(),
-                'message' => "Vous êtes invité à participer à l'événement ".$event->titre.".",
-            ]);
+            event(new ParticipantEstInvite((int)$p, $event));
         }
         return redirect()->route('pageEvenement', [
             'id' => $event->id_evenement,
@@ -74,33 +68,24 @@ class ParticipantController extends Controller
     public function delete ($id){
         $event = Evenement::findorFail($id);
         $user_id = Auth::id();
-        $prenom = User::find($user_id)->prenom;
         
         if ($user_id == $event->id_createur){
             abort(403, 'Vous ne pouvez pas quitter cet événement car vous en êtes le créateur');
         }
 
         // Gestion des besoins dont l'utilisateur est responsable
-
+        BesoinActif::where(['id_responsable', $user_id])->update('id_responsable', NULL);
 
         // Retire la participation à l'événement de cet utilisateur
-        $participation = Participant::where([
+        Participant::where([
             ['id_compte', $user_id],
             ['id_evenement', $event->id_evenement]
         ])->delete();
 
         // Création de la notification
-        $notif = NotificationSimple::firstOrCreate([
-            'id_destinataire' => $event->id_createur,
-            'id_envoyeur' => $user_id,
-            'id_evenement' => $event->id_evenement,
-            'dateReception' => Carbon::now()->toDate(),
-            'message' => $prenom . " a quitté l'événement ". $event->titre. "."
-        ]);      
-
-
+        event(new ParticipantQuitte(User::find($user_id), $event));
+                
         return redirect()->route('accueil');
-
     }
 
     /**
