@@ -14,7 +14,7 @@
     <div class=" flex flex-wrap h-16 w-full justify-between items-center mx-auto bg-white border-bg-orange-300 shadow-lg shadow-red-500 md:shadow-xl fixed inset-x-0">
         <div class="flex items-center">
             <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/main4.png?raw=true" class=" h-14" alt="CharEvent"  />
-            <span class="self-center text-xl font-semibold whitespace-nowrap text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-yellow-600"><a href="{{route('accueil')}}" CharEvent>CharEvent</span>
+            <span class="self-center text-xl font-semibold whitespace-nowrap text-center text-transparent bg-clip-text bg-gradient-to-t from-blue-700 to-yellow-300"><a href="{{route('accueil')}}" CharEvent>CharEvent</span>
         </div>
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                 
