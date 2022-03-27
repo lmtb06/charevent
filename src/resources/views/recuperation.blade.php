@@ -9,7 +9,7 @@
 <html lang="fr">
 <body class = "bg-white">
 <!-- ici c'est la boite avec l'image -->
-<div class="lg:bg-blue-300 w-full h-full">
+<div class="lg:bg-blue-300 w-full h-full z-40">
     <div class="flex justify-center h-screen ">
         <div class="flex content-center justify-center lg:mt-10 mb-10 px-2  rounded-full ">
 			<div class="flex lg:w-1/3 mb-10 lg:border lg:border-black lg:rounded-md px-6 mt-6 bg-white rounded-xl">
