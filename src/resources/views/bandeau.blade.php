@@ -14,22 +14,22 @@
 <nav class="">
     <div class=" flex flex-wrap h-16 w-full justify-between items-center mx-auto bg-white border-bg-orange-300 shadow-lg shadow-red-500 md:shadow-xl fixed inset-x-0">
         <div class="flex items-center">
-                <a href="{{route('accueil')}}" CharEvent><img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/logo3.png?raw=true" class=" h-14" alt="CharEvent"  /> </a>
-                <span class="self-center text-xl font-semibold whitespace-nowrap text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-600"><a href="{{route('accueil')}}" CharEvent>CharEvent</span>
+                <a href="{{route('accueil')}}" CharEvent><img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/logo3.png?raw=true" class=" h-12 lg:h-14" alt="CharEvent"  /> </a>
+                <span class="self-center text-lg lg:text-2xl font-semibold whitespace-nowrap text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-600"><a href="{{route('accueil')}}" CharEvent>CharEvent</span>
         </div>
 
 
 
-            <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+            <ul class="flex flex-col mt-2 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                 
                 <li>
                     <button onclick="">
-                    <a href="compte/">
-                        <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/2.png?raw=true" class="mr-8 h-10" alt="CharEvent" />
+                    <a href="{{route('pageProfil')}}">
+                        <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/2.png?raw=true" class="mr-4 lg:mr-8 h-8 lg:h-10" alt="CharEvent" />
                     </a></button> 
                     
                     <button onclick="myFunction()">
-                            <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/4.png?raw=true" class="mr-8 h-10" alt="CharEvent" />
+                            <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/4.png?raw=true" class="mr-4 lg:mr-8 h-8 lg:h-10" alt="CharEvent" />
                     </button> 
                    
                 </li>
