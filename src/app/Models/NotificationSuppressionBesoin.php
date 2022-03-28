@@ -51,4 +51,12 @@ class NotificationSuppressionBesoin extends Model
             'id_createur'
         );
     }
+
+    public function envoyeur(){
+        return $this->belongsTo(User::class, 'id_envoyeur');
+    }
+
+    public function destinataire(){
+        return $this->belongsTo(User::class, 'id_destinaire');
+    }
 }

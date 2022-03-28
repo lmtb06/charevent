@@ -17,14 +17,24 @@ class NotificationController extends Controller
     public function index()
     {
         $user = User::find(Auth::id());
-        $invit = NotificationInvitationParticipation::where([
-            ['id_destinataire', $user->id_compte],
-            ['supprime', false],
-        ])->orderBy('dateReception', 'descending');
 
-        
-        
-        
+        // Récupération de toutes les notifs issues des 7 tables
+        $partic = $user->demandeParticipationsRecues;
+        $invit = $user->invitationEvenementRecues;
+        $modif = $user->demandeModificationBesoinRecues;
+        $propose = $user->propositionBesoinRecues;
+        $info = $user->informationRecues;
+        $suppr = $user->demandeSuppressionBesoinRecues;
+        $volont = $user->volontaireBesoinRecues;
+
+
+        // Concaténation de tous les résultats et tris
+        $notifs = $partic->concat($invit)
+            ->concat($modif)->concat($propose)
+            ->concat($info)->concat($suppr)
+            ->concat($volont); //->orderBy('dateReception', 'descending');
+
+        dd($notifs);
     }
 
     /**
