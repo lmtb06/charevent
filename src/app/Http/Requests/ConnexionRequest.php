@@ -42,7 +42,7 @@ class ConnexionRequest extends FormRequest
 		if (!$validator->fails()) {
 			$validator->after(function ($validator) {
 				$user = User::where('mail', $this->mail)->first();
-				if (!Hash::check($this->password, $user->hashMDP)) {
+				if (!$user || !Hash::check($this->password, $user->hashMDP)) {
 					$message = 'Mail ou mot de passe invalide';
 					$validator->errors()->add('mail', $message);
 					$validator->errors()->add('password', $message);
