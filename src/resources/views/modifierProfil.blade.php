@@ -6,67 +6,77 @@
 
 @section('content')
 <body>
-  <div class="flex justify-center" style="background-color: #E4D9BC;">
-    <form method='post' action="{{route('modifierCompte', ['id' => $user->id_compte])}}" enctype="multipart/form-data" class="max-w-2xl my-16 w-max">
+  <div class="flex justify-center lg:bg-blue-300">
+    <form method='post' action="{{route('modifierCompte', ['id' => $user->id_compte])}}" enctype="multipart/form-data" class="max-w-2xl mt-16 w-full">
       @csrf
-      <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
+      <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full ">
         <div class="px-4 py-5 sm:px-6">
-          <div class="bg-white px-4 py-5 mx-40">
-            <h3 class="text-2xl leading-6 font-medium text-gray-900">Modification du compte</h3>
+          <div class="bg-white px-4 py-5">
+              <span class="self-center -z-0 before:-my-2 whitespace-nowrap text-center before:bg-blue-400 before:block before:absolute before:-inset-1 before:-skew-y-2 relative inline-block">
+                <span class="relative -z-0 mb-10 ml-1 mr-1 text-center text-2xl font-semibold group  text-white"> MODIFICATION DU COMPTE </span>
+              </span>
           </div>
         </div>
         <div class="border-t border-gray-200">
 
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-500">Photo</dt>
+            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <input type="file" name="photo" id="photo" accept="image/png, image/jpeg" class="block py-2.5 px-0 w-full text-sm text-black bg-transparent appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+            </dd>
+          </div>
+ 
+
+          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Nom*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input value="{{$user->nom}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="nom" name="nom" type="text">
             </dd>
           </div>
 
-          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Prénom*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input value="{{$user->prenom}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="prenom" name="prenom" type="text">
             </dd>
           </div>
 
-          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Date de naissance*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input value="{{$user->dateNaissance}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="date_de_naissance" name="dateNaissance" type="date">
             </dd>
           </div>
 
-          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <div class="bg-gray-50  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Département*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input value="{{$lieu->departement}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="departement" name="departement" type="number">
             </dd>
           </div>
 
-          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Ville*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input value="{{$lieu->ville}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="ville" name="ville" type="text">
             </dd>
           </div>
 
-          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Code postale*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input value="{{$lieu->codePostal}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="code_postale" name="codePostal" type="number">
             </dd>
           </div>
 
-          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Email*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input value="{{$user->mail}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="email" name="mail" type="email">
             </dd>
           </div>
 
-          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Ancien mot de passe*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="hashMDP" name="hashMDP" type="password">
@@ -101,11 +111,25 @@
             </dd>
           </div>
 
+
+
           <div class="flex justify-center">
-            <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 mr-8" value="Valider modification" />
+            <input type="submit" class="mt-4 mb-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 " value="Valider modification" />
+            <div class="hidden lg:block">
 
             <!-- DEBUT Boite modale -->
-            <button class="modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 ml-8" type="button" data-modal-toggle="authentication-modal">Supprimer mon compte</button>
+            <!-- version PC !-->
+            <button class="mt-4 mb-8 modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 ml-8" type="button" data-modal-toggle="authentication-modal">Supprimer mon compte</button>
+            </div>
+          </div>
+
+            <!-- Version téléphone !-->
+            <div class="lg:hidden block ">
+              <div class="bg-red-100 py-5 flex justify-center">
+                  <button class="modal-open bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-2" type="button" data-modal-toggle="authentication-modal">Supprimer mon compte</button>
+                </dd>
+              </div>
+            </div>
             <!--Modal-->
             <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
               <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
@@ -120,7 +144,7 @@
                     </div>
                   </div>
                   <!--Body-->
-                  <p>Veuillez entrer votre mot de passe pour confirmer la suprresion de votre compte.</p>
+                  <p>Veuillez entrer votre mot de passe pour confirmer la supression de votre compte.</p>
                   <p>Mot de passe :</p>
                   <p><input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="confirmation_mot_de_passe_suppression" name="password" type="password"></p>
 

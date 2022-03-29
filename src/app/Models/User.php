@@ -5,9 +5,17 @@ namespace App\Models;
 use Carbon\Carbon;
 use App\Models\Evenement;
 use App\Models\BesoinActif;
+use App\Models\Localisation;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\NotificationSimple;
 use Illuminate\Notifications\Notifiable;
+use App\Models\NotificationPropositionBesoin;
+use App\Models\NotificationSuppressionBesoin;
+use App\Models\NotificationVolontariatBesoin;
+use App\Models\NotificationModificationBesoin;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\NotificationDemandeParticipation;
+use App\Models\NotificationInvitationParticipation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -59,6 +67,47 @@ class User extends Authenticatable
     {
         return $this->hasMany(Evenement::class,
         'id_createur');
+    }
+
+    public function demandeParticipationsRecues(){
+        return $this->hasMany(NotificationDemandeParticipation::class,'id_destinataire')
+        ->where('supprime', False);
+    }
+
+    public function invitationEvenementRecues(){
+        return $this->hasMany(NotificationInvitationParticipation::class, 'id_destinataire')
+        ->where('supprime', False);
+
+    }
+
+    public function demandeModificationBesoinRecues(){
+        return $this->hasMany(NotificationModificationBesoin::class, 'id_destinataire')
+        ->where('supprime', False);
+
+    }
+
+    public function propositionBesoinRecues(){
+        return $this->hasMany(NotificationPropositionBesoin::class, 'id_destinataire')
+        ->where('supprime', False);
+
+    }
+
+    public function informationRecues(){
+        return $this->hasMany(NotificationSimple::class, 'id_destinataire')
+        ->where('supprime', False);
+
+    }
+
+    public function demandeSuppressionBesoinRecues(){
+        return $this->hasMany(NotificationSuppressionBesoin::class, 'id_destinataire')
+        ->where('supprime', False);
+
+    }
+
+    public function volontaireBesoinRecues(){
+        return $this->hasMany(NotificationVolontariatBesoin::class, 'id_destinataire')
+        ->where('supprime', False);
+
     }
 
     /**

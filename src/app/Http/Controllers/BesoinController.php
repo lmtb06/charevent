@@ -6,11 +6,16 @@ use Carbon\Carbon;
 use App\Models\Evenement;
 use App\Models\BesoinActif;
 use Illuminate\Http\Request;
+use App\Events\ProposeBesoin;
 use App\Models\BesoinArchive;
 use App\Models\BesoinEnAttente;
+use App\Events\SuppressionBesoin;
+use App\Events\ModificationBesoin;
 use App\Models\NotificationSimple;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use App\Events\SouhaiteSuppressionBesoin;
+use App\Events\SouhaiteModificationBesoin;
 use App\Models\NotificationPropositionBesoin;
 use App\Models\NotificationSuppressionBesoin;
 use App\Models\NotificationModificationBesoin;
@@ -50,26 +55,23 @@ class BesoinController extends Controller
         ]);
         $event = Evenement::findOrFail($id);
 
+        // Si l'utilisateur authentifié est le créateur de l'événement
+        // Il peut créer un besoin directement
         if (Auth::id() === $event->id_createur){
             BesoinActif::create([
                 'titre' => $validated['titre'],
                 'id_evenement' => $id,
             ]);
         }else{
+
+            // Sinon il crée un besoin temporaire et envoie une proposition
             $b = BesoinEnAttente::create([
                 'titre' => $validated['titre'],
                 'id_evenement' => $id,
             ]);
             $user = User::find(Auth::id());
-
-            NotificationPropositionBesoin::create([
-                'id_destinataire' => $event->id_createur,
-                'id_envoyeur' => Auth::id(),
-                'id_evenement' => $event->id_evenement,
-                'id_besoin_en_attente' => $b->id_besoin,
-                'dateReception' => Carbon::now()->toDate(),
-                'message' => $user->prenom." propose le besoin " . $b->titre . " pour : ". $event->titre
-            ]);
+            // Envoie de la notification proposant le nouveau besoin
+            event(new ProposeBesoin($user, $event, $b));
         }
 
         return redirect()->route('pageEvenement',
@@ -114,12 +116,7 @@ class BesoinController extends Controller
             $besoin->save();
             
             if (isset($besoin->id_responsable)){
-                NotificationSimple::create([
-                    'id_destinataire' => $besoin->id_responsable,
-                    'id_evenement' => $besoin->id_evenement,
-                    'dateReception' => Carbon::now()->toDate(),
-                    'message' => "Un besoin dont vous êtes responsable a été modifié : ". $besoin->titre,
-                ]);
+                event(new ModificationBesoin($besoin));
             }
         }else{
             // Sinon, création d'un besoin équivalent avec nouveau titre
@@ -130,15 +127,7 @@ class BesoinController extends Controller
             ]);
             $user = User::find(Auth::id());
             // Et génération d'une notification dans la table
-            NotificationModificationBesoin::create([
-                'id_destinataire' => $event->id_createur,
-                'id_envoyeur' => Auth::id(),
-                'id_evenement' => $event->id_evenement,
-                'id_besoin_en_attente' => $b->id_besoin,
-                'id_besoin_original' => $besoin->id_besoin,
-                'dateReception' => Carbon::now()->toDate(),
-                'message' => $user->prenom." propose de modifier le besoin " . $besoin->titre . " par : ". $b->titre .".",
-            ]);
+            event(new SouhaiteModificationBesoin($event, $user, $besoin, $b));
         }
 
         return redirect()->route('pageEvenement',
@@ -159,13 +148,7 @@ class BesoinController extends Controller
         if (Auth::id() === $event->id_createur || Auth::user()->role == 0){
             // Prévenir l'utilisateur responsable du besoin qu'il est supprimé
             if (!is_null($besoin->id_responsable)){
-                NotificationSimple::create([
-                    'id_destinataire' => $besoin->id_responsable,
-                    'id_evenement' => $besoin->evenement->id_evenement,
-                    'dateReception' => Carbon::now()->toDate(),
-                    'message' => "Le besoin ". $besoin->titre  ." dont vous êtes responsable a été supprimé",
-
-                ]);
+                event(new SuppressionBesoin($besoin));
             }
 
             BesoinArchive::create([
@@ -176,18 +159,9 @@ class BesoinController extends Controller
 
             $besoin->delete();
         }else{
-
+            // Effectue la demande de suppression d'un besoin
             $user = User::find(Auth::id());
-
-            NotificationSuppressionBesoin::create([
-                'id_destinataire' => $event->id_createur,
-                'id_envoyeur' => Auth::id(),
-                'id_evenement' => $event->id_evenement,
-                'id_besoin' => $besoin->id_besoin,
-                'dateReception' => Carbon::now()->toDate(),
-                'message' => $user->prenom." souhaite supprimer le besoin " . $besoin->titre . " de ". $event->titre
-            ]);
-
+            event(new SouhaiteSuppressionBesoin($event, $user, $besoin));
         }
     }
 }

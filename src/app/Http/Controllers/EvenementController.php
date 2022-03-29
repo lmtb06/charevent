@@ -99,7 +99,7 @@ class EvenementController extends Controller
 	}
 
 	public function delete($id){
-		$event = Evenement::find($id);
+		$event = Evenement::findOrFail($id);
 
 		if (Auth::id() != $event->id_createur){
 			return $this->show($id);

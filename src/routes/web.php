@@ -3,14 +3,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\ConnexionController;
-use App\Http\Controllers\EvenementCreationController;
-use App\Http\Controllers\DeconnexionController;
-use App\Http\Controllers\RecuperationController;
-use App\Http\Controllers\InscriptionController;
-use App\Http\Controllers\ProfilSuppressionController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\DeconnexionController;
+use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\RecuperationController;
+use App\Http\Controllers\EvenementCreationController;
+use App\Http\Controllers\ProfilSuppressionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/evenement/all/', [EvenementController::class, 'showAll'])->whereNumber('id')->name('pagesEvenement');
     Route::get('/evenement/edit/{id}', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
+
+    Route::get('notifs/all', [NotificationController::class, 'index'])->name('pageNotification');
     // Routes POST
     Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
     // Routes POST (traitement de données provenant des pages webs)

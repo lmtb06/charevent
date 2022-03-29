@@ -17,7 +17,7 @@
 				<div class="hidden bg-cover bg-center bg-hand-grass lg:block lg:w-2/3 ">
 					<div class="flex items-center h-full ">
 						<div
-							class="absolute items-center h-full lg:w-2/3 bg-gradient-to-tr opacity-40 from-blue-800 to-yellow-600 ">
+							class="absolute items-center h-full lg:w-2/3 opacity-20 bg-blue-800 ">
 						</div>
 						<div class="relative px-20">
 							<h2 class="text-4xl font-bold text-white opacity-100">CharEvent</h2>

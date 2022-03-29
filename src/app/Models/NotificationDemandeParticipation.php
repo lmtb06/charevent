@@ -18,7 +18,7 @@ class NotificationDemandeParticipation extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_destinataire',
+        'N',
         'id_envoyeur',
         'id_evenement',
         'dateReception',
@@ -44,6 +44,14 @@ class NotificationDemandeParticipation extends Model
             'id_envoyeur', 
             'id_createur'
         );
+    }
+
+    public function envoyeur(){
+        return $this->belongsTo(User::class, 'id_envoyeur');
+    }
+
+    public function destinataire(){
+        return $this->belongsTo(User::class, 'id_destinaire');
     }
 
 }
