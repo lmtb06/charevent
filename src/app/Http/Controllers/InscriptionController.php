@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\LocationApi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -32,20 +33,11 @@ class InscriptionController extends Controller
 		$validated = $request->validated();
 
 		// Normalisation de l'adresse postale
-		$response = Http::get('https://api-adresse.data.gouv.fr/search/', [
-			'q' => $validated['ville'] . ' ' . $validated['codeZIP'] . ' ' . $validated['departement'],
-			'type' => 'street',
-			'autocomplete' => '0',
-			'limit' => '1'
-		])->json()['features'][0]['properties'];
+		$adresse = LocationApi::normalize($validated['ville'], $validated['codeZIP'], $validated['departement']);
 
-		// Verifie que les champs nécessaires sont renseignés
-		if (!isset($response['city']) || !isset($response['postcode']) || !isset($response['context']))
-			abort(403, "Adresse postale non existante");
-
-		$validated['ville'] = $response['city'];
-		$validated['codeZIP'] = $response['postcode'];
-		$validated['departement'] = substr($response['context'], 0, 2);
+		$validated['ville'] = $adresse['ville'];
+		$validated['codeZIP'] = $adresse['code_postale'];
+		$validated['departement'] = $adresse['departement'];
 
 		// Hash le mot de passe avant de l'entrée dans la base de données
         $validated['password'] = Hash::make($validated['password']);
