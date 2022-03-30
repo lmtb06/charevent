@@ -78,12 +78,21 @@ class InscriptionController extends Controller
 		]);
 
 		if (isset($validated['photo'])){
-			$nomFichier = $user->id_compte.'.'.$validated['photo']->extension();
-			$img = $request->file('photo')->storeAs(
+			// On enregistre la photo
+			$nomFichier = $user->id_compte . '.' . $validated['photo']->extension();
+			$path = $request->file('photo')->storeAs(
 				'avatars',
-				$nomFichier
+				$nomFichier, 'public'
 			);
-			$user->photo = $img;
+			// On sauvegarde le chemin de la photo dans le compte de l'utilisateur
+			if ($path) {
+				$user->photo = $path;
+				$user->saveOrFail();
+			} else {
+				// La sauvegarde de la photo n'a pas réussi
+			}
+
+
 		};
 
 		// Envoie d'un mail de confirmation d'inscription

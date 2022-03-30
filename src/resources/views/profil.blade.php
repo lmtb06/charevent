@@ -16,7 +16,7 @@
                 @if (is_null($user->photo))
                 <img class="inline-block rounded-full ring-2 ring-white" src="https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png" alt="Image de profil inconnu">
                 @else
-                <img class="inline-block rounded-full ring-2 ring-white" src="{{asset($user->photo)}}" alt="Image de profil">
+                <img class="inline-block rounded-full ring-2 ring-white" src="{{asset('/storage/' .$user->photo)}}" alt="Image de profil">
                 @endif
               </div>
             </dt>
