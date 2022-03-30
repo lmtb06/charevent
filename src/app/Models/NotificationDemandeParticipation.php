@@ -18,7 +18,7 @@ class NotificationDemandeParticipation extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'N',
+        'id_destinataire',
         'id_envoyeur',
         'id_evenement',
         'dateReception',

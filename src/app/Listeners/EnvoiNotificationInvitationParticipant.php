@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use Carbon\Carbon;
-use App\Providers\ParticipantEstInvite;
+use App\Events\ParticipantEstInvite;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Models\NotificationInvitationParticipation;

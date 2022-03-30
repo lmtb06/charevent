@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use Carbon\Carbon;
-use App\Providers\ParticipantAPostule;
+use App\Events\ParticipantAPostule;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Models\NotificationDemandeParticipation;
@@ -34,7 +34,7 @@ class EnvoiNotificationCandidatureParticipant
             'id_envoyeur' => $event->user->id_compte,
             'id_evenement' => $event->event->id_evenement,
             'dateReception' => Carbon::now()->toDate(),
-            'message' => $event->user->prenom." a postulé pour l'événement ". $event->titre. ".",
+            'message' => $event->user->prenom." a postulé pour l'événement ". $event->event->titre. ".",
         ]);  
     }
 }
