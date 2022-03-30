@@ -62,7 +62,7 @@ class ProfilController extends Controller
 			'dateNaissance' => 'nullable|before:today',
 			'numeroTelephone' => 'nullable|digits:10|numeric',
 			'photo' => 'nullable|file|max:2024',
-		]);		
+		]);
 
 		// Mets à jour le modèle localisation (nouveau ou réutilisation d'une entrée existante)
 		if (isset($request->ville) && isset($request->codePostal) && isset($request->departement)){
@@ -76,15 +76,20 @@ class ProfilController extends Controller
 		}
 
 		if (isset($request->photo)){
-			$nomFichier = time().'.'.$request->photo->extension();
-			$img = $request->file('photo')->storeAs(
+			$nomFichier = $user->id_compte . '.' . $validated['photo']->extension();
+			$path = $request->file('photo')->storeAs(
 				'avatars',
-				$nomFichier
-			);
+				$nomFichier, 'public');
+			// On sauvegarde le chemin de la photo dans le compte de l'utilisateur
+			if ($path) {
+				$user->photo = $path;
+			} else {
+				// La sauvegarde de la photo n'a pas réussi
+			}
 		}
 
 		// Mettre à jour le modele utilisateur
-		if ($request->filled('mail') && $request->mail != $user->mail && 
+		if ($request->filled('mail') && $request->mail != $user->mail &&
 			(User::where('mail', $request->mail)->first() == null)){
 				$user->mail = $request->mail;
 			}
