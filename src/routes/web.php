@@ -65,7 +65,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/evenement/create', [EvenementCreationController::class, 'show'])->name('pageCreationEvenement');
     Route::get('/evenement/show/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
-    Route::get('/evenement/all/', [EvenementController::class, 'showAll'])->whereNumber('id')->name('pagesEvenement');
+    Route::get('/evenements', [EvenementController::class, 'showAll'])->name('pagesEvenements');
     Route::get('/evenement/edit/{id}', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
 
