@@ -5,102 +5,102 @@ Charevent - Accueil
 @endsection
 
 @section('content')
-    <body class=" bg-orange-200 ">
-        <main>
-            <section class=" p-4 flex content-center justify-center">
-                <div class="px-4 ">
-                    <h2 class="text-2xl font-bold">Les évènements de l'association</h2>
-                </div>
-            </section>
-            <!--Barre de recherche-->
-            <section class="p-4 flex items-center justify-center">
-            <div class="  bg-orange-200 flex items-start">
-                <div class="bg-orange-200  text-gray-300">
-                    <div class="relative bg-white p-2 rounded-3xl border-2 border-orange-800">
-                        <svg class="h-6 w-5 absolute left-0 ml-2" fill="black" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd">
-                            </path>
-                        </svg>
-                        <input type="text" placeholder="Search..." class="ml-6 bg-transparent text-black">
 
-                    </div>
+<div class="bg-orange-200">
+    <div class="pt-24 text-center text-2xl font-semibold">Les évènements de l'association</div>
+    <section class="p-4 flex items-center justify-center">
+        <div class="  bg-orange-200 flex items-start w-1/3">
+            <div class="bg-orange-200  text-gray-300 w-full">
+                <div class="relative bg-white p-2 rounded-3xl border-2 border-orange-800">
+                    <svg class="h-6 w-5 absolute left-0 ml-2" fill="black" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd">
+                        </path>
+                    </svg>
+                    <input type="text" placeholder="Search..." class="ml-6 bg-transparent text-black w-11/12">
                 </div>
-                <div class="bg-orange-200 flex items-center justify-center text-gray-300">
-                    <div class="relative p-2 ">
-                            <svg  class="h-7 w-8 absolute left-0 pointer-events-none" fill="white" viewBox="0 0 24 24" stroke="black" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg></a>
+            </div>
+            <div class="bg-orange-200 flex items-center justify-center text-gray-300 ml-2 mt-0.5">
+                <div class="relative inline-block text-left">
+                    <div>
+                        <button onclick="filtrer()" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            Filtrer
+                        </button>
+                    </div>
+                    <div id="filtre" style="display:none; " class="origin-top-right absolute right-0 mt-2 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                        <div class="py-1" role="none">
+                            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                            <div class="text-gray-700 block px-4 py-2 text-sm"><input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
+                                    Trier par date
+                                </label>
+                            </div>
+                            <div class="text-gray-700 block px-4 py-2 text-sm"><input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
+                                    Trier par lieu
+                                </label>
+                            </div>
+                            <div class="text-gray-700 block px-4 py-2 text-sm"><input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
+                                    Trier par ordre alphabétique
+                                </label>
+                            </div>
+                            <div class="text-gray-700 block px-4 py-2 text-sm"><input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label inline-block text-gray-800" for="flexCheckDefault">
+                                    Ordre croissant
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            </section>
-            <!--Barre de recherche FIN-->
-            <section class="p-4 flex items-center justify-center" >
-                <!--Gros rectangle-->
-                <div class=" border-2 rounded-3xl border-orange-800 grid gap-1 grid-cols-2">
-                    @if (count($events)>0)
-                    @foreach ($events as $event)
-                    <!--Petit Rectangle-->
-                    <div class=" drop-shadow-2xl bg-gradient-to-b from-white to-white-500 m-1 border-2 border-black rounded-2xl">
-                        <!-- Trier le petit rectangle en 3 parties-->
-                        <div class="grid px-1 grid-cols-3">
-                            <!-- 1ere partie - l'image-->
-                            <div class="m-1">
-                                <img class="" src="http://picsum.photos/id/10/200/100" alt="lac">
-                            </div>
-                            <!-- 2e partie - Nom+Description-->
-                            <div class="ml-2 grid-line-2 grid-rows-2">
-                                <!-- Nom-->
-                                <div class="mt-1 text-xs font-bold">
-                                        {{$event->titre}}
-                                </div>
-                                <!--Description-->
-                                <div class="mt-2 text-xs">
-                                        {{$event->description}}
-                                </div>
-                            </div>
-                            <!-- 3e partie - Date+Bouton-->
-                            <div class="  grid grid-cols-2 grid-rows-2 items-center justify-center">
-                                <!-- Date de debut-->
-                                <div class=" m-1  text-xs flex items-center justify-center">
-                                        {{$event->dateDebut}}
-                                </div>
-                                <!-- Date de Fin-->
-                                <div class="  m-1  text-xs flex items-center justify-center">
-                                    {{$event->dateFin}}
-
-                                </div>
-                                <!-- Bouton Rejoindre/Quitter-->
-                                @if ($user->id_compte != $event->id_createur)
-                                    <div class=" m-1 text-xs flex items-center justify-center">
-                                        <button class="p-1 bg-green-200 border-2 rounded-3xl border-green-800" type="submit">Rejoindre</button>
-                                    </div>
-                                @endif
-                                <!-- Bouton consulter-->
-                                <div>
-                                    <a href="{{route('pageEvenement', ['id' => $event->id_evenement])}}">
-                                    <div class=" m-1  text-xs flex items-center justify-center">
-                                            <button class="p-1 bg-white border-2  rounded-3xl border-black" type="submit">Consulter</button>
-                                    </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!--Petit Rectangle FIN-->
-
-                    @endforeach
+    </section>
+    <section class="p-4 flex items-center justify-center">
+        @if (count($events)>0)
+        <div class="flex items-start grid grid-cols-3 gap-3 justify-between mt-4 pt-4">
+            @foreach ($events as $event)
+            <!--Début petit bloc d'event -->
+            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                <img class="w-full" src="https://static9.depositphotos.com/1000276/1100/i/600/depositphotos_11008977-stock-photo-mountain-magic-landscape.jpg" alt="Sunset in the mountains">
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">{{$event->titre}}</div>
+                    <p class="text-gray-700" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 2; -webkit-box-orient: vertical;">
+                        {{$event->description}}
+                    </p>
+                </div>
+                <div class="text-gray-700 px-6 pt-2 pb-2">
+                    Date de début : {{$event->dateDebut}}
+                </div>
+                <div class="text-gray-700 px-6 pt-2 pb-2">
+                    Date de fin : {{$event->dateFin}}
+                </div>
+                <div class="px-6 pt-4 pb-4 w-full justify-center">
+                    <a href="{{route('pageEvenement',['id'=>$event->id_evenement])}}">
+                <button type="submit" id="submit" value="S'inscrire" class="mr-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Consulter</button>
+</a>    
+                @if ($user->id_compte != $event->id_createur)
+                    <button type="submit" id="submit" value="S'inscrire" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Rejoindre</button>
                     @else
-                    <div class=" m-1  text-xs flex items-center justify-center">
-                        <p class="p-1 bg-white border-2  rounded-3xl border-black ">
-                            Il n'y a aucun événements disponibles pour le moment.
-                        </p>
-                    </div>
+                    <button type="submit" id="submit" value="S'inscrire" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Quitter</button>
                     @endif
                 </div>
-            </section>
-        </main>
-    </body>
+            </div>
+            <!--Fin petit bloc d'event -->
+            @endforeach
+        </div>
+        @else
+        <div class="pt-24 text-center text-2xl">Il n'y a aucun événements disponibles pour le moment.</div>
+        @endif
+    </section>
+</div>
+
+<script>
+    function filtrer() {
+        var x = document.getElementById("filtre");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 @endsection
