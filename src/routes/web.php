@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/evenement/edit/{id}', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
 
-    Route::get('notifs/all', [NotificationController::class, 'index'])->name('pageNotification');
+    Route::get('notifs/all', [NotificationController::class, 'index'])->name('notification');
     // Routes POST
     Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
     // Routes POST (traitement de données provenant des pages webs)

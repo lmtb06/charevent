@@ -45,7 +45,7 @@
 									<input type="email" name="mail" id="email" placeholder="exemple@exemple.com"
 										class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 " />
 									@error('mail')
-									<div class="alert alert-danger">{{ $message }}</div>
+									<div class="text-red-500 italic alert alert-danger">{{ $message }}</div>
 									@enderror
 								</div>
 
@@ -61,10 +61,9 @@
 									<input type="password" name="password" id="password" placeholder="mot de passe"
 										class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
 									@error('password')
-									<div class="alert alert-danger">{{ $message }}</div>
+									<div class="text-red-500 italic alert alert-danger">{{ $message }}</div>
 									@enderror
 								</div>
-								<div id="ERREUR" class="text-red-700"> </div>
 								<div class="mt-6">
 									<input type="submit"
 										class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
