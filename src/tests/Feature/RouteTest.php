@@ -53,11 +53,16 @@ class RouteTest extends TestCase
     public function test_post_besoin_add_1()
     {
         $user = User::findOrFail(1);
-        $evenement = Evenement::findOrFail(1);
         $response = $this->actingAs($user)
                          ->call('POST', '/evenement/1/besoin/store', ['titre' => 'titre']);
-
-        $response->assertStatus(200);
     }
     */
+    
+    public function test_post_besoin_add_2()
+    {
+        $user = User::findOrFail(1);
+        $response = $this->actingAs($user)
+                         ->call('POST', '/evenement/2/besoin/store', ['titre' => 'titre1']);
+    }
+    
 }

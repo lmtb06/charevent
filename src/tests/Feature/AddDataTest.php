@@ -26,7 +26,7 @@ class AddDataTest extends TestCase
 		]);
     }
     */
-
+	/*
     public function test_ajouter_users()
     {
 		$user = User::create([
@@ -53,8 +53,8 @@ class AddDataTest extends TestCase
 			'notificationMail' => 1,
 		]);
     }
-    
-	
+    */
+	/*
 	public function test_ajouter_event()
     {
 		$evenement = Evenement::create([
@@ -67,5 +67,5 @@ class AddDataTest extends TestCase
         	'expiration' => '2023-04-01',
 		]);
     }
-	
+	*/
 }
