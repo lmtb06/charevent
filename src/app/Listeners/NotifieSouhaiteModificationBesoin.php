@@ -3,10 +3,11 @@
 namespace App\Listeners;
 
 use Carbon\Carbon;
+use App\Enums\NotifType;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Events\SouhaiteModificationBesoin;
+use App\Models\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Models\NotificationModificationBesoin;
 
 class NotifieSouhaiteModificationBesoin
 {
@@ -28,7 +29,7 @@ class NotifieSouhaiteModificationBesoin
      */
     public function handle(SouhaiteModificationBesoin $event)
     {
-        NotificationModificationBesoin::create([
+        Notification::create([
             'id_destinataire' => $event->event->id_createur,
             'id_envoyeur' => $event->user->id_compte,
             'id_evenement' => $event->event->id_evenement,
@@ -37,6 +38,8 @@ class NotifieSouhaiteModificationBesoin
             'dateReception' => Carbon::now()->toDate(),
             'message' => $event->user->prenom." propose de modifier le besoin " .
                 $event->besoin->titre . " par : ". $event->b_enAttente->titre .".",
+            'type' => NotifType::ModifBesoin,
+
         ]);
     }
 }

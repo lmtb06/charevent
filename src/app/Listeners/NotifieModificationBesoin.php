@@ -3,8 +3,9 @@
 namespace App\Listeners;
 
 use Carbon\Carbon;
+use App\Enums\NotifType;
 use App\Events\ModificationBesoin;
-use App\Models\NotificationSimple;
+use App\Models\Notification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -28,11 +29,13 @@ class NotifieModificationBesoin
      */
     public function handle(ModificationBesoin $event)
     {
-        NotificationSimple::create([
+        Notification::create([
             'id_destinataire' => $event->besoin->id_responsable,
             'id_evenement' => $event->besoin->id_evenement,
             'dateReception' => Carbon::now()->toDate(),
             'message' => "Un besoin dont vous êtes responsable a été modifié : ". $event->besoin->titre,
+            'type' => NotifType::Information,
+
         ]);
     }
 }

@@ -69,6 +69,12 @@ class User extends Authenticatable
         'id_createur');
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class,
+        'id_notification');
+    }
+
     public function demandeParticipationsRecues(){
         return $this->hasMany(NotificationDemandeParticipation::class,'id_destinataire')
         ->where('supprime', False);

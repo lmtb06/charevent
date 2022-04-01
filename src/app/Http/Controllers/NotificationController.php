@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\NotificationInvitationParticipation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class NotificationController extends Controller
         $user = User::find(Auth::id());
 
         // Récupération de toutes les notifs issues des 7 tables
+        /*
         $partic = $user->demandeParticipationsRecues;
         $invit = $user->invitationEvenementRecues;
         $modif = $user->demandeModificationBesoinRecues;
@@ -33,7 +35,8 @@ class NotificationController extends Controller
             ->concat($modif)->concat($propose)
             ->concat($info)->concat($suppr)
             ->concat($volont); //->orderBy('dateReception', 'descending');
-
+*/
+        $notifs = $user->notifications->sortByDesc('dateReception');
         //dd($notifs);
         return view('notification', [
             'notifs' => $notifs,

@@ -99,7 +99,7 @@ return new class extends Migration
     public function down()
     {
         // Comptes
-        Schema::table('participants', function (Blueprint $table) {
+        Schema::table('comptes_actifs', function (Blueprint $table) {
             $table->dropForeign(['id_residence']);
         });
 
