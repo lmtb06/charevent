@@ -34,7 +34,11 @@ class NotificationController extends Controller
             ->concat($info)->concat($suppr)
             ->concat($volont); //->orderBy('dateReception', 'descending');
 
-        dd($notifs);
+        //dd($notifs);
+        return view('notification', [
+            'notifs' => $notifs,
+            'user' => $user,
+        ]);
     }
 
     /**
