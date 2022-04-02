@@ -12,10 +12,7 @@ use App\Models\Evenement;
 use App\Models\Participant;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
-use App\Models\NotificationSimple;
 use Illuminate\Support\Facades\Auth;
-use App\Models\NotificationDemandeParticipation;
-use App\Models\NotificationInvitationParticipation;
 
 class ParticipantController extends Controller
 {
@@ -144,27 +141,6 @@ class ParticipantController extends Controller
         // Filtre les participants déjà présents dans l'événement
         $participants = Participant::where('id_evenement', $event->id_evenement)->get();
         $users = $users->diff($participants);
-
-        
-
-        // Filtre les participants potentiels qui n'ont pas encore répondu
-        /*
-        $notifs = NotificationInvitationParticipation::where([
-            ['id_evenement', $event->id_evenement],
-            ['accepte', null],
-            ['supprime', false]
-            ])
-        ->get();
-        $users = $users->diff($notifs);
-
-        $notifs = NotificationDemandeParticipation::where([
-            ['id_evenement', $event->id_evenement],
-            ['accepte', null],
-            ['supprime', false]
-            ])
-        ->get();
-        $users = $users->diff($notifs);
-        */
 
         return view('rechercheParticipants', [
             'participants' => $users,

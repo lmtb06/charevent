@@ -11,7 +11,6 @@ use App\Models\EvenementArchive;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EvenementRequest;
 use App\Models\Notification;
-use App\Models\NotificationDemandeParticipation;
 use App\Models\Participant;
 
 class EvenementController extends Controller
@@ -46,13 +45,7 @@ class EvenementController extends Controller
 			]);
 		})		
 		->get()->count();
-		//dd($notif);
-/*
-		$demande = NotificationDemandeParticipation::where([
-			['id_evenement', $id],
-			['id_envoyeur', $user->id_compte],
-		])->orderBy('dateReception', 'DESC')->first();
-*/
+
         return view('evenement',[
             'user' => $user,
             'event' => $event,

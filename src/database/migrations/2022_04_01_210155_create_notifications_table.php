@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->integer('id_notification',true);
-            $table->string('type')->default("errr");
+            $table->string('type')->default("perdu");
             $table->integer('id_destinataire');
             $table->integer('id_evenement');
             $table->integer('id_envoyeur');

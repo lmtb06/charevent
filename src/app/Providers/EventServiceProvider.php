@@ -7,6 +7,7 @@ use App\Events\ParticipantQuitte;
 use App\Events\ModificationBesoin;
 use App\Events\ParticipantAPostule;
 use App\Events\ParticipantEstInvite;
+use App\Events\ReponseNotification;
 use App\Events\SouhaiteModificationBesoin;
 use App\Events\SouhaiteSuppressionBesoin;
 use App\Events\SuppressionBesoin;
@@ -17,6 +18,7 @@ use App\Listeners\EnvoiNotificationArchivageEvent;
 use App\Listeners\EnvoiNotificationQuitterEvenement;
 use App\Listeners\EnvoiNotificationInvitationParticipant;
 use App\Listeners\EnvoiNotificationCandidatureParticipant;
+use App\Listeners\EnvoiReponseNotif;
 use App\Listeners\NotifiePropositionBesoin;
 use App\Listeners\NotifieSouhaiteModificationBesoin;
 use App\Listeners\NotifieSouhaiteSuppressionBesoin;
@@ -71,6 +73,9 @@ class EventServiceProvider extends ServiceProvider
         SuppressionBesoin::class => [
             NotifieSuppressionBesoin::class,
         ],
+        ReponseNotification::class => [
+            EnvoiReponseNotif::class,
+        ]
     ];
 
     /**

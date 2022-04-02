@@ -11,14 +11,11 @@ use App\Models\BesoinArchive;
 use App\Models\BesoinEnAttente;
 use App\Events\SuppressionBesoin;
 use App\Events\ModificationBesoin;
-use App\Models\NotificationSimple;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use App\Events\SouhaiteSuppressionBesoin;
 use App\Events\SouhaiteModificationBesoin;
-use App\Models\NotificationPropositionBesoin;
-use App\Models\NotificationSuppressionBesoin;
-use App\Models\NotificationModificationBesoin;
+
 
 class BesoinController extends Controller
 {
@@ -115,7 +112,7 @@ class BesoinController extends Controller
             $besoin->titre = $validated['titre'];
             $besoin->save();
             
-            if (isset($besoin->id_responsable)){
+            if ($besoin->id_responsable !== null){
                 event(new ModificationBesoin($besoin));
             }
         }else{
@@ -147,7 +144,7 @@ class BesoinController extends Controller
 
         if (Auth::id() === $event->id_createur || Auth::user()->role == 0){
             // Prévenir l'utilisateur responsable du besoin qu'il est supprimé
-            if (!is_null($besoin->id_responsable)){
+            if ($besoin->id_responsable !== null){
                 event(new SuppressionBesoin($besoin));
             }
 
