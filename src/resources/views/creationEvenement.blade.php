@@ -11,13 +11,11 @@ Charevent - Création d'un événement
     <form method="POST" action="{{route('creerEvenement')}}">
       @csrf
       <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full ">
-        <div class="px-4 py-5 sm:px-6">
-          <div class="bg-white px-4 py-5">
+          <div class="bg-white px-4 mt-20 mb-4 py-5">
             <span class="self-center -z-0 before:-my-2 whitespace-nowrap text-center before:bg-blue-400 before:block before:absolute before:-inset-1 before:-skew-y-2 relative inline-block">
               <span class="relative -z-0 mb-10 ml-1 mr-1 text-center text-2xl font-semibold group  text-white"> CREER UN EVENEMENT </span>
             </span>
           </div>
-        </div>
         <div class="border-t border-gray-200">
 
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

@@ -11,12 +11,12 @@ Charevent - Accueil
     <section class="p-4 flex items-center justify-center">
         <div class="  bg-orange-200 flex items-start w-1/3">
             <div class="bg-orange-200  text-gray-300 w-full">
-                <div class="relative bg-white p-2 rounded-3xl border-2 border-orange-800">
+                <div class="relative bg-white p-2 rounded-3xl border-2 border-orange-800 lg:w-11/12">
                     <svg class="h-6 w-5 absolute left-0 ml-2" fill="black" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd">
                         </path>
                     </svg>
-                    <input type="text" placeholder="Search..." class="ml-6 bg-transparent text-black w-11/12">
+                    <input type="text" placeholder="Search..." class="ml-6 bg-transparent  text-black">
                 </div>
             </div>
             <div class="bg-orange-200 flex items-center justify-center text-gray-300 ml-2 mt-0.5">
@@ -56,7 +56,7 @@ Charevent - Accueil
     </section>
     <section class="p-4 flex items-center justify-center">
         @if (count($events)>0)
-        <div class="flex items-start grid grid-cols-3 gap-3 justify-between mt-4 pt-4">
+        <div class="items-start grid lg:grid-cols-3 gap-3 justify-between mt-4 pt-4">
             @foreach ($events as $event)
             <!--Début petit bloc d'event -->
             <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">

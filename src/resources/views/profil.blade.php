@@ -8,7 +8,7 @@
 <body>
   <div class="flex justify-center lg:bg-blue-300">
     <div class="max-w-2xl mt-16 w-max">
-      <div class="bg-white lg:shadow-4xl shadow-[#4f4c796e] overflow-hidden w-full ">
+      <div class="bg-white lg:shadow lg:border-x-2 lg:border-black lg:shadow-4xl shadow-[#4f4c796e] overflow-hidden w-full ">
         <div class="px-4 py-5 sm:px-6">
           <div class="bg-white px-14 lg:px-4 lg:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class=" font-medium text-gray-500">
