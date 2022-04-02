@@ -42,6 +42,15 @@ class InscriptionRequest extends FormRequest
 			'telephone' => 'nullable|digits:10|numeric',
 			'photo' => 'nullable|file|max:2024',
 			'notificationMail' => 'nullable',
+            'validation' => ['digits'],
 		];
     }
+
+
+	public function messages()
+	{
+		return [
+			'validation.digits' => 'il faut un minimum de 8 caractère pour le mot de passe.',
+		];
+	}
 }

@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-  <body class="pt-10 w-full h-full lg:bg-blue-300 ">
-  <div class="flex justify-center">
+  <body class="">
+  <div class="flex justify-center pt-10 w-full h-full lg:bg-blue-300 ">
   <div class="lg:w-1/2 mb-10 lg:border lg:border-black lg:rounded-md" style="background-color: white;">
     <form class="m-12" method='POST' action="{{ route('inscription') }}" enctype="multipart/form-data" >
     @csrf
@@ -93,14 +93,11 @@
             <label for="password_confirmation" class="absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirmation*</label>
         </div>
 		
-    <div id="ERREUR"></div>
-        
-        <button type="submit" id="submit" value="S'inscrire" class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-150  text-white bg-blue-500 hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-5 py-2.5 text-center fond-semibold "> VALIDER </button>
-    </form>
-  </div>
-</div>
-  </div>
-    @if ($errors->any())
+    <div id="ERREUR" class="text-red-700 italic">
+        @error('validation')
+                    <div class="text-red-500 italic alert alert-danger">{{ $message }}</div>
+        @enderror
+        @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -109,6 +106,14 @@
             </ul>
         </div>
     @endif
+    </div>
+        
+        <button type="submit" id="submit" value="S'inscrire" class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-150  text-white bg-blue-500 hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-5 py-2.5 text-center fond-semibold "> VALIDER </button>
+    </form>
+  </div>
+</div>
+  </div>
+
     
   </body>
 @endsection

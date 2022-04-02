@@ -83,12 +83,6 @@
 		<div id='content'>
 			@yield('content')
 		</div>
-
-		<script>
-			function ErreurConnection() {
-		document.getElementById('ERREUR').innerHTML = 'L\'adresse mail ou le mot de passe n\'est pas valide';
-        }
-		</script>
 	</body>
 
 </html>
