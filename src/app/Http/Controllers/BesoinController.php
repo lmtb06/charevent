@@ -83,7 +83,7 @@ class BesoinController extends Controller
                 $user = User::find(Auth::id());
                 // Envoie de la notification proposant le nouveau besoin
                 event(new ProposeBesoin($user, $event, $b));
-                }
+            }
         }
         return redirect()->route('pageEvenement',['id' => $id]);
         
@@ -117,12 +117,9 @@ class BesoinController extends Controller
         $besoin = BesoinActif::findOrFail($id);
         $event = Evenement::find($besoin->id_evenement);
 
-
-        // Si l'utilisateur à l'origine de la modification
-        // est le créateur de l'événement : on modifie et prévient
-        // de la modif l'utilisateur responsable du besoin (si existe)
+        // Si l'utilisateur authentifié est le créateur de l'événement
+        // Il peut modifier un besoin directement
         if (Auth::id() === $event->id_createur || Auth::user()->role == 0){
-
             $besoin->titre = $validated['titre'];
             $besoin->save();
             
@@ -130,17 +127,25 @@ class BesoinController extends Controller
                 event(new ModificationBesoin($besoin));
             }
         }else{
-            // Sinon, création d'un besoin équivalent avec nouveau titre
-            $b = BesoinEnAttente::create([
-                'titre' => $validated['titre'],
-                'id_evenement' => $besoin->id_evenement,
-                'id_responsable' => $besoin->id_responsable,
-            ]);
-            $user = User::find(Auth::id());
-            // Et génération d'une notification dans la table
-            event(new SouhaiteModificationBesoin($event, $user, $besoin, $b));
+            // Sinon on verifie si l'utilisateur est participant
+            $user = Participant::where('id_evenement', '=', $event->id_evenement)
+                        ->where('id_compte', '=', Auth::id())
+                        ->first();
+                    
+            if ($user === null) {
+                return redirect()->route('pageEvenement', ['id' => $id]);
+            } else {
+                // Sinon, création d'un besoin équivalent avec nouveau titre
+                $b = BesoinEnAttente::create([
+                    'titre' => $validated['titre'],
+                    'id_evenement' => $besoin->id_evenement,
+                    'id_responsable' => $besoin->id_responsable,
+                ]);
+                $user = User::find(Auth::id());
+                // Et génération d'une notification dans la table
+                event(new SouhaiteModificationBesoin($event, $user, $besoin, $b));
+            }
         }
-
         return redirect()->route('pageEvenement',
             ['id' => $event->id_evenement]);
     }

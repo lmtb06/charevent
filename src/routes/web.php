@@ -86,5 +86,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/evenement/{id}/invite', [ParticipantController::class, 'store'])->whereNumber('id')->name('invitation');
 
     Route::post('/evenement/{id}/besoin/store', [BesoinController::class, 'store'])->whereNumber('id')->name('creerBesoin');
+    Route::post('/evenement/besoin/update/{id}', [BesoinController::class, 'update'])->whereNumber('id')->name('modifierBesoin');
 });
 
