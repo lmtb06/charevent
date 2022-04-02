@@ -34,9 +34,13 @@ class EvenementController extends Controller
 	}
 
 	public function showAll(){
-		$user = User::find(Auth::id())->id_compte;
-		$event = Evenement::all()->where('id_createur', '=', $user);
-		print($event);
+		$user = User::find(Auth::id());
+		$id = $user->id_compte;
+		$event = Evenement::all()->where('id_createur', '=', $id);
+		return view('mes_evenements',[
+			'user' => $user,
+            'events' => $event,
+        ]);
 	}
 
 	//Affiche le formulaire pour modifier l'evenement

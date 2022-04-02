@@ -12,6 +12,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\RecuperationController;
 use App\Http\Controllers\EvenementCreationController;
 use App\Http\Controllers\ProfilSuppressionController;
+use App\Http\Controllers\BesoinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +66,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/evenement/create', [EvenementCreationController::class, 'show'])->name('pageCreationEvenement');
     Route::get('/evenement/show/{id}', [EvenementController::class, 'show'])->whereNumber('id')->name('pageEvenement');
-    Route::get('/evenement/all/', [EvenementController::class, 'showAll'])->whereNumber('id')->name('pagesEvenement');
+    Route::get('/evenements', [EvenementController::class, 'showAll'])->name('pagesEvenements');
     Route::get('/evenement/edit/{id}', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
 
@@ -83,5 +84,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/evenement/{id}/invitation/resultat', [ParticipantController::class, 'search'])->whereNumber('id')->name('rechercheParticipant');
     Route::post('/evenement/{id}/canditature', [ParticipantController::class, 'create'])->whereNumber('id')->name('postule');
     Route::post('/evenement/{id}/invite', [ParticipantController::class, 'store'])->whereNumber('id')->name('invitation');
+
+    Route::post('/evenement/{id}/besoin/store', [BesoinController::class, 'store'])->whereNumber('id')->name('creerBesoin');
+    Route::post('/evenement/besoin/update/{id}', [BesoinController::class, 'update'])->whereNumber('id')->name('modifierBesoin');
+    Route::post('/evenement/besoin/delete/{id}', [BesoinController::class, 'delete'])->whereNumber('id')->name('effacerBesoin');
 });
 

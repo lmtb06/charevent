@@ -48,5 +48,51 @@ class RouteTest extends TestCase
 
         $response->assertStatus(200);
     }
-    */   
+    */
+    /*
+    public function test_post_besoin_add_1()
+    {
+        $user = User::findOrFail(1);
+        $response = $this->actingAs($user)
+                         ->call('POST', '/evenement/1/besoin/store', ['titre' => 'titre']);
+    }
+    */
+    /*
+    public function test_post_besoin_add_2()
+    {
+        $user = User::findOrFail(1);
+        $response = $this->actingAs($user)
+                         ->call('POST', '/evenement/2/besoin/store', ['titre' => 'titre1']);
+    }
+    */
+    /*
+    public function test_post_besoin_edit_1()
+    {
+        $user = User::findOrFail(1);
+        $response = $this->actingAs($user)
+                         ->call('POST', '/evenement/besoin/update/4', ['titre' => 'titre']);
+    }
+    */
+    /*
+    public function test_post_besoin_edit_2()
+    {
+        $user = User::findOrFail(1);
+        $response = $this->actingAs($user)
+                         ->call('POST', '/evenement/besoin/update/5', ['titre' => 'new_titre']);
+    }
+    */
+    /*
+    public function test_post_besoin_delete_1()
+    {
+        $user = User::findOrFail(1);
+        $response = $this->actingAs($user)
+                         ->call('POST', '/evenement/besoin/delete/4');
+    }
+    */
+    public function test_post_besoin_delete_1()
+    {
+        $user = User::findOrFail(1);
+        $response = $this->actingAs($user)
+                         ->call('POST', '/evenement/besoin/delete/5');
+    }
 }

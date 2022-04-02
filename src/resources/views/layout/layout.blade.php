@@ -9,7 +9,7 @@
     <title>@yield('titre')</title>
 </head>
 
-<body>
+<body class=" bg-orange-200 ">
     @if (Auth::check())
         @include('bandeau', ['user' => $user])
     @endif
