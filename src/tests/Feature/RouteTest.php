@@ -81,4 +81,18 @@ class RouteTest extends TestCase
                          ->call('POST', '/evenement/besoin/update/5', ['titre' => 'new_titre']);
     }
     */
+    /*
+    public function test_post_besoin_delete_1()
+    {
+        $user = User::findOrFail(1);
+        $response = $this->actingAs($user)
+                         ->call('POST', '/evenement/besoin/delete/4');
+    }
+    */
+    public function test_post_besoin_delete_1()
+    {
+        $user = User::findOrFail(1);
+        $response = $this->actingAs($user)
+                         ->call('POST', '/evenement/besoin/delete/5');
+    }
 }

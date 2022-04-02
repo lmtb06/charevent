@@ -156,7 +156,7 @@ class BesoinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         $besoin = BesoinActif::findOrFail($id);
         $event = Evenement::find($besoin->id_evenement);
