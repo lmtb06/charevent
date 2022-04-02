@@ -7,8 +7,8 @@ Charevent - Création d'un événement
 @section('content')
 
 <body>
-  <div class="flex justify-center lg:bg-blue-300">
-    <form method="POST" action="{{route('creerEvenement')}}">
+  <div class="flex justify-center bg-blue-300">
+    <form method="POST" class="w-full lg:w-auto" action="{{route('creerEvenement')}}">
       @csrf
       <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full ">
           <div class="bg-white px-4 mt-20 mb-4 py-5">
