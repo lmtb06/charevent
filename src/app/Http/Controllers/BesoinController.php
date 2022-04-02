@@ -123,7 +123,8 @@ class BesoinController extends Controller
             $besoin->titre = $validated['titre'];
             $besoin->save();
             
-            if (isset($besoin->id_responsable)){
+            // Si le responsable 
+            if ($besoin->id_responsable !== null){
                 event(new ModificationBesoin($besoin));
             }
         }else{
