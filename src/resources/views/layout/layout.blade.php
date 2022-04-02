@@ -9,7 +9,7 @@
     <title>@yield('titre')</title>
 </head>
 
-<body class="  ">
+<body>
     @if (Auth::check())
         @include('bandeau', ['user' => $user])
     @endif
