@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\NotifType;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Evenement;
@@ -9,7 +10,9 @@ use App\Models\Localisation;
 use App\Models\EvenementArchive;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EvenementRequest;
+use App\Models\Notification;
 use App\Models\NotificationDemandeParticipation;
+use App\Models\Participant;
 
 class EvenementController extends Controller
 {
@@ -19,17 +22,43 @@ class EvenementController extends Controller
         $event = Evenement::find($id);
 		$user = User::find(Auth::id());
 
-		// Récupération de la demande la plus récente 
+		// Vérifie si l'utilisateur participe à cet événement
+		$p = Participant::where([
+			['id_evenement', $id],
+			['id_compte', $user->id_compte],
+		])->first();
+		$participe = $p !== null;
+
+		// Récupération de demandes en cours
+		$notif = Notification::whereNull('accepte')
+		->where([
+			['id_evenement', $id],
+			['supprime', False],
+			['accepte', null]
+			])
+		->where(function ($query) use ($user) {
+			$query->where([
+				['id_destinataire', $user->id_compte],
+				['type', NotifType::InviteEvent],
+			])->orWhere([
+				['id_envoyeur', $user->id_compte],
+				['type', NotifType::PostuleEvent],
+			]);
+		})		
+		->get()->count();
+		//dd($notif);
+/*
 		$demande = NotificationDemandeParticipation::where([
 			['id_evenement', $id],
 			['id_envoyeur', $user->id_compte],
 		])->orderBy('dateReception', 'DESC')->first();
-
+*/
         return view('evenement',[
             'user' => $user,
             'event' => $event,
             'participants' => $event->comptes,
-			'demande' => $demande,
+			'demande' => $notif,
+			'participeDeja' => $participe
         ]);
 	}
 

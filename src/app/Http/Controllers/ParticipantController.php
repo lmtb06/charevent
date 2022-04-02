@@ -74,7 +74,7 @@ class ParticipantController extends Controller
         }
 
         // Gestion des besoins dont l'utilisateur est responsable
-        BesoinActif::where(['id_responsable', $user_id])->update('id_responsable', NULL);
+        BesoinActif::where('id_responsable', $user_id)->update(['id_responsable'=> null]);
 
         // Retire la participation à l'événement de cet utilisateur
         Participant::where([
@@ -145,7 +145,10 @@ class ParticipantController extends Controller
         $participants = Participant::where('id_evenement', $event->id_evenement)->get();
         $users = $users->diff($participants);
 
+        
+
         // Filtre les participants potentiels qui n'ont pas encore répondu
+        /*
         $notifs = NotificationInvitationParticipation::where([
             ['id_evenement', $event->id_evenement],
             ['accepte', null],
@@ -161,6 +164,7 @@ class ParticipantController extends Controller
             ])
         ->get();
         $users = $users->diff($notifs);
+        */
 
         return view('rechercheParticipants', [
             'participants' => $users,

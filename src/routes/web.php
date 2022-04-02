@@ -83,5 +83,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/evenement/{id}/invitation/resultat', [ParticipantController::class, 'search'])->whereNumber('id')->name('rechercheParticipant');
     Route::post('/evenement/{id}/canditature', [ParticipantController::class, 'create'])->whereNumber('id')->name('postule');
     Route::post('/evenement/{id}/invite', [ParticipantController::class, 'store'])->whereNumber('id')->name('invitation');
+    Route::post('/evenement/{id}/quitter', [ParticipantController::class, 'delete'])->whereNumber('id')->name('quitter');
+
 });
 

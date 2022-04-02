@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use DateTimeInterface;
 use App\Models\BesoinActif;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\User;
 
 class Evenement extends Model
 {

@@ -2,10 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Enums\NotifType;
 use Carbon\Carbon;
+use App\Enums\NotifType;
 use App\Models\Notification;
+use App\Mail\NotificationMail;
 use App\Events\EvenementArchive;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -30,7 +32,7 @@ class EnvoiNotificationArchivageEvent
     public function handle(EvenementArchive $event)
     {
         foreach ($event->users as $user){
-            Notification::firstOrCreate([
+            $notif = Notification::firstOrCreate([
                 'id_destinataire' => $user->id_compte,
                 'id_envoyeur' => $event->event->id_createur,
                 'id_evenement' => $event->event->id_evenement,
@@ -38,6 +40,13 @@ class EnvoiNotificationArchivageEvent
                 'message' => "L'événement ". $event->event->titre ." a été archivé.",
                 'type' => NotifType::Information,
             ]);
+
+            // Si l'utilisateur souhaite recevoir ses notifications par mail
+            if ($user->notificationMail){
+                Mail::to($user->mail)->send(new NotificationMail($user, $notif->message));
+            }
         }
+
+
     }
 }
