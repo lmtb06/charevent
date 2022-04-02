@@ -13,7 +13,7 @@
     
     <div class="relative z-0 mb-10 text-center text-4xl w-full group text-black">
     <p><a href="{{route('connexion')}}">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM22NlnKKa_D0qRcdKFM0ndIeDYDd548F80QO61yy-am7gXR52qeiOAASkhPQyJSeLclg&usqp=CAU" class=" h-6" alt="retour"  />
+        <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/fleche.png?raw=true" class=" h-6" alt="retour"  />
     </a></p>
     
     <span class=" before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
