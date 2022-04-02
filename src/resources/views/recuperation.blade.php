@@ -16,7 +16,7 @@
 
 				<div class="flex-1 mt-5">
                     <p class=""><a href="{{route('connexion')}}" class="text-blue-500 focus:outline-none focus:underline hover:underline">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM22NlnKKa_D0qRcdKFM0ndIeDYDd548F80QO61yy-am7gXR52qeiOAASkhPQyJSeLclg&usqp=CAU" class=" h-6" alt="CharEvent"  />
+                        <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/fleche.png?raw=true" class=" h-6" alt="CharEvent"  />
                     </a></p>
 					<div class="text-center mt-2">
                         <h2 class="text-4xl  mt-2 mb-2 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-yellow-600 ">CharEvent</h2>

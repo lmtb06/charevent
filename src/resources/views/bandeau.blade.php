@@ -25,11 +25,11 @@
                 <li>
                     <button onclick="">
                     <a href="{{route('pageProfil')}}">
-                        <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/2.png?raw=true" class=" rounded-full mr-4 lg:mr-8 h-8 lg:h-10" alt="CharEvent" />
+                        <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/2.png?raw=true" class=" rounded-full mr-4 lg:mr-8 h-8 lg:h-10" alt="photoProfil" />
                     </a></button> 
                     
                     <button onclick="myFunction()">
-                            <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/4.png?raw=true" class="mr-4 lg:mr-8 h-8 lg:h-10" alt="CharEvent" />
+                            <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/4.png?raw=true" class="mr-4 lg:mr-8 h-8 lg:h-10" alt="menu" />
                     </button> 
                    
                 </li>

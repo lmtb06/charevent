@@ -7,9 +7,12 @@ Charevent - Accueil
 @section('content')
 
 <div class="bg-blue-200">
-    <div class="pt-24 text-center text-2xl font-semibold">Mes évènements</div>
-    <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/plus.png?raw=true" href="{{route('pageCreationEvenement')}}" class="block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " alt="plus"/>
-            
+    <div class="pt-24 text-center items-center text-2xl font-semibold">Mes évènements
+        <a href="{{route('pageCreationEvenement')}}">
+            <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/plus.png?raw=true" class="h-10 block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " alt="plus"/>
+        </a>
+    </div>
+                
     <!-- les evenements !-->
     <section class="p-4 flex items-center justify-center">
         @if (count($events)>0)
