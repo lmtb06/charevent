@@ -42,15 +42,30 @@ class InscriptionRequest extends FormRequest
 			'telephone' => 'nullable|digits:10|numeric',
 			'photo' => 'nullable|file|max:2024',
 			'notificationMail' => 'nullable',
-            'validation' => ['digits'],
 		];
     }
 
 
+	public function withValidator($validator)
+	{
+		if (!$validator->fails()) {
+			$validator->after(function ($validator) {
+                    $message = 'TRUCTRUC';
+					$validator->errors()->add('validation', $message);
+					$validator->errors()->add('password', $message);
+			});
+		}
+	}
+
 	public function messages()
 	{
 		return [
-			'validation.digits' => 'il faut un minimum de 8 caractère pour le mot de passe.',
+            'unique' => 'Cette addresse e-mail est déjà attribué à un compte.',
+			'min' => 'il faut un minimum de 8 caractère pour le mot de passe.',
+            'digits_between' => 'veuillez rentrez un vrai numéro de département français.',
+            'digits' => 'veuillez rentrez un vrai code postal français (5 chiffres).',
+            'before' => 'vous ne pouvez pas être né(e) dans le futur...',
+            'confirmed' => 'les deux mots de passe ne correspondent pas.',
 		];
 	}
 }

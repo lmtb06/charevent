@@ -93,20 +93,15 @@
             <label for="password_confirmation" class="absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirmation*</label>
         </div>
 		
-    <div id="ERREUR" class="text-red-700 italic">
-        @error('validation')
-                    <div class="text-red-500 italic alert alert-danger">{{ $message }}</div>
-        @enderror
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    </div>
+            @if ($errors->any())
+            <div class="text-red-700 italic alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         
         <button type="submit" id="submit" value="S'inscrire" class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-150  text-white bg-blue-500 hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-5 py-2.5 text-center fond-semibold "> VALIDER </button>
     </form>
