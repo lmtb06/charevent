@@ -117,24 +117,37 @@
 
 
                                 <div class="mt-2 flex items-center justify-center">
+                                    <!-- Administration de l'événement -->
                                     @if ($event->id_createur == Auth::id())
                                         <a href="{{route('pageFromRechercheParticipants', ['id' => $event->id_evenement])}}">
-
                                             <button type="submit" class="modal-open bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded my-2 ">
                                             Inviter des personnes
                                             </button>
                                         </a>
+
+                                        
                                     @else
                                     <form method="POST" action="{{route('postule', ['id' =>  $event->id_evenement])}}">
                                         @csrf
-                                        <input type="submit" class="modal-open bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded my-2 "
-                                            value="Postuler"
-                                            @if (!is_null($demande))
-                                                @if (!isset($demande->accepte) && !isset($demande->dateChoix))
-                                                    hidden disabled
-                                                @endif
+                                        @if ($participeDeja)
+                                            <input type="submit" formaction="{{route('quitter', ['id' =>  $event->id_evenement])}}"
+                                                class="modal-open bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded my-2 "
+                                                value="Quitter l'événement"
+                                            />
+                                        @else
+                                        <!-- Si une demande ou une invitation est déjà en cours,
+                                        bouton désactivé -->
+                                            @if ($demande > 0)
+                                            <input type="submit" class="modal-open bg-gray-500 text-white font-bold py-2 px-4 rounded my-2 "
+                                                value="En attente..."
+                                                    disabled
+                                            />
+                                            @else
+                                            <input type="submit" class="modal-open bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded my-2 "
+                                                value="Postuler"
+                                            />
                                             @endif
-                                        />
+                                        @endif
                                     @endif
                                 </div>
                                 
@@ -144,11 +157,21 @@
                             </div>
                             <div class="grid gap-1 grid-cols-3 mt-2 ml-5 bg-gray-100">
                                 <div class=" flex items-center justify-center">
-                                    <h2 class="text-2xl ">Début : {{$event->dateDebut}}</h2>
+                                    <h2 class="text-2xl ">Début : {{\Carbon\Carbon::parse($event->dateDebut)->format('d/m/Y')}}</h2>
                                 </div>
-                                <div ></div>
                                 <div class=" flex items-center justify-center">
-                                    <h2 class="text-2xl">Fin : {{$event->dateFin}}</h2>
+                                    <!-- Administration de l'événement -->
+                                    @if ($event->id_createur == Auth::id())
+                                    <a href="{{route('pageModificationEvenement', ['id' => $event->id_evenement])}}">
+                                        <button type="submit" class="modal-open bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded my-2 ">
+                                        Modifier l'événement
+                                        </button>
+                                    </a>
+                                    @endif
+
+                                </div>
+                                <div class=" flex items-center justify-center">
+                                    <h2 class="text-2xl">Fin : {{\Carbon\Carbon::parse($event->dateFin)->format('d/m/Y')}}</h2>
                                 </div>
                             </div>
                         </div> 

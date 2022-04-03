@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Events\SouhaiteSuppressionBesoin;
 use App\Events\SouhaiteModificationBesoin;
-use App\Models\NotificationPropositionBesoin;
-use App\Models\NotificationSuppressionBesoin;
-use App\Models\NotificationModificationBesoin;
+
 
 class BesoinController extends Controller
 {
@@ -123,7 +121,6 @@ class BesoinController extends Controller
             $besoin->titre = $validated['titre'];
             $besoin->save();
             
-            // Si le responsable 
             if ($besoin->id_responsable !== null){
                 event(new ModificationBesoin($besoin));
             }
@@ -164,7 +161,7 @@ class BesoinController extends Controller
 
         if (Auth::id() === $event->id_createur || Auth::user()->role == 0){
             // Prévenir l'utilisateur responsable du besoin qu'il est supprimé
-            if (!is_null($besoin->id_responsable)){
+            if ($besoin->id_responsable !== null){
                 event(new SuppressionBesoin($besoin));
             }
 

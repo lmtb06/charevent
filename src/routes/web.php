@@ -88,5 +88,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/evenement/{id}/besoin/store', [BesoinController::class, 'store'])->whereNumber('id')->name('creerBesoin');
     Route::post('/evenement/besoin/update/{id}', [BesoinController::class, 'update'])->whereNumber('id')->name('modifierBesoin');
     Route::post('/evenement/besoin/delete/{id}', [BesoinController::class, 'delete'])->whereNumber('id')->name('effacerBesoin');
+    Route::post('/evenement/{id}/quitter', [ParticipantController::class, 'delete'])->whereNumber('id')->name('quitter');
+
+    Route::post('/notif/accepte', [NotificationController::class, 'accepte'])->name('accepteNotif');
+    Route::post('/notif/refuse', [NotificationController::class, 'refuse'])->name('refuseNotif');
+    Route::post('/notif/delete', [NotificationController::class, 'destroy'])->name('supprimerNotification');
+
+
 });
 
