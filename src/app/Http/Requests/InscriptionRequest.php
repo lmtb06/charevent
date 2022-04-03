@@ -46,17 +46,6 @@ class InscriptionRequest extends FormRequest
     }
 
 
-	public function withValidator($validator)
-	{
-		if (!$validator->fails()) {
-			$validator->after(function ($validator) {
-                    $message = 'TRUCTRUC';
-					$validator->errors()->add('validation', $message);
-					$validator->errors()->add('password', $message);
-			});
-		}
-	}
-
 	public function messages()
 	{
 		return [
