@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('titre')
-Charevent - Accueil
+Charevent - Mes événements
 @endsection
 
 @section('content')
@@ -37,11 +37,13 @@ Charevent - Accueil
                     <a href="{{route('pageEvenement',['id'=>$event->id_evenement])}}">
                         <button type="submit" id="submit" value="S'inscrire" class="mr-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Consulter</button>
                     </a>
+                    <!-- Ne peut pas rejoindre ou quitter depuis la page d'accueil
                     @if ($user->id_compte != $event->id_createur)
                     <button type="submit" id="submit" value="S'inscrire" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Rejoindre</button>
                     @else
-                    <button type="submit" id="submit" value="S'inscrire" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Quitter</button>
+                    <button type="submit" id="submit" value="Quitter" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Quitter</button>
                     @endif
+            -->
                 </div>
             </div>
             <!--Fin petit bloc d'event -->
