@@ -44,4 +44,17 @@ class InscriptionRequest extends FormRequest
 			'notificationMail' => 'nullable',
 		];
     }
+
+
+	public function messages()
+	{
+		return [
+            'unique' => 'Cette addresse e-mail est déjà attribué à un compte.',
+			'min' => 'il faut un minimum de 8 caractère pour le mot de passe.',
+            'digits_between' => 'veuillez rentrez un vrai numéro de département français.',
+            'digits' => 'veuillez rentrez un vrai code postal français (5 chiffres).',
+            'before' => 'vous ne pouvez pas être né(e) dans le futur...',
+            'confirmed' => 'les deux mots de passe ne correspondent pas.',
+		];
+	}
 }

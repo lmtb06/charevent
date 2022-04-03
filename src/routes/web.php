@@ -12,6 +12,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\RecuperationController;
 use App\Http\Controllers\EvenementCreationController;
 use App\Http\Controllers\ProfilSuppressionController;
+use App\Http\Controllers\BesoinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +70,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/evenement/edit/{id}', [EvenementController::class, 'edit'])->whereNumber('id')->name('pageModificationEvenement');
 
 
-    Route::get('notifs/all', [NotificationController::class, 'index'])->name('pageNotification');
+    Route::get('notifs/all', [NotificationController::class, 'index'])->name('notification');
     // Routes POST
     Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
     // Routes POST (traitement de données provenant des pages webs)
@@ -90,5 +91,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/notif/delete', [NotificationController::class, 'destroy'])->name('supprimerNotification');
 
 
+
+    Route::post('/evenement/{id}/besoin/store', [BesoinController::class, 'store'])->whereNumber('id')->name('creerBesoin');
+    Route::post('/evenement/besoin/update/{id}', [BesoinController::class, 'update'])->whereNumber('id')->name('modifierBesoin');
+    Route::post('/evenement/besoin/delete/{id}', [BesoinController::class, 'delete'])->whereNumber('id')->name('effacerBesoin');
 });
 

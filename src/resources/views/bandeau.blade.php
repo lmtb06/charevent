@@ -25,11 +25,11 @@
                 <li>
                     <button onclick="">
                     <a href="{{route('pageProfil')}}">
-                        <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/2.png?raw=true" class=" rounded-full mr-4 lg:mr-8 h-8 lg:h-10" alt="CharEvent" />
+                        <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/2.png?raw=true" class=" rounded-full mr-4 lg:mr-8 h-8 lg:h-10" alt="photoProfil" />
                     </a></button> 
                     
                     <button onclick="myFunction()">
-                            <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/4.png?raw=true" class="mr-4 lg:mr-8 h-8 lg:h-10" alt="CharEvent" />
+                            <img src="https://github.com/lmtb06/charevent/blob/main/src/public/img/4.png?raw=true" class="mr-4 lg:mr-8 h-8 lg:h-10" alt="menu" />
                     </button> 
                    
                 </li>
@@ -43,13 +43,15 @@
     <ul>
         <div id="menu_perso" style="display:none; " class="fixed z-40 lg:mt-20 lg:mr-2 mt-16 origin-top-right right-0 w-48 shadow-[#6f6ba56e] rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <!-- Active: "bg-gray-100", Not Active: "" -->
-            <li><a href="{{route('pageProfil')}}" class="block px-4 py-2 text-xl  hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-0">Mon Profil</a></li>
-            <li><a href="{{route('pagesEvenements')}}" class="block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-1">Mes Evénements</a></li>
-            <li><a href="{{route('pageCreationEvenement')}}" class="block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-item-2">Créer un événement</a></li>
+            <li><a href="{{route('pageProfil')}}" class="block px-4 py-2 text-xl  hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-profil">Mon Profil</a></li>
+            <li><a href="{{route('pagesEvenements')}}" class="block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-event">Mes Evénements</a></li>
+            <li><a href="{{route('notification')}}" class="block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-notifs">Mes Notifications</a></li>
+            <li><a href="{{route('pageCreationEvenement')}}" class="block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " role="menuitem" tabindex="-1" id="user-menu-newEv">Créer un événement</a></li>
+            
             <li>
                 <form method = "POST" action={{ route('deconnexion') }}>
                 @csrf
-                    <input type="submit"  value="Déconnexion" class=" block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500" role="menuitem" tabindex="-1" id="user-menu-item-3"/></li>
+                    <input type="submit"  value="Déconnexion" class=" block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500" role="menuitem" tabindex="-1"/></li>
                 </form>
         </div>
     </ul>

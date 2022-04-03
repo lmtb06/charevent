@@ -47,6 +47,6 @@ class Evenement extends Model
 
     public function besoins()
     {
-        return $this->hasMany(BesoinActif::class, 'id_besoin');
+        return $this->hasMany(BesoinActif::class, 'id_evenement');
     }
 }

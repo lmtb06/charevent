@@ -6,11 +6,17 @@ Charevent - Mes événements
 
 @section('content')
 
-<div class="bg-orange-200">
-    <div class="pt-24 text-center text-2xl font-semibold">Mes évènements</div>
+<div class="bg-blue-200">
+    <div class="pt-24 text-center items-center text-2xl font-semibold">Mes évènements
+        <a href="{{route('pageCreationEvenement')}}">
+            <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/plus.png?raw=true" class="h-10 block px-4 py-2 text-xl hover:text-purple-400 text-indigo-500 " alt="plus"/>
+        </a>
+    </div>
+                
+    <!-- les evenements !-->
     <section class="p-4 flex items-center justify-center">
         @if (count($events)>0)
-        <div class="flex items-start grid grid-cols-3 gap-3 justify-between mt-4 pt-4">
+        <div class="items-start grid lg:grid-cols-3 gap-3 justify-between mt-4 pt-4">
             @foreach ($events as $event)
             <!--Début petit bloc d'event -->
             <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
