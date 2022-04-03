@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Evenement;
 use App\Models\BesoinActif;
+use App\Models\Participant;
 use Illuminate\Http\Request;
 use App\Events\ProposeBesoin;
 use App\Models\BesoinArchive;
 use App\Models\BesoinEnAttente;
 use App\Events\SuppressionBesoin;
 use App\Events\ModificationBesoin;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use App\Events\SouhaiteSuppressionBesoin;
 use App\Events\SouhaiteModificationBesoin;
 

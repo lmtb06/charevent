@@ -5,7 +5,6 @@ use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\ConnexionController;
 use App\Http\Controllers\EvenementController;
 use App\Http\Controllers\InvitationController;
-use App\Http\Controllers\DeconnexionController;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\NotificationController;
