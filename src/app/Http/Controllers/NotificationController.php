@@ -139,7 +139,7 @@ class NotificationController extends Controller
                 break;
         }
 
-        return redirect()->route('pageNotification');
+        return redirect()->route('notification');
     }
 
     /**
@@ -183,7 +183,7 @@ class NotificationController extends Controller
                 break;
             }
 
-        return redirect()->route('pageNotification');
+        return redirect()->route('notification');
     }
 
     /**
@@ -216,5 +216,18 @@ class NotificationController extends Controller
             $n->save();
         }
         return $this->index();
+    }
+
+    public function nbNotif (){
+        $user = User::find(Auth::id());
+        $notif = $user->notifications;
+
+        $nb = $notif->whereNull('dateLecture')
+            ->where('supprime', False)
+            ->count();
+
+        return response()->json([
+            'count' => $nb,
+        ]);
     }
 }

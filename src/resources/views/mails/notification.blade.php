@@ -16,7 +16,7 @@
             {{$message}}
         </p>
         <p>
-            Vous pouvez vous rendre dans votre centre de notification en <a href="{{route('pageNotification')}}">cliquant ici</a>.
+            Vous pouvez vous rendre dans votre centre de notification en <a href="{{route('notification')}}">cliquant ici</a>.
         </p>
         <p>
             Vous recevez des emails concernant vos notifications car vous avez choisis d'activer l'envoi de nos notifications par mails.
