@@ -7,7 +7,7 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
 @section('content')
 <body>
   <div class="flex justify-center lg:bg-blue-300">
-    <form method='post' action="{{route('modifierCompte'}}" enctype="multipart/form-data" class="max-w-2xl mt-16 w-full">
+    <form method='post' action="{{route('modifierCompte')}}" enctype="multipart/form-data" class="max-w-2xl mt-16 w-full">
       @csrf
       <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full ">
         <div class="px-4 py-5 sm:px-6">
