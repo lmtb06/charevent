@@ -12,7 +12,10 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
       @csrf
       <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full ">
         <div class="px-4 py-5 sm:px-6">
-          <div class="bg-white px-4 py-5">
+            <p class=""><a href="{{route('pageProfil')}}" class="text-blue-500 focus:outline-none focus:underline hover:underline">
+                <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/fleche.png?raw=true" class=" h-6" alt="CharEvent"  />
+            </a></p>
+            <div class="bg-white text-center px-4 py-5">
             <span class="self-center -z-0 before:-my-2 whitespace-nowrap text-center before:bg-blue-400 before:block before:absolute before:-inset-1 before:-skew-y-2 relative inline-block">
               <span class="relative -z-0 mb-10 ml-1 mr-1 text-center text-2xl font-semibold group  text-white"> MODIFICATION DU COMPTE </span>
             </span>
@@ -117,9 +120,7 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
           <div class="flex justify-center">
             <div class="hidden lg:block">
               <input type="submit" class="mt-4 mb-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 " value="Valider modification" />
-              <button class="mt-4 mb-8 modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 ml-8" type="button">Annuler</button>
-
-
+              
               <!-- DEBUT Boite modale -->
               <!-- version PC !-->
               <button class="mt-4 mb-8 modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 ml-8" type="button" data-modal-toggle="authentication-modal">Supprimer mon compte</button>
