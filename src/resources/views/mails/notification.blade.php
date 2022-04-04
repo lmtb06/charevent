@@ -20,7 +20,7 @@
         </p>
         <p>
             Vous recevez des emails concernant vos notifications car vous avez choisis d'activer l'envoi de nos notifications par mails.
-            Si vous souhaitez changer cela, vous pouvez <a href={{route('modifierCompte', ['id' => $destinataire->id_compte])}}>modifier votre profil</a>.
+            Si vous souhaitez changer cela, vous pouvez <a href={{route('modifierCompte')}}>modifier votre profil</a>.
         </p>
 	</div>
 

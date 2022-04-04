@@ -7,7 +7,7 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
 @section('content')
 <body>
   <div class="flex justify-center lg:bg-blue-300">
-    <form method='post' action="{{route('modifierCompte', ['id' => $user->id_compte])}}" enctype="multipart/form-data" class="max-w-2xl mt-16 w-full">
+    <form method='post' action="{{route('modifierCompte'}}" enctype="multipart/form-data" class="max-w-2xl mt-16 w-full">
       @csrf
       <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full ">
         <div class="px-4 py-5 sm:px-6">
@@ -156,7 +156,7 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
 
                 <div class="flex justify-between pt-2">
                   <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Annuler</button>
-                  <button formaction="{{route('effacerCompte', ['id' => $user->id_compte])}}" class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2 border">Confirmer</button>
+                  <button formaction="{{route('effacerCompte')}}" class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2 border">Confirmer</button>
                 </div>
               </div>
             </div>
