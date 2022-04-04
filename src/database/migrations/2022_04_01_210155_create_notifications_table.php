@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('id_notification',true);
             $table->string('type')->default("perdu");
             $table->integer('id_destinataire');
-            $table->integer('id_evenement');
+            $table->integer('id_evenement')->nullable();
             $table->integer('id_envoyeur');
             $table->integer('id_besoin_original')->nullable();
             $table->integer('id_besoin_en_attente')->nullable();
@@ -28,11 +28,11 @@ return new class extends Migration
             $table->boolean('accepte')->nullable();
             $table->date('dateChoix')->nullable();
 
-            $table->foreign('id_destinataire')->references('id_compte')->on('comptes_actifs');
-            $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs');
-            $table->foreign('id_envoyeur')->references('id_compte')->on('comptes_actifs');
-            $table->foreign('id_besoin_en_attente')->references('id_besoin')->on('besoins_en_attente');
-            $table->foreign('id_besoin_original')->references('id_besoin')->on('besoins_actifs');
+            $table->foreign('id_destinataire')->references('id_compte')->on('comptes_actifs')->onDelete('cascade');
+            $table->foreign('id_evenement')->references('id_evenement')->on('evenements_actifs')->nullOnDelete();
+            $table->foreign('id_envoyeur')->references('id_compte')->on('comptes_actifs')->onDelete('cascade');
+            $table->foreign('id_besoin_en_attente')->references('id_besoin')->on('besoins_en_attente')->nullOnDelete();
+            $table->foreign('id_besoin_original')->references('id_besoin')->on('besoins_actifs')->nullOnDelete();
             
         });
     }

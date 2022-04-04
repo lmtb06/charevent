@@ -66,7 +66,11 @@
                         <div class="sm:grid sm:grid-cols-2">
                           <div>
                           <div class="text-sm font-medium text-gray-500"><b>Reçu le: </b>{{ \Carbon\Carbon::parse($n->dateReception)->format('d/m/Y')}}</div>
-                          <div class="text-sm font-medium text-gray-500"> <b>Evenement :</b> {{$n->evenement->titre}}</div>
+                          @if ($n->evenement != null)
+                          <div class="text-sm font-medium text-gray-500"> <b>Evénement :</b> {{$n->evenement->titre}}</div>
+                          @else
+                          <div class="text-sm font-medium text-gray-500"> <b>L'événement a été supprimé.</b></div>
+                          @endif
                           </div>
                           <div class="text-sm font-medium text-gray-500">{{$n->message}}</div>
                         </div>

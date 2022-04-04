@@ -70,6 +70,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 
     Route::get('notifs/all', [NotificationController::class, 'index'])->name('notification');
+    Route::get('notifs/count', [NotificationController::class, 'nbNotif'])->name('nbNotif');
+
     // Routes POST
     // Routes POST (traitement de données provenant des pages webs)
     Route::post('/compte/update', [ProfilController::class, 'update'])->name('modifierCompte');
@@ -94,6 +96,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/evenement/besoin/update/{id}', [BesoinController::class, 'update'])->whereNumber('id')->name('modifierBesoin');
     Route::post('/evenement/besoin/delete/{id}', [BesoinController::class, 'delete'])->whereNumber('id')->name('effacerBesoin');
 
-    Route::get('/nbNotif', [NotificationController::class, 'nbNotif'])->name('nbNotif');
 });
 
