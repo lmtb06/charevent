@@ -14,8 +14,8 @@ class ProfilController extends Controller
 	/**
 	 * Affiche le formulaire pour modifier les informations d'un compte
 	 */
-	public function edit($id){
-		$user = User::findOrFail($id);
+	public function edit(){
+		$user = User::findOrFail(Auth::id());
 		$lieu = $user->localisation;
 
 		return view('modifierProfil', [
@@ -43,10 +43,10 @@ class ProfilController extends Controller
 	/**
 	 * Traite les modifications du compte
 	 */
-	public function update($id, Request $request)
+	public function update(Request $request)
 	{
 		// Récupère les données de l'utilisateur
-		$user = User::findOrFail($id);
+		$user = User::findOrFail(Auth::id());
 
 
 		// Valider le formulaire
@@ -105,8 +105,6 @@ class ProfilController extends Controller
 		$user->saveOrFail();
 
 		// Redirection vers la page de profil
-		return redirect()->route('pageProfil', [
-			'id' => $id,
-		]);
+		return redirect()->route('pageProfil');
 	}
 }

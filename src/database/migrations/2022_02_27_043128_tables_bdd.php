@@ -114,106 +114,6 @@ return new class extends Migration
 			}
 		);
 
-		// Notifications
-		Schema::create('notifications_simple', function (Blueprint $table) {
-				$table->integer('id_notification',true);
-				$table->integer('id_destinataire');
-				$table->integer('id_evenement');
-				$table->date('dateReception');
-				$table->date('dateLecture')->nullable();
-				$table->string('message', 50);
-				$table->boolean('supprime')->default(False);
-			}
-		);
-
-		Schema::create('notifications_modification_besoin', function (Blueprint $table) {
-				$table->integer('id_notification',true);
-				$table->integer('id_destinataire');
-				$table->integer('id_evenement');
-				$table->integer('id_envoyeur');
-				$table->integer('id_besoin_original');
-				$table->integer('id_besoin_en_attente');
-				$table->date('dateReception');
-				$table->date('dateLecture')->nullable();
-				$table->string('message', 50)->nullable();
-				$table->boolean('supprime')->default(False);
-				$table->boolean('accepte')->nullable();
-				$table->date('dateChoix')->nullable();
-			}
-		);
-
-		Schema::create('notifications_suppression_besoin', function (Blueprint $table) {
-				$table->integer('id_notification', true);
-				$table->integer('id_destinataire');
-				$table->integer('id_evenement');
-				$table->integer('id_envoyeur');
-				$table->integer('id_besoin');
-				$table->date('dateReception');
-				$table->date('dateLecture')->nullable();
-				$table->string('message', 50)->nullable();
-				$table->boolean('supprime')->default(False);
-				$table->boolean('accepte')->nullable();
-				$table->date('dateChoix')->nullable();
-			}
-		);
-
-		Schema::create('notifications_proposition_besoin', function (Blueprint $table) {
-				$table->integer('id_notification', true);
-				$table->integer('id_destinataire');
-				$table->integer('id_evenement');
-				$table->integer('id_envoyeur');
-				$table->integer('id_besoin_en_attente');
-				$table->date('dateReception');
-				$table->date('dateLecture')->nullable();
-				$table->string('message', 50)->nullable();
-				$table->boolean('supprime')->default(False);
-				$table->boolean('accepte')->nullable();
-				$table->date('dateChoix')->nullable();
-			}
-		);
-
-		Schema::create('notifications_volontariat_besoin', function (Blueprint $table) {
-				$table->integer('id_notification', true);
-				$table->integer('id_destinataire');
-				$table->integer('id_evenement');
-				$table->integer('id_envoyeur');
-				$table->integer('id_besoin_en_attente');
-				$table->date('dateReception');
-				$table->date('dateLecture')->nullable();
-				$table->string('message', 50)->nullable();
-				$table->boolean('supprime')->default(False);
-				$table->boolean('accepte')->nullable();
-				$table->date('dateChoix')->nullable();
-			}
-		);
-
-		Schema::create('notifications_demande_participation', function (Blueprint $table) {
-				$table->integer('id_notification', true);
-				$table->integer('id_destinataire');
-				$table->integer('id_evenement');
-				$table->integer('id_envoyeur');
-				$table->date('dateReception');
-				$table->date('dateLecture')->nullable();
-				$table->string('message', 50)->nullable();
-				$table->boolean('supprime')->default(False);
-				$table->boolean('accepte')->nullable();
-				$table->date('dateChoix')->nullable();
-			}
-		);
-
-		Schema::create('notifications_invitation_participation', function (Blueprint $table) {
-				$table->integer('id_notification', true);
-				$table->integer('id_destinataire');
-				$table->integer('id_evenement');
-				$table->integer('id_envoyeur');
-				$table->date('dateReception');
-				$table->date('dateLecture')->nullable();
-				$table->string('message', 50)->nullable();
-				$table->boolean('supprime')->default(False);
-				$table->boolean('accepte')->nullable();
-				$table->date('dateChoix')->nullable();
-			}
-		);
 	}
 
 	/**
@@ -239,13 +139,5 @@ return new class extends Migration
 		Schema::dropIfExists('besoins_archives');
 		// Localisations
 		Schema::dropIfExists('localisations');
-		// Notifications
-		Schema::dropIfExists('notifications_simple');
-		Schema::dropIfExists('notifications_modification_besoin');
-		Schema::dropIfExists('notifications_suppression_besoin');
-		Schema::dropIfExists('notifications_proposition_besoin');
-		Schema::dropIfExists('notifications_volontariat_besoin');
-		Schema::dropIfExists('notifications_demande_participation');
-		Schema::dropIfExists('notifications_invitation_participation');
 	}
 };

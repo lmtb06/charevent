@@ -23,13 +23,13 @@ class ProfilSuppressionController extends Controller
      *
      * @return Response
      */
-    public function delete($id, Request $request)
+    public function delete(Request $request)
     {
         $creds = $request->validate([
 			'password' => 'required'
 			]);
 
-        $user = User::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
 
         $mdp = Hash::check($creds["password"], $user->hashMDP);
         if(!$mdp) {

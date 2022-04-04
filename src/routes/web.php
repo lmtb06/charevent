@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function(){
     /**
      * URL à utiliser pour afficher les pages correspondantes / déconnecter un utilisateur
      */
-    Route::get('/compte/edit/{id}', [ProfilController::class, 'edit'])->whereNumber('id')->name('pageModificationCompte');
+    Route::get('/compte/edit', [ProfilController::class, 'edit'])->name('pageModificationCompte');
     Route::get('/compte', [ProfilController::class, 'show'])->name('pageProfil');
 
 
@@ -71,10 +71,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('notifs/all', [NotificationController::class, 'index'])->name('notification');
     // Routes POST
-    Route::post('/compte/update/{id}', [ModifierCompteController::class, 'update'])->whereNumber('id')->name('modifierCompte');
     // Routes POST (traitement de données provenant des pages webs)
-    Route::post('/compte/update/{id}', [ProfilController::class, 'update'])->whereNumber('id')->name('modifierCompte');
-    Route::post('/compte/delete/{id}', [ProfilSuppressionController::class, 'delete'])->whereNumber('id')->name('effacerCompte');
+    Route::post('/compte/update', [ProfilController::class, 'update'])->name('modifierCompte');
+    Route::post('/compte/delete}', [ProfilSuppressionController::class, 'delete'])->name('effacerCompte');
 
     Route::post('/evenement/store', [EvenementCreationController::class, 'store'])->name('creerEvenement');
     Route::post('/evenement/update/{id}', [EvenementController::class, 'update'])->whereNumber('id')->name('modifierEvenement');
