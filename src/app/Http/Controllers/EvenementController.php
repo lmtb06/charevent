@@ -121,7 +121,9 @@ class EvenementController extends Controller
 		$evenement->saveOrFail();	
 
 		// Redirection vers la page d'evenement
-		$this->show($id);
+		return redirect()->route('pageEvenement', [
+			'id' => $id,
+		]);
 	}
 
 	public function delete($id){

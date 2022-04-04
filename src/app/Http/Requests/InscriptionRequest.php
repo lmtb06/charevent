@@ -39,7 +39,7 @@ class InscriptionRequest extends FormRequest
 			'ville' => 'required|alpha_dash',
 			'codeZIP' => 'required|numeric|digits:5',
 			'birth' => 'required|before:today',
-			'telephone' => 'nullable|digits:10|numeric',
+			'telephone' => 'nullable|numeric|digits:10',
 			'photo' => 'nullable|file|max:2024',
 			'notificationMail' => 'nullable',
 		];
