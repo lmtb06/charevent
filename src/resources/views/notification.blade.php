@@ -8,12 +8,12 @@
   <main>
   <div class="h-full">
   <div class="flex justify-center h-full">
-    <div class="max-w-8xl my-16">
-      <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
+    <div class="my-16 w-full lg:w-2/3">
+      <div class="bg-white lg:shadow overflow-hidden sm:rounded-lg w-full ">
         
         <form method="POST" action="{{route('supprimerNotification')}}">
           @csrf
-          <div class="px-4 py-5 sm:px-6">
+          <div class="px-4 py-5 lg:px-6">
             <h3 class="text-2xl text-center font-medium text-gray-900 w-full my-6">Notifications</h3>
           </div>
 
@@ -35,7 +35,7 @@
             <dl>
               <!-- Cas où l'utilisateur n'a pas encore reçu de notification -->
               @if (count($notifs) == 0)
-                <div class="bg-orange-0 px-2 py-1 sm:px-6 sm:gap-10">
+                <div class=" px-2 py-1 sm:px-6 sm:gap-10">
                   <div class="sm:grid sm:grid-cols-2">
                     <div class="sm:grid sm:grid-cols-2">
                       <div>
