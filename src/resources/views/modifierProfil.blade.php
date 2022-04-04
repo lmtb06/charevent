@@ -5,7 +5,6 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
 @endsection
 
 @section('content')
-
 <body>
   <div class="flex justify-center lg:bg-blue-300">
     <form method='post' action="{{route('modifierCompte', ['id' => $user->id_compte])}}" enctype="multipart/form-data" class="max-w-2xl mt-16 w-full">
@@ -34,68 +33,68 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Nom*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input value="{{$user->nom}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="nom" name="nom" type="text">
+              <input required value="{{$user->nom}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="nom" name="nom" type="text">
             </dd>
           </div>
 
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Prénom*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input value="{{$user->prenom}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="prenom" name="prenom" type="text">
+              <input required value="{{$user->prenom}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="prenom" name="prenom" type="text">
             </dd>
           </div>
 
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Date de naissance*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input value="{{$user->dateNaissance}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="date_de_naissance" name="dateNaissance" type="date">
+              <input required value="{{$user->dateNaissance}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="date_de_naissance" name="dateNaissance" type="date">
             </dd>
           </div>
 
           <div class="bg-gray-50  px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Département*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input value="{{$lieu->departement}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="departement" name="departement" type="number">
+              <input required value="{{$lieu->departement}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="departement" name="departement" type="number">
             </dd>
           </div>
 
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Ville*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input value="{{$lieu->ville}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="ville" name="ville" type="text">
+              <input required value="{{$lieu->ville}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="ville" name="ville" type="text">
             </dd>
           </div>
 
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Code postale*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input value="{{$lieu->codePostal}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="code_postale" name="codePostal" type="number">
+              <input required value="{{$lieu->codePostal}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="code_postale" name="codePostal" type="number">
             </dd>
           </div>
 
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Email*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input value="{{$user->mail}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="email" name="mail" type="email">
+              <input required value="{{$user->mail}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="email" name="mail" type="email">
             </dd>
           </div>
 
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Ancien mot de passe*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="hashMDP" name="hashMDP" type="password">
+              <input required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="hashMDP" name="hashMDP" type="password">
             </dd>
           </div>
 
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500">Nouveau mot de passe*</dt>
+            <dt class="text-sm font-medium text-gray-500">Nouveau mot de passe</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="mdp" name="mdp" type="password">
             </dd>
           </div>
 
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500">Confirmation*</dt>
+            <dt class="text-sm font-medium text-gray-500">Confirmation du nouveau mot de passe</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="mdp_confirmation" name="mdp_confirmation" type="password">
             </dd>
@@ -128,7 +127,10 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
           </div>
 
           <!-- Version téléphone !-->
-          <div class="lg:hidden block ">
+          <div class="lg:hidden block">
+            <div class="py-5 flex justify-center">
+            <input type="submit" class="mt-4 mb-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 " value="Valider modification" />
+            </div>
             <div class="bg-red-100 py-5 flex justify-center">
               <button class="modal-open bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded my-2" type="button" data-modal-toggle="authentication-modal">Supprimer mon compte</button>
               </dd>
