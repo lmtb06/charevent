@@ -73,7 +73,7 @@
           </dl>
           @if (Auth::id() == $user->id_compte)
           <div class="flex justify-center">
-            <a href="{{route('pageModificationCompte', ['id' => $user->id_compte])}}">
+            <a href="{{route('pageModificationCompte')}}">
               <button class="bg-blue-500 mb-8 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
                 Modifier mon compte
               </button>
