@@ -13,6 +13,7 @@ use App\Http\Controllers\EvenementCreationController;
 use App\Http\Controllers\ProfilSuppressionController;
 use App\Http\Controllers\BesoinController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,6 +87,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/evenement/{id}/invite', [ParticipantController::class, 'store'])->whereNumber('id')->name('invitation');
     Route::post('/evenement/{id}/quitter', [ParticipantController::class, 'delete'])->whereNumber('id')->name('quitter');
 
+    Route::post('notifs/read', [NotificationController::class, 'markAsRead'])->name('markAsRead');
     Route::post('/notif/accepte', [NotificationController::class, 'accepte'])->name('accepteNotif');
     Route::post('/notif/refuse', [NotificationController::class, 'refuse'])->name('refuseNotif');
     Route::post('/notif/delete', [NotificationController::class, 'destroy'])->name('supprimerNotification');
