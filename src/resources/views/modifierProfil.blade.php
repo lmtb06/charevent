@@ -86,19 +86,6 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
             </dd>
           </div>
 
-          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500">Nouveau mot de passe</dt>
-            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="mdp" name="mdp" type="password">
-            </dd>
-          </div>
-
-          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500">Confirmation du nouveau mot de passe</dt>
-            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black" id="mdp_confirmation" name="mdp_confirmation" type="password">
-            </dd>
-          </div>
 
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Téléphone</dt>
@@ -114,7 +101,15 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
             </dd>
           </div>
 
-
+          @if ($errors->any())
+          <div class="text-red-600 text-center italic alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          @endif
 
           <div class="flex justify-center">
             <div class="hidden lg:block">
@@ -209,14 +204,6 @@ Charevent - Modifier {{$user->prenom}} {{$user->nom}}
   </div>
   </form>
   </div>
-  @if ($errors->any())
-  <div class="alert alert-danger">
-    <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-  @endif
+
 </body>
 @endsection

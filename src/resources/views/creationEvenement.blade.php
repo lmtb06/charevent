@@ -117,14 +117,17 @@ Charevent - Création d'un événement
             <button class="mt-4 mb-8 modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 ml-8" type="button">Annuler</button>
           </div>
           @if ($errors->any())
-          <div class="text-red-700 italic alert alert-danger">
+          <div class="text-blue-700 italic alert alert-danger">
               <ul>
                   @foreach ($errors->all() as $error)
+                    @if (Str::is('codePostal.*', $error))
                       <li>{{ $error }}</li>
+                    @endif
                   @endforeach
               </ul>
           </div>
       @endif
+      
         </div>
     </form>
   </div>

@@ -42,6 +42,7 @@ class InscriptionRequest extends FormRequest
 			'telephone' => 'nullable|numeric|digits:10',
 			'photo' => 'nullable|file|max:2024',
 			'notificationMail' => 'nullable',
+        
 		];
     }
 
@@ -61,7 +62,8 @@ class InscriptionRequest extends FormRequest
             'departement.numeric' => 'veuillez rentrez des chiffres uniquement pour le departement',
             'nom.max'=>'le nom est limité a 100 caractères',
             'prenom.max'=>'le prénom est limité a 100 caractères',
-            '.max'=>'',
+            'mail.max'=>' l\'adresse mail est limité à 255 caractères',
+            'password.max'=>' le mot de passe est trop long ! Il est limité à 30 caractères',
             'photo.max' => 'Votre photo prend trop de place. La taille maximum supporté pour la photo est 2MB (2048 KB).'
 		];
 	}

@@ -113,12 +113,12 @@
                         </dl>
                         <div class="flex justify-between">
                             <a href=""><button type="submit"
-                                    class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">Annuler</button></a>
+                                    class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Annuler</button></a>
                             <input type="submit" value="Valider"
-                                class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
+                                class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
                                 Valider />
                             <input type="submit" value="Supprimer"
-                                class="modal-open mr-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
+                                class="modal-open mr-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
                                 data-modal-toggle="authentication-modal" Supprimer />
                             <!--Modal-->
                             <div

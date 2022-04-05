@@ -15,11 +15,11 @@
           </div>
 
           <div class="bg-white-50 px-4 sm:grid sm:grid-cols-6 sm:gap-10 sm:px-6">
-            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Profil</dt>
-            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Nom</dt>
-            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Prénom</dt>
-            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Ville</dt>
-            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Age</dt>
+            <dt class="text-m font-medium mt-4 justify-center text-black">Profil</dt>
+            <dt class="text-m font-medium mt-4 justify-center text-black">Nom</dt>
+            <dt class="text-m font-medium mt-4 justify-center text-black">Prénom</dt>
+            <dt class="text-m font-medium mt-4 justify-center text-black">Ville</dt>
+            <dt class="text-m font-medium mt-4 justify-center text-black">Age</dt>
             <input type="submit" value="Ajouter" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"/>
 
           </div>

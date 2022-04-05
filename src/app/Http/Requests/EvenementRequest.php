@@ -48,7 +48,7 @@ class EvenementRequest extends FormRequest
             'numeric' => 'vous de pouvez mettre que des chiffres',
             'codePostal.digits' => 'un code postal a 5 chiffres',
             'digits_between' => 'il y a entre 1 et 3 caractères',
-            'ville.regex' => 'veuillez rentrez un vrai nom de ville'
+            'ville.regex' => 'veuillez rentrez un vrai nom de ville',
 		];
 	}
 }
