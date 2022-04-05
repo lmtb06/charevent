@@ -11,7 +11,7 @@
       <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
         <form method="POST" action={{route('invitation', ['id' => $event->id_evenement])}}>
           @csrf
-          <div class="px-4 py-5 sm:px-6">
+          <div class="px-4 py-5">
             <h3 class="text-2xl text-center font-medium text-gray-900 w-full my-6">Résultats de la recherche</h3>
           </div>
 

@@ -5,28 +5,28 @@
 @endsection
 
 @section('content')
-    <body class=" bg-orange-200 ">
-        <main>
+<body class="bg-orange-200 w-full">
             <!--Titre de la page-->
-            <section class=" p-4 flex content-center justify-center">
-                <div class="px-4 ">
-                    <a href="{{route('pageEvenement', ['id' => $event->id_evenement])}}">
-                        <h2 class="text-2xl font-bold">Evenement "{{$event->titre}}"</h2>
-                    </a>
-                </div>
-            </section>
             <!--Bloc de recherche-->
-            <section class="p-4 flex items-center justify-center" >
+            <section class="flex items-center justify-center" >
+            <div class="mt-20 mr-4 ml-4 lg:w-2/3 mb-4">
                 <!--Le gros rectangle-->
             <form method="POST" action={{route('rechercheParticipant', ['id' => $event->id_evenement])}}>
                 @csrf
                 <div class="mt-2 border-2 border-black m-1 rounded-2xl bg-gradient-to-b from-white to-white-700">
+                                    <!--Titre de la page-->
+                <div class=" flex content-center justify-center">
+                    <a href="{{route('pageEvenement', ['id' => $event->id_evenement])}}">
+                        <h2 class="text-2xl font-bold">Evenement "{{$event->titre}}"</h2>
+                    </a>
+                </div>
+                    
                     <!-- Titre recherche de participants-->
                     <div class="m-1 text-xl font-bold flex content-center justify-center mb-4">
                                 Recherche de participants
                     </div>
                     <!-- Les elements coupés en deux -->
-                    <div class=" grid gap-1 grid-cols-2">
+                    <div class=" grid gap-1 lg:grid-cols-2">
                         <!--Partie de gauche Departement (texte)-->
                             <label for="name" class="m-1 font-bold flex content-center justify-center mt-3">
                                 Prénom ou nom de famille :
@@ -69,11 +69,11 @@
 
                             <!--Partie de gauche numero de telephone requis (texte)-->
                             <label for="tel" class="m-1 font-bold flex content-center justify-center mt-3">
-                                Un telephone ? 
+                                Choisir que des participant ayant partagé leur numéro de téléphone ?
                             </label>
                             <!--Partie de droite Age maximal (champs)-->
-                            <div class="mt-3 ml-1 ">
-                                <input type="checkbox" name="tel" id="tel" class="default:ring-2 " />
+                            <div class="mt-3 ml-1 justify-center ">
+                                <input type="checkbox" name="tel" id="tel" class="justify-center  default:ring-2 " />
                             </div>
                         
                     </div>
@@ -85,7 +85,8 @@
                     </div>
                 </div>
                 </form>
+            </div>
+        </div>
             </section>
-        </main>
     </body>
 @endsection
