@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Evenement;
 use App\Models\BesoinActif;
 use App\Models\Participant;
@@ -13,7 +14,6 @@ use App\Models\BesoinEnAttente;
 use App\Events\SuppressionBesoin;
 use App\Events\ModificationBesoin;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use App\Events\SouhaiteSuppressionBesoin;
 use App\Events\SouhaiteModificationBesoin;
@@ -21,25 +21,6 @@ use App\Events\SouhaiteModificationBesoin;
 
 class BesoinController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -52,14 +33,14 @@ class BesoinController extends Controller
         $event = Evenement::findOrFail($id);       
 
         $validated = $request->validate([
-            'titre' => 'required|string|max:50',            
+            'intitule' => 'required|string|max:50',            
         ]);
             
         // Si l'utilisateur authentifié est le créateur de l'événement
         // Il peut créer un besoin directement
         if (Auth::id() === $event->id_createur){
             BesoinActif::create([
-                'titre' => $validated['titre'],
+                'titre' => $validated['intitule'],
                 'id_evenement' => $id,
         ]);
         }else{
@@ -108,7 +89,7 @@ class BesoinController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'titre' => 'required|string|max:50',            
+            'intitule' => 'required|string|max:50',            
         ]);
 
         $besoin = BesoinActif::findOrFail($id);
@@ -117,25 +98,26 @@ class BesoinController extends Controller
         // Si l'utilisateur authentifié est le créateur de l'événement
         // Il peut modifier un besoin directement
         if (Auth::id() === $event->id_createur || Auth::user()->role == 0){
-            $besoin->titre = $validated['titre'];
+            $besoin->titre = $validated['intitule'];
             $besoin->save();
-            
-          
+
             if ($besoin->id_responsable !== null){
                 event(new ModificationBesoin($besoin));
             }
         }else{
+
             // Sinon on verifie si l'utilisateur est participant
             $user = Participant::where('id_evenement', '=', $event->id_evenement)
                         ->where('id_compte', '=', Auth::id())
                         ->first();
-                    
+            //dd($user);
+
             if ($user === null) {
                 return redirect()->route('pageEvenement', ['id' => $id]);
             } else {
                 // Sinon, création d'un besoin équivalent avec nouveau titre
                 $b = BesoinEnAttente::create([
-                    'titre' => $validated['titre'],
+                    'titre' => $validated['intitule'],
                     'id_evenement' => $besoin->id_evenement,
                     'id_responsable' => $besoin->id_responsable,
                 ]);

@@ -13,7 +13,7 @@
                 <!--Le gros rectangle-->
             <form method="POST" action={{route('rechercheParticipant', ['id' => $event->id_evenement])}}>
                 @csrf
-                <div class="mt-2 border-2 border-black m-1 rounded-2xl bg-gradient-to-b from-white to-white-700">
+                <div class="mt-2 border-2 border-black m-1 rounded-2xl bg-white">
                                     <!--Titre de la page-->
                 <div class=" flex content-center justify-center">
                     <a href="{{route('pageEvenement', ['id' => $event->id_evenement])}}">
@@ -79,7 +79,7 @@
                     </div>
                     <!--Bouton submit-->
                     <div class=" mt-2 flex items-center justify-center">
-                            <input type="submit" class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 "
+                            <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
                                 value="Lancer la recherche"
                             />
                     </div>

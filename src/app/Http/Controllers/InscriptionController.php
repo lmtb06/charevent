@@ -64,7 +64,7 @@ class InscriptionController extends Controller
 			'nom' => $validated['nom'],
 			'prenom' => $validated['prenom'],
 			'dateNaissance' => $validated['birth'],
-			'telephone' => $validated['telephone'],
+			'numeroTelephone' => $validated['telephone'],
 			'notificationMail' => $validated['notificationMail'],
 			'id_residence' => $local->id_localisation,
 		]);

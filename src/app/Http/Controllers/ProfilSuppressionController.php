@@ -57,7 +57,10 @@ class ProfilSuppressionController extends Controller
             event(new ParticipantQuitte($user, $event));
         }
 
-        BesoinActif::where('id_responsable', $user->id_compte)->update('id_responsable', NULL);
+        $toNullify = BesoinActif::where('id_responsable', $user->id_compte);
+        foreach ($toNullify as $b){
+            $b->id_responsable = null;
+        }
         Participant::where('id_compte', $user->id_compte)->delete();
 
         // Récupération des événements crées par cet utilisateur et suppression de ceux-ci

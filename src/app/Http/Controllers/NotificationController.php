@@ -15,6 +15,7 @@ use App\Models\BesoinEnAttente;
 use App\Events\SuppressionBesoin;
 use Illuminate\Support\Facades\DB;
 use App\Events\ReponseNotification;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Boolean;
 
@@ -27,8 +28,6 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        //DB::commit();
-
         $user = User::find(Auth::id());
         // Récupération de toutes les notifs
         $notifs = $user->notifications->sortByDesc('dateReception');
@@ -139,7 +138,7 @@ class NotificationController extends Controller
                 break;
         }
 
-        return redirect()->route('pageNotification');
+        return redirect()->route('notification');
     }
 
     /**
@@ -183,7 +182,7 @@ class NotificationController extends Controller
                 break;
             }
 
-        return redirect()->route('pageNotification');
+        return redirect()->route('notification');
     }
 
     /**
@@ -216,5 +215,37 @@ class NotificationController extends Controller
             $n->save();
         }
         return $this->index();
+    }
+
+    /**
+     * Donne le nombre de notifications non lues
+     */
+    public function nbNotif (){
+        $user = User::find(Auth::id());
+        $notif = $user->notifications;
+
+        $nb = $notif->whereNull('dateLecture')
+            ->where('supprime', False)
+            ->count();
+
+        return response()->json([
+            'count' => $nb,
+        ]);
+    }
+
+    /**
+     * Déclare comme lu les notifications désignées
+     */
+    public function markAsRead(Request $request){
+        $unread = $request->unread;
+        
+        foreach ($unread as $id) {
+            $notif = Notification::find((int)$id);
+            $notif->dateLecture = Carbon::now()->toDate();
+            $notif->save();
+        }
+        return response()->json([
+            'unread' => 'ok',
+        ]);
     }
 }

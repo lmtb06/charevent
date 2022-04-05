@@ -57,8 +57,9 @@ class EvenementController extends Controller
 
 	public function showAll(){
 		$user = User::find(Auth::id());
-		$id = $user->id_compte;
-		$event = Evenement::all()->where('id_createur', '=', $id);
+		$event = $user->createurDe;
+		$events = $user->evenements;
+		$event = $event->concat($events);
 		return view('mes_evenements',[
 			'user' => $user,
             'events' => $event,
@@ -121,7 +122,9 @@ class EvenementController extends Controller
 		$evenement->saveOrFail();	
 
 		// Redirection vers la page d'evenement
-		$this->show($id);
+		return redirect()->route('pageEvenement', [
+			'id' => $id,
+		]);
 	}
 
 	public function delete($id){

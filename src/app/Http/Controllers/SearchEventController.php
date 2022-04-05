@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evenement;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SearchEventController extends Controller
 {
@@ -38,7 +41,7 @@ class SearchEventController extends Controller
             return redirect()->route('/evenement/all');
         }
 
-        $user = comptes_actifs::where(DB::raw("CONCAT(prenom, ' ',nom )"), 'LIKE', "%{$query}%")
+        $user = User::where(DB::raw("CONCAT(prenom, ' ',nom )"), 'LIKE', "%{$query}%")
         ->orWhere('id_compte','LIKE',"%{$query}")->get();
 
         $event = DB::select("SELECT * FROM `evenements_actifs` WHERE titre LIKE '%$keyword%' OR `description` LIKE '%$keyword%' ");

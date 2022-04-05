@@ -6,14 +6,13 @@ Charevent - Création d'un événement
 
 @section('content')
 
-<body>
-  <div class="flex justify-center bg-blue-300">
+  <div class="flex justify-center">
     <form method="POST" class="w-full lg:w-auto" action="{{route('creerEvenement')}}">
       @csrf
-      <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full ">
+      <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full">
           <div class="bg-white px-4 mt-20 mb-4 py-5">
             <span class="self-center -z-0 before:-my-2 whitespace-nowrap text-center before:bg-blue-400 before:block before:absolute before:-inset-1 before:-skew-y-2 relative inline-block">
-              <span class="relative -z-0 mb-10 ml-1 mr-1 text-center text-2xl font-semibold group  text-white"> CREER UN EVENEMENT </span>
+              <span class="relative -z-0 mb-10 ml-1 mr-1 text-center text-2xl font-semibold group text-white"> CREER UN EVENEMENT </span>
             </span>
           </div>
         <div class="border-t border-gray-200">
@@ -106,5 +105,4 @@ Charevent - Création d'un événement
         </div>
     </form>
   </div>
-</body>
 @endsection
