@@ -105,7 +105,7 @@
                                             </div>
                                             <div class=" justify-end flex">
                                                 <button
-                                                    class="modal-open2 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded my-2"
+                                                    class="modal-open2 ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
                                                     type="button" data-modal-toggle="authentication-modal2">
                                                     Modifier
                                                 </button>
@@ -176,7 +176,7 @@
                         @if ($event->id_createur == Auth::id())
                             <a href="{{ route('pageFromRechercheParticipants', ['id' => $event->id_evenement]) }}">
                                 <button type="submit"
-                                    class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded my-2 ">
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
                                     Inviter des personnes
                                 </button>
                             </a>
@@ -193,11 +193,11 @@
                                                 bouton désactivé -->
                                     @if ($demande > 0)
                                         <input type="submit"
-                                            class="bg-gray-500 text-white font-bold py-2 px-4 rounded my-2 "
+                                            class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded my-2"
                                             value="En attente..." disabled />
                                     @else
                                         <input type="submit"
-                                            class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded my-2 "
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
                                             value="Postuler" />
                                     @endif
                                 @endif
@@ -208,7 +208,7 @@
                     <div class="mt-2 flex items-center justify-center">
                         <!-- DEBUT Boite modale -->
                         <button
-                            class="modal-open bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded my-2"
+                            class="modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
                             type="button" data-modal-toggle="authentication-modal">
                             Ajouter un besoin
                         </button>
@@ -243,7 +243,7 @@
 
                                 <div class="flex justify-between pt-2">
                                     <button
-                                        class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Annuler</button>
+                                        class="modal-close ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">Annuler</button>
 
                                     <input type="submit" value="Confirmer"
                                         class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2 border">
@@ -267,7 +267,7 @@
                     @if ($event->id_createur == Auth::id())
                         <a href="{{ route('pageModificationEvenement', ['id' => $event->id_evenement]) }}">
                             <button type="submit"
-                                class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded my-2 ">
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2">
                                 Modifier l'événement
                             </button>
                         </a>
