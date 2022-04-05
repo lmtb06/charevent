@@ -76,6 +76,7 @@ Route::group(['middleware' => 'auth'], function(){
     // Routes POST
     // Routes POST (traitement de données provenant des pages webs)
     Route::post('/compte/update', [ProfilController::class, 'update'])->name('modifierCompte');
+    Route::post('/compte/updateMdp', [ProfilController::class, 'updatePassword'])->name('modifierMdp');
     Route::post('/compte/delete}', [ProfilSuppressionController::class, 'delete'])->name('effacerCompte');
 
     Route::post('/evenement/store', [EvenementCreationController::class, 'store'])->name('creerEvenement');

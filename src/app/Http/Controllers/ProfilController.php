@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Whoops\Run;
 use App\Models\User;
 use App\Models\Localisation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateProfilRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 
 class ProfilController extends Controller
 {
@@ -82,9 +84,11 @@ class ProfilController extends Controller
 			}
 		if ($request->filled('nom')) $user->nom =  $validated['nom'];
         if ($request->filled('prenom')) $user->prenom = $validated['prenom'];
+
+		/*
 		if ($request->filled('mdp') && Hash::check($validated['hashMDP'], $user->hashMDP)){
 			$user->hashMDP = Hash::make($validated['mdp']);
-		}
+		}*/
 		$user->notificationMail = !empty($validated['notificationMail']);
         if ($request->filled('dateNaissance')) $user->dateNaissance = $validated['dateNaissance'];
 		if ($request->filled('numeroTelephone')) $user->numeroTelephone = $validated['numeroTelephone'];
@@ -93,5 +97,23 @@ class ProfilController extends Controller
 
 		// Redirection vers la page de profil
 		return redirect()->route('pageProfil');
+	}
+
+	public function updatePassword (UpdatePasswordRequest $request){
+		$validated = $request->validated();
+
+		
+
+		$user = User::findOrFail(Auth::id());
+		if (Hash::check($validated['hashMDP'], $user->hashMDP)){
+			$user->hashMDP = Hash::make($validated['mdp']);
+			$user->save();
+			return redirect()->route('pageProfil'); 
+
+		}else{
+			return redirect()->route('pageProfil', [
+				'err' => "L'ancien mot de passe n'est pas valide. Votre mot de passe n'a pas été changé."
+			]);
+		}
 	}
 }
