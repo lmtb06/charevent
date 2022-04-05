@@ -58,9 +58,9 @@
                 @foreach ($notifs as $n)
                   @if ($n->dateLecture == null)
                   
-                    <div class="bg-orange-0 px-2 py-1 sm:px-6 sm:gap-10" id={{$n->id_notification}} name="unread">
+                    <div class="bg-orange-100 px-2 py-1 sm:px-6 sm:gap-10" id={{$n->id_notification}} name="unread">
                   @else
-                    <div class="bg-orange-100 px-2 py-1 sm:px-6 sm:gap-10">
+                    <div class="bg-white px-2 py-1 sm:px-6 sm:gap-10">
                   @endif
                       <div class="sm:grid sm:grid-cols-2">
                         <div class="sm:grid sm:grid-cols-2">
@@ -122,8 +122,8 @@
                       axios.post('{{route('markAsRead')}}', {unread : array}).then(function(response){
                         // Change le style des éléments pour obtenir le style "notifications déjà vues"
                         liste.forEach(element => {
-                          element.classList.remove("bg-orange-0")
-                          element.classList.add("bg-orange-100")
+                          element.classList.remove("bg-orange-100")
+                          element.classList.add("bg-white")
                         });
                       }).catch(function(error){
                           console.log(error);
