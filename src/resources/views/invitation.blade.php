@@ -14,7 +14,7 @@
             <form method="POST" action={{route('rechercheParticipant', ['id' => $event->id_evenement])}}>
                 @csrf
                 <div class="mt-2 border-2 border-black m-1 rounded-2xl bg-white">
-                                    <!--Titre de la page-->
+                <!--Titre de la page-->
                 <div class=" flex content-center justify-center">
                     <a href="{{route('pageEvenement', ['id' => $event->id_evenement])}}">
                         <h2 class="text-2xl font-bold">Evenement "{{$event->titre}}"</h2>

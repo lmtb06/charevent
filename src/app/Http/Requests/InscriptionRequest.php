@@ -36,7 +36,7 @@ class InscriptionRequest extends FormRequest
 			'nom' => 'required|string|max:100',
 			'prenom' => 'required|string|max:100',
 			'departement' => 'required|numeric|digits_between:1,3',
-			'ville' => 'required|alpha_dash',
+			'ville' => 'required|regex:/^[A-zÀ-ú_ \-]+$/',
 			'codeZIP' => 'required|numeric|digits:5',
 			'birth' => 'required|before:today',
 			'telephone' => 'nullable|numeric|digits:10',
@@ -55,6 +55,14 @@ class InscriptionRequest extends FormRequest
             'digits' => 'veuillez rentrez un vrai code postal français (5 chiffres).',
             'before' => 'vous ne pouvez pas être né(e) dans le futur...',
             'confirmed' => 'les deux mots de passe ne correspondent pas.',
+            'ville.regex' => 'veuillez rentrez un vrai nom de ville',
+            'codeZIP.numeric' => 'veuillez rentrez des chiffres uniquement pour le code postal',
+            'telephone.numeric' => 'veuillez rentrez des chiffres uniquement pour le telephone',
+            'departement.numeric' => 'veuillez rentrez des chiffres uniquement pour le departement',
+            'nom.max'=>'le nom est limité a 100 caractères',
+            'prenom.max'=>'le prénom est limité a 100 caractères',
+            '.max'=>'',
+            'photo.max' => 'Votre photo prend trop de place. La taille maximum supporté pour la photo est 2MB (2048 KB).'
 		];
 	}
 }

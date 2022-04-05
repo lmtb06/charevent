@@ -18,54 +18,82 @@ Charevent - Création d'un événement
         <div class="border-t border-gray-200">
 
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium justify-center text-gray-500">Nom de l'événement</dt>
+            <dt class="text-sm font-medium justify-center text-gray-500">Nom de l'événement*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input required value="{{ old('titre') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="titre" type="text" placeholder="">
             </dd>
           </div>
-
+          @error('titre')
+          <div class="text-red-600 italic alert alert-danger">
+            {{ $message }}
+          </div>
+          @enderror
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium justify-center text-gray-500">Description de l'événement</dt>
+            <dt class="text-sm font-medium justify-center text-gray-500">Description de l'événement*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <textarea required class="shadow appearance-none border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Description" name="description" type="text" placeholder="">{{ old('description') }}</textarea>
             </dd>
           </div>
-
+          @error('description')
+          <div class="text-red-600 italic alert alert-danger">
+            {{ $message }}
+          </div>
+          @enderror
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500">Début de l'événement</dt>
+            <dt class="text-sm font-medium text-gray-500">Début de l'événement*</dt>
             <div class="flex items-center justify-center">
               <input required value="{{ old('dateDebut') }}" type="date" id="start" name="dateDebut" value="2022-01-01" min="2022-01-01" max="2050-12-31">
             </div>
           </div>
-
+          @error('dateDebut')
+          <div class="text-red-600 italic alert alert-danger">
+            {{ $message }}
+          </div>
+          @enderror
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt class="text-sm font-medium text-gray-500">Fin de l'événement *</dt>
+            <dt class="text-sm font-medium text-gray-500">Fin de l'événement</dt>
             <div class="flex items-center justify-center">
               <input value="{{ old('dateFin') }}" type="date" id="end" name="dateFin" value="2022-01-01" min="2022-01-01" max="2050-12-31">
             </div>
           </div>
-
+          @error('dateFin')
+          <div class="text-red-600 italic alert alert-danger">
+            {{ $message }}
+          </div>
+          @enderror
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Ville*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input required value="{{ old('ville') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="ville" name="ville" type="text" placeholder="">
             </dd>
           </div>
-
+          @error('ville')
+          <div class="text-red-600 italic alert alert-danger">
+            {{ $message }}
+          </div>
+          @enderror
           <div class="bg-white-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Code postal*</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input required value="{{ old('codePostal') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="codepostal" name="codePostal" type="numeric" placeholder="">
             </dd>
           </div>
-
+          @error('codePostal')
+          <div class="text-red-600 italic alert alert-danger">
+            {{ $message }}
+          </div>
+          @enderror
           <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Département</dt>
             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               <input required value="{{ old('departement') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="departement" name="departement" type="numeric" placeholder="">
             </dd>
           </div>
-
+          @error('departement')
+          <div class="text-red-600 italic alert alert-danger">
+            {{ $message }}
+          </div>
+          @enderror
           <div class="bg-white-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt class="text-sm font-medium text-gray-500">Durée avant expiration</dt>
             <dd class="flex justify-between mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -88,20 +116,15 @@ Charevent - Création d'un événement
             <input type="submit" value="Ajouter" class="mt-4 mb-8 modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 ml-8" Ajouter />
             <button class="mt-4 mb-8 modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 ml-8" type="button">Annuler</button>
           </div>
-
           @if ($errors->any())
-          <div class="text-red-600 italic alert alert-danger">
-            <ul>
-              @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-              @endforeach
-            </ul>
+          <div class="text-red-700 italic alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
           </div>
-          @endif
-
-
-
-
+      @endif
         </div>
     </form>
   </div>
