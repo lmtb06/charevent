@@ -6,16 +6,19 @@
 
 @section('content')
     <div class="flex justify-center lg:bg-blue-300">
-        <div class="max-w-4xl my-16 w-full pt-8">
-            <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
-                <form method="POST" action="{{ route('modifierEvenement', ['id' => $event->id_evenement]) }}">
+        <form method="POST" action="{{ route('modifierEvenement', ['id' => $event->id_evenement]) }}" class="max-w-2xl mt-16 w-full">
+            <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full ">
+                <div class="px-4 py-5 sm:px-6"> 
                     @csrf
-                    <div class="bg-white px-4 py-5">
-                        <span
-                            class="self-center -z-0 before:-my-2 whitespace-nowrap text-center before:bg-blue-400 before:block before:absolute before:-inset-1 before:-skew-y-2 relative inline-block">
-                            <span class="relative -z-0 mb-10 ml-1 mr-1 text-center text-2xl font-semibold group  text-white">
-                                MODIFIER UN EVENEMENT </span>
+                    <div class="px-4 py-5 sm:px-6">
+                        <p class=""><a href="{{route('pageEvenement',['id'=>$event->id_evenement])}}" class="text-blue-500 focus:outline-none focus:underline hover:underline">
+                            <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/fleche.png?raw=true" class=" h-6" alt="CharEvent"  />
+                        </a></p>
+                        <div class="bg-white text-center px-4 py-5">
+                        <span class="self-center -z-0 before:-my-2 whitespace-nowrap text-center before:bg-blue-400 before:block before:absolute before:-inset-1 before:-skew-y-2 relative inline-block">
+                          <span class="relative -z-0 mb-10 ml-1 mr-1 text-center text-2xl font-semibold group  text-white"> MODIFIER UN EVENEMENT </span>
                         </span>
+                      </div>
                     </div>
                     <div class="border-t border-gray-200">
                         <dl>
@@ -112,9 +115,7 @@
 
                         </dl>
                         <div class="flex justify-between">
-                            <a href=""><button type="submit"
-                                    class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Annuler</button></a>
-                            <input type="submit" value="Valider"
+                                <input type="submit" value="Valider"
                                 class="ml-44 my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
                                 Valider />
                             <input type="submit" value="Supprimer"
@@ -195,8 +196,8 @@
                             <!-- FIN boite modale -->
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 @endsection
