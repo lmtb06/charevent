@@ -32,10 +32,10 @@
                 <!-- Titre Participants -->
                 <div class=" sm:grid sm:grid-cols-2 sm:gap-10">
                     <div class="px-4 flex items-center justify-center">
-                        <h2 class="text-2xl font-bold  mt-5 underline">Liste des participant </h2>
+                        <h2 class="text-2xl font-bold  mt-5 underline">Liste des participants </h2>
                     </div>
                     <div class="px-4 flex items-center justify-center">
-                        <h2 class="text-2xl font-bold  mt-5 underline">Liste des Besoins : </h2>
+                        <h2 class="text-2xl font-bold  mt-5 underline">Liste des besoins </h2>
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@
                             @if (count($event->comptes) < 1)
                                 <div class=" bg-indigo-100 m-1 border-4 border-indigo-400 rounded-2xl">
                                     <!-- Un particiapant-->
-                                    <div class="bg-gray-50 px-4 py-1 sm:grid sm:gap-10 sm:px-6">
+                                    <div class="bg-gray-50 px-4 py-1 sm:grid sm:gap-10 sm:px-6 rounded-2xl">
                                         <dt class="text-sm font-medium mt-8 justify-center text-black-500 ">Il n'y a pas
                                             encore de participants...</dt>
                                     </div>
@@ -64,8 +64,8 @@
                                 @foreach ($event->comptes as $p)
                                     <!--2e  Fin du Petit bloc une liste a mettre en boucle-->
                                     <div class=" bg-indigo-100  m-1 border-4 border-indigo-400 rounded-2xl">
-                                        <!-- Un particiapant-->
-                                        <div class="bg-gray-50 px-4 py-1 sm:grid sm:grid-cols-4 sm:gap-10 sm:px-6">
+                                        <!-- Un participant-->
+                                        <div class="bg-gray-50 px-4 py-1 sm:grid sm:grid-cols-4 sm:gap-10 sm:px-6 rounded-2xl">
                                             <div class="mt-1 mb-1">
                                                 <img src="https://mdbootstrap.com//img/Photos/Square/1.jpg"
                                                     class="w-20 h-auto rounded-full" alt="">
@@ -86,7 +86,7 @@
                             @if (count($event->besoins) < 1)
                                 <div class=" bg-indigo-100  m-1 border-4 border-indigo-400 rounded-2xl">
                                     <!-- Un Besoin-->
-                                    <div class="bg-gray-50 px-4 py-1 sm:grid sm:grid-cols-2 sm:gap-10 sm:px-6">
+                                    <div class="bg-gray-50 px-4 py-1 sm:grid sm:grid-cols-2 sm:gap-10 sm:px-6 rounded-2xl">
                                         <div class="mt-1 mb-1">
                                             <dt class="text-sm font-medium mt-3 justify-center text-black-500 ">Il n'y a pas
                                                 encore de besoins...</dt>
@@ -97,7 +97,7 @@
                                 @foreach ($event->besoins as $b)
                                     <div class=" bg-indigo-100  m-1 border-4 border-indigo-400 rounded-2xl">
                                         <!-- Un Besoin-->
-                                        <div class="bg-gray-50 px-4 py-1 sm:grid sm:grid-cols-2 sm:gap-10 sm:px-6">
+                                        <div class="bg-gray-50 px-4 py-1 sm:grid sm:grid-cols-2 sm:gap-10 sm:px-6 rounded-2xl">
                                             <div class="mt-1 mb-1">
                                                 <dt class="text-sm font-medium mt-3 justify-center text-black-500 ">
                                                     {{ $b->titre }}</dt>
@@ -257,7 +257,7 @@
 
             <!-- FIN boite modale -->
             </div>
-            <div class="grid gap-1 grid-cols-3 mt-2 ml-5 bg-gray-100">
+            <div class="grid gap-1 grid-cols-3 mt-2 ml-5 bg-gray-100 mr-4">
                 <div class=" flex items-center justify-center">
                     <h2 class="text-2xl ">Début :
                         {{ \Carbon\Carbon::parse($event->dateDebut)->format('d/m/Y') }}</h2>
@@ -273,7 +273,7 @@
                         </a>
                     @endif
                 </div>
-                <div class=" flex items-center justify-center">
+                <div class=" flex items-center justify-center ">
                     <h2 class="text-2xl">Fin : {{ \Carbon\Carbon::parse($event->dateFin)->format('d/m/Y') }}
                     </h2>
                 </div>

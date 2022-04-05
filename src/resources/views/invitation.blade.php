@@ -16,11 +16,11 @@
                 </div>
             </section>
             <!--Bloc de recherche-->
-            <section class="p-4 flex items-center justify-center" >
+            <section class="p-4 flex items-center justify-center " >
                 <!--Le gros rectangle-->
             <form method="POST" action={{route('rechercheParticipant', ['id' => $event->id_evenement])}}>
                 @csrf
-                <div class="mt-2 border-2 border-black m-1 rounded-2xl bg-gradient-to-b from-white to-white-700">
+                <div class="mt-2 border-2 border-black m-1 rounded-2xl bg-white">
                     <!-- Titre recherche de participants-->
                     <div class="m-1 text-xl font-bold flex content-center justify-center mb-4">
                                 Recherche de participants
@@ -79,7 +79,7 @@
                     </div>
                     <!--Bouton submit-->
                     <div class=" mt-2 flex items-center justify-center">
-                            <input type="submit" class="text-ms rounded-2xl border-2 border-orange-800 bg-gradient-to-b from-orange-400 to-orange-100 m-2 p-2 "
+                            <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
                                 value="Lancer la recherche"
                             />
                     </div>

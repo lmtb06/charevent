@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html class="h-full" lang="fr">
 
 <head>
 	<meta charset="UTF-8" />
@@ -10,7 +10,7 @@
     <title>@yield('titre')</title>
 </head>
 
-<body>
+<body class="bg-blue-200 h-full">
     @if (Auth::check())
         @include('bandeau', ['user' => $user])
     @endif

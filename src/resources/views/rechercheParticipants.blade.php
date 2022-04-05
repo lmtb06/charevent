@@ -5,9 +5,8 @@
 @endsection
 
 @section('content')
-<body class="h-full" style="background-color: #E4D9BC;">
   <div class="flex justify-center h-full">
-    <div class="max-w-4xl my-16 w-full">
+    <div class="max-w-4xl my-16 w-full pt-8">
       <div class="bg-white shadow overflow-hidden sm:rounded-lg w-full ">
         <form method="POST" action={{route('invitation', ['id' => $event->id_evenement])}}>
           @csrf
@@ -16,11 +15,11 @@
           </div>
 
           <div class="bg-white-50 px-4 sm:grid sm:grid-cols-6 sm:gap-10 sm:px-6">
-            <dt class="text-sm font-medium mt-4 justify-center text-gray-500">Profil</dt>
-            <dt class="text-sm font-medium mt-4 justify-center text-gray-500">Nom</dt>
-            <dt class="text-sm font-medium mt-4 justify-center text-gray-500">Prénom</dt>
-            <dt class="text-sm font-medium mt-4 justify-center text-gray-500">Ville</dt>
-            <dt class="text-sm font-medium mt-4 justify-center text-gray-500">Age</dt>
+            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Profil</dt>
+            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Nom</dt>
+            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Prénom</dt>
+            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Ville</dt>
+            <dt class="text-m font-medium mt-4 font-semibold justify-center text-black">Age</dt>
             <input type="submit" value="Ajouter" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"/>
 
           </div>
@@ -67,5 +66,4 @@
       </div>
     </div>
   </div>
-</body>
 @endsection
