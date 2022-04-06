@@ -137,9 +137,7 @@
                                         <li>{{ $error }}</li>
                                     @endforeach
                                 @endif
-                                @if ($err != null)
-                                    <li> {{ $err }} </li>
-                                @endif
+                            
                             </ul>
                         </div>
 

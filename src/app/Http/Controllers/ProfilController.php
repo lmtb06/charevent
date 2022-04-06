@@ -111,9 +111,7 @@ class ProfilController extends Controller
 			return redirect()->route('pageProfil'); 
 
 		}else{
-			return redirect()->route('pageProfil', [
-				'err' => "L'ancien mot de passe n'est pas valide. Votre mot de passe n'a pas été changé."
-			]);
+			return redirect()->route('pageProfil');
 		}
 	}
 }
