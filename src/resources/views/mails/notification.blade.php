@@ -13,7 +13,7 @@
             Vous avez reçu une nouvelle notification :
 		</p>
         <p>
-            {{$message}}
+            {{$msg}}
         </p>
         <p>
             Vous pouvez vous rendre dans votre centre de notification en <a href="{{route('notification')}}">cliquant ici</a>.

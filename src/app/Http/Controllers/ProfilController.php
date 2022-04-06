@@ -89,7 +89,7 @@ class ProfilController extends Controller
 		if ($request->filled('mdp') && Hash::check($validated['hashMDP'], $user->hashMDP)){
 			$user->hashMDP = Hash::make($validated['mdp']);
 		}*/
-		$user->notificationMail = !empty($validated['notificationMail']);
+		$user->notificationMail = $request->filled('notificationMail');
         if ($request->filled('dateNaissance')) $user->dateNaissance = $validated['dateNaissance'];
 		if ($request->filled('numeroTelephone')) $user->numeroTelephone = $validated['numeroTelephone'];
 		$user->id_residence = $local->id_localisation;

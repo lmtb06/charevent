@@ -13,7 +13,7 @@ class NotificationMail extends Mailable
     use Queueable, SerializesModels;
 
     public User $destinataire;
-    public $message;
+    public $msg;
 
 
     /**
@@ -24,7 +24,7 @@ class NotificationMail extends Mailable
     public function __construct(User $destinataire, $message)
     {
         $this->destinataire = $destinataire;
-        $this->message = $message;
+        $this->msg = $message;
     }
 
     /**
