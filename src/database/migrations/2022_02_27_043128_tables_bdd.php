@@ -21,7 +21,7 @@ return new class extends Migration
 			$table->integer('id_residence');
 			$table->string('nom', 50);
 			$table->string('prenom', 50);
-			$table->string('photo', 50)->nullable();
+			$table->string('photo', 250)->nullable();
 			$table->string('mail', 320);
 			$table->string('hashMDP', 256);
 			$table->date('dateNaissance');
@@ -37,7 +37,7 @@ return new class extends Migration
 			$table->integer('id_residence');
 			$table->string('nom', 50);
 			$table->string('prenom', 50);
-			$table->string('photo', 50)->nullable();
+			$table->string('photo', 250)->nullable();
 			$table->string('mail', 320);
 			$table->string('hashMDP', 256);
 			$table->date('dateNaissance');
@@ -53,6 +53,7 @@ return new class extends Migration
 				$table->integer('id_evenement', true);
 				$table->integer('id_createur');
 				$table->integer('id_localisation')->nullable();
+				$table->string('photo', 250)->nullable();
 				$table->string('titre', 50);
 				$table->string('description', 500);
 				$table->date('dateDebut');
@@ -65,6 +66,7 @@ return new class extends Migration
 				$table->integer('id_evenement',true);
 				$table->integer('id_createur');
 				$table->integer('id_localisation')->nullable();
+				$table->string('photo', 250)->nullable();
 				$table->string('titre', 50);
 				$table->string('description', 500);
 				$table->date('dateDebut');

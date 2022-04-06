@@ -6,10 +6,11 @@
 
 @section('content')
     <div class="flex justify-center lg:bg-blue-300">
-        <form method="POST" action="{{ route('modifierEvenement', ['id' => $event->id_evenement]) }}" class="max-w-2xl mt-16 w-full">
+        <form method="POST" id="modifierProfil" name="modifProfil" action="{{ route('modifierEvenement', ['id' => $event->id_evenement]) }}" enctype="multipart/form-data" class="max-w-2xl mt-16 w-full">
+            @csrf
             <div class="bg-white lg:shadow lg:border-x-2 lg:border-black overflow-hidden w-full ">
                 <div class="px-4 py-5 sm:px-6"> 
-                    @csrf
+                    
                     <div class="px-4 py-5 sm:px-6">
                         <p class=""><a href="{{route('pageEvenement',['id'=>$event->id_evenement])}}" class="text-blue-500 focus:outline-none focus:underline hover:underline">
                             <img src="https://github.com/lmtb06/charevent/blob/main/src/resources/img/fleche.png?raw=true" class=" h-6" alt="CharEvent"  />
@@ -84,7 +85,14 @@
                                         id="departement" name="departement" type="numeric" placeholder=""
                                         value={{ $lieu->departement }}>
                                 </dd>
+
+
+
                             </div>
+
+                            
+
+
 
                             <div class="bg-white-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                 <dt class="text-sm font-medium text-gray-500">Durée avant expiration</dt>
@@ -110,7 +118,23 @@
                                         <label class="form-check-label inline-block text-gray-800" for="inlineRadio30">3
                                             mois</label>
                                     </div>
+
+                
                                 </dd>
+                            </div>
+
+                            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt class="text-sm font-medium justify-center text-gray-500">Image de l'événement</dt>
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    <input type="file" name="photo" id="photo" accept="image/png, image/jpeg"
+                                class="block py-2.5 px-0 w-full text-sm text-black bg-transparent appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                placeholder=" " />
+                            <label for="photo"
+                                class="absolute text-sm text-black  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Photo</label>
+                                </dd>
+
+
+                                
                             </div>
 
                         </dl>

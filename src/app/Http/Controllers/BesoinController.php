@@ -54,28 +54,17 @@ class BesoinController extends Controller
             } else {
                 // Sinon il crée un besoin temporaire et envoie une proposition
                 $b = BesoinEnAttente::create([
-                    'titre' => $validated['titre'],
+                    'titre' => $validated['intitule'],
                     'id_evenement' => $id,
                     'id_responsable' => Auth::id()
                 ]);
                 $user = User::find(Auth::id());
                 // Envoie de la notification proposant le nouveau besoin
-                event(new ProposeBesoin($user, $event, $b));
+                
+                event(new ProposeBesoin($user, $b, $event));
             }
         }
         return redirect()->route('pageEvenement',['id' => $id]);
-        
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
         
     }
 

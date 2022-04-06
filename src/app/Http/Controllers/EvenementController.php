@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\NotifType;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Enums\NotifType;
 use App\Models\Evenement;
+use App\Models\Participant;
 use App\Models\Localisation;
+use App\Models\Notification;
 use App\Models\EvenementArchive;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EvenementRequest;
-use App\Models\Notification;
-use App\Models\Participant;
+use App\Http\Requests\UpdateEventRequest;
 
 class EvenementController extends Controller
 {
@@ -22,11 +23,10 @@ class EvenementController extends Controller
 		$user = User::find(Auth::id());
 
 		// Vérifie si l'utilisateur participe à cet événement
-		$p = Participant::where([
+		$participe = Participant::where([
 			['id_evenement', $id],
 			['id_compte', $user->id_compte],
-		])->first();
-		$participe = $p !== null;
+		])->count();
 
 		// Récupération de demandes en cours
 		$notif = Notification::whereNull('accepte')
@@ -81,7 +81,7 @@ class EvenementController extends Controller
 	
 	}
 	
-	public function update($id, EvenementRequest $request)
+	public function update($id, UpdateEventRequest $request)
 	{
 		// Valider le formulaire
 		$validated = $request->validated();
@@ -103,6 +103,8 @@ class EvenementController extends Controller
         if ($request->filled('expiration')) $evenement->expiration = $validated['expiration'];
 		$evenement->id_localisation = $local->id_localisation;
 
+
+
 		if ($request->expiration != null){
 			$newDateTime = Carbon::now();
 
@@ -118,6 +120,17 @@ class EvenementController extends Controller
 					break;
 			}
 			$evenement->expiration = $newDateTime;
+		}
+
+		if (isset($validated['photo'])){
+			// On enregistre la photo
+			$nomFichier = $evenement->id_evenement. '.' . $validated['photo']->extension();
+			$path = $request->file('photo')->storeAs(
+				'events',
+				$nomFichier, 'public'
+			);
+			// On sauvegarde le chemin de la photo dans le compte de l'utilisateur	
+			$evenement->photo = $path;
 		}
 		$evenement->saveOrFail();	
 

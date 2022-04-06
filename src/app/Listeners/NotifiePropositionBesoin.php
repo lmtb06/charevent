@@ -32,6 +32,7 @@ class NotifiePropositionBesoin
      */
     public function handle(ProposeBesoin $event)
     {
+       
         $demande = Notification::updateOrCreate([
             'id_destinataire' => $event->event->id_createur,
             'id_envoyeur' => $event->user->id_compte,

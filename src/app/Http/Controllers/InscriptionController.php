@@ -83,9 +83,7 @@ class InscriptionController extends Controller
 			} else {
 				// La sauvegarde de la photo n'a pas réussi
 			}
-
-
-		};
+		}
 
 		// Envoie d'un mail de confirmation d'inscription
 		Mail::to($user->mail)->send(new ConfirmationInscription($user));

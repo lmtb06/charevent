@@ -2,27 +2,28 @@
 
 namespace App\Providers;
 
+use App\Events\ProposeBesoin;
 use App\Events\EvenementArchive;
 use App\Events\ParticipantQuitte;
+use App\Events\SuppressionBesoin;
 use App\Events\ModificationBesoin;
 use App\Events\ParticipantAPostule;
-use App\Events\ParticipantEstInvite;
 use App\Events\ReponseNotification;
-use App\Events\SouhaiteModificationBesoin;
-use App\Events\SouhaiteSuppressionBesoin;
-use App\Events\SuppressionBesoin;
+use App\Events\ParticipantEstInvite;
+use App\Listeners\EnvoiReponseNotif;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
+use App\Events\SouhaiteSuppressionBesoin;
+use App\Events\SouhaiteModificationBesoin;
+use App\Listeners\NotifiePropositionBesoin;
+use App\Listeners\NotifieSuppressionBesoin;
 use App\Listeners\NotifieModificationBesoin;
 use App\Listeners\EnvoiNotificationArchivageEvent;
+use App\Listeners\NotifieSouhaiteSuppressionBesoin;
 use App\Listeners\EnvoiNotificationQuitterEvenement;
+use App\Listeners\NotifieSouhaiteModificationBesoin;
 use App\Listeners\EnvoiNotificationInvitationParticipant;
 use App\Listeners\EnvoiNotificationCandidatureParticipant;
-use App\Listeners\EnvoiReponseNotif;
-use App\Listeners\NotifiePropositionBesoin;
-use App\Listeners\NotifieSouhaiteModificationBesoin;
-use App\Listeners\NotifieSouhaiteSuppressionBesoin;
-use App\Listeners\NotifieSuppressionBesoin;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 

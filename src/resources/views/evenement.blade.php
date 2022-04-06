@@ -183,7 +183,7 @@
                         @else
                             <form method="POST" action="{{ route('postule', ['id' => $event->id_evenement]) }}">
                                 @csrf
-                                @if ($participeDeja)
+                                @if ($participeDeja > 0)
                                     <input type="submit"
                                         formaction="{{ route('quitter', ['id' => $event->id_evenement]) }}"
                                         class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded my-2 "
@@ -207,11 +207,13 @@
 
                     <div class="mt-2 flex items-center justify-center">
                         <!-- DEBUT Boite modale -->
+                        @if ($participeDeja > 0 || $event->id_createur == Auth::id())
                         <button
                             class="modal-open bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2"
                             type="button" data-modal-toggle="authentication-modal">
                             Ajouter un besoin
                         </button>
+                        @endif
 
                         <!-- version PC !-->
                     </div>
@@ -238,7 +240,7 @@
                                 @csrf
                                 <p>Intitulé :<input
                                         class="ml-14 shadow appearance-none border rounded w-2/3 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-black"
-                                        id="confirmation_mot_de_passe_suppression" name="intitule"></p>
+                                        id="intitule" name="intitule"></p>
                                 <br>
 
                                 <div class="flex justify-between pt-2">
